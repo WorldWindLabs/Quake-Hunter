@@ -52,6 +52,7 @@ define(['./Circle',
             var UIController = new AnnotationController(wwd, earthquakes.parameters, this);
 
             this.redraw = function () {
+                console.log(this.handler);
                 earthquakes.redraw(this.handler);
             };
 

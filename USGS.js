@@ -14,13 +14,12 @@ define(['./Draw'], function(Draw) {
         maxDateISO[maxDateISO.length - 1] = maxDateISO[maxDateISO.length - 1].split('.')[0];
 
         var queryParameters = function () {
-            // Khaled's Dynamic URL (automatically updates to last 10 days)
             this.minMagnitude = 2.5;
             this.maxMagnitude = 10;
 
             this.FromDate = minDateISO.join('-');
             this.ToDate = maxDateISO.join('-');
-            this.Limit = 500;
+            this.Limit = 20000;
 
             this.MinLongitude = -360;
             this.MaxLongitude = 360;
@@ -30,126 +29,109 @@ define(['./Draw'], function(Draw) {
             this.initialQuery = {minMag: 2.5,
                 maxMag: 10,
                 fromDate: minDateISO.join('-'),
-                toDate: maxDateISO.join('-')},
+                toDate: maxDateISO.join('-')};
 
-            // getInitialQuery: function () {
-            //     return this.initialQuery;
-            // }
+            this.update = function (fig, mode) {
+                if (mode == "rectangle") {
+                    var p1 = fig.p1;
+                    var p2 = fig.p2;
 
-            // this.getFromDate = function () {
-            //     return this.FromDate;
-            // };
+                    var minLong = Math.min(p2.Long, p1.Long);
+                    var maxLong = Math.max(p2.Long, p1.Long);
 
-            // this.getToDate = function () {
-            //     return this.ToDate;
-            // };
+                    var minLati = Math.min(p2.Lati, p1.Lati);
+                    var maxLati = Math.max(p2.Lati, p1.Lati);
 
-            // this.getMinMagnitude = function () {
-            //     return this.MinMagnitude;
-            // };
+                    this.MinLatitude = minLati;
+                    this.MinLongitude = minLong;
+                    this.MaxLatitude = maxLati;
+                    this.MaxLongitude = maxLong;
+                }
 
-            // this.getMaxMagnitude = function () {
-            //     return this.MaxMagnitude;
-            // };
-
-            // this.getLimit = function (value) {
-            //     return this.Limit;
-            // };
-
-            this.updateLatLong = function (p1, p2) {
-                var minLong = Math.min(p2.Long, p1.Long);
-                var maxLong = Math.max(p2.Long, p1.Long);
-
-                var minLati = Math.min(p2.Lati, p1.Lati);
-                var maxLati = Math.max(p2.Lati, p1.Lati);
-
-                this.MinLatitude = minLati;
-                this.MinLongitude = minLong;
-                this.MaxLatitude = maxLati;
-                this.MaxLongitude = maxLong;
-                //
-                // this.setMaxLatitude(maxLati);
-                // this.setMinLongitude(minLong);
-                // this.setMaxLongitude(maxLong);
-            },
+                if (mode == "circle") {
+                    console.log("IMPLEMENT CIRCLE UPDATE QUERY");
+                }
+            };
 
             this.setFromDate = function (value) {
                 this.FromDate = value;
-            },
+            };
             
             this.setToDate = function (value) {
                 this.ToDate = value;
-            },
+            };
             
             this.setMinMagnitude = function (value) {
                 this.minMagnitude = value;
-            },
+            };
             
             this.setMaxMagnitude = function (value) {
                 this.maxMagnitude = value;
-            },
+            };
             
             this.setLimit = function (value) {
                 this.Limit = value;
-            },
+            };
             
             this.setMinLatitude = function(value) {
                 this.MinLatitude = value;
-            },
+            };
             
             this.setMaxLatitude = function(value) {
                 this.MaxLatitude = value;
-            },
+            };
             
             this.setMinLongitude = function(value) {
                 this.MinLongitude = value;
-            },
+            };
             
             this.setMaxLongitude = function(value) {
                 this.MaxLongitude = value;
-            }
+            };
         };
 
         this.parameters = new queryParameters();
 
-        this.getUrl = function (drawingType, drawingState, figure) {
+        this.getUrl = function (drawingType) {
             var minMagnitude = this.parameters.minMagnitude,
                 maxMagnitude = this.parameters.maxMagnitude,
                 FromDate = this.parameters.FromDate,
                 ToDate = this.parameters.ToDate,
-                limit = this.parameters.Limit;
+                limit = this.parameters.Limit,
+                origin = this.parameters.Origin,
+                radius3D = this.parameters.Radius,
+                minLatitude = this.parameters.MinLatitude,
+                maxLatitude = this.parameters.MaxLatitude,
+                minLongitude = this.parameters.MinLongitude,
+                maxLongitude = this.parameters.MaxLongitude;
 
             var resourcesUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
             var query;
-            if (drawingType == 'circle' && drawingState == 2) {
+            if (drawingType == 'circle') {
                 query = "starttime=" + FromDate +
                     "&endtime=" + ToDate +
                     "&minmagnitude=" + minMagnitude.toString() +
                     "&maxmagnitude=" + maxMagnitude.toString() +
-                    "&longitude=" + figure.origin.Long.toString() +
-                    "&latitude=" + figure.origin.Lati.toString() +
-                    "&maxradiuskm=" + figure.radius3D.toString();
+                    "&longitude=" + origin.Long.toString() +
+                    "&latitude=" + origin.Lati.toString() +
+                    "&maxradiuskm=" + radius3D.toString();
             }
-            else if (drawingType == 'rectangle' && drawingState == 2) {
+            else if (drawingType == 'rectangle') {
                 query = "starttime=" + FromDate +
                     "&endtime=" + ToDate +
                     "&minmagnitude=" + minMagnitude.toString() +
                     "&maxmagnitude=" + maxMagnitude.toString() +
-                    "&minlongitude=" + this.MinLongitude.toString() +
-                    "&maxlongitude=" + this.MaxLongitude.toString() +
-                    "&minlatitude=" + this.MinLatitude.toString() +
-                    "&maxlatitude=" + this.MaxLatitude.toString();
-                //+ "&limit=" + limit.toString();
-                // + "&orderby=magnitude;
+                    "&minlongitude=" + minLongitude.toString() +
+                    "&maxlongitude=" + maxLongitude.toString() +
+                    "&minlatitude=" + minLatitude.toString() +
+                    "&maxlatitude=" + maxLatitude.toString();
             }
             else {
                 query = "starttime=" + FromDate + "&endtime=" + ToDate + "&minmagnitude=" +
                     minMagnitude.toString() + "&maxmagnitude=" + maxMagnitude.toString();
-                //+ "&limit=" + limit.toString();
-                // + "&orderby=magnitude;
             }
 
-            var url = resourcesUrl + '&' + query;
+            var url = resourcesUrl + '&' + query + "&limit=" + limit.toString();
             console.log(url);
             return url;
         };
@@ -159,23 +141,20 @@ define(['./Draw'], function(Draw) {
         var layer;
 
         this.redraw = function(draw) {
-            var drawOption = $("#flip-1").val();
+            var drawOption = draw.getDrawMode();
             var drawingState = 0;
-            var drawFig = 1;
+            var drawFig = 0;
 
             if (firstTime) {
-                $.get(this.getUrl(drawOption, drawingState, drawFig), function (EQ) {
+                $.get(this.getUrl(), function (EQ) {
                     layer = draw.placeMarkCreation(EQ, earthquakes);
                     control.initializeHandlers();
                 });
                 firstTime = false;
             }
             else {
-                // var p1 = drawFig.p1;
-                // var p2 = drawFig.p2;
-                // this.parameters.updateLatLong(p1, p2);
-
-                $.get(this.getUrl(drawOption, drawingState, drawFig), function (EQ) {
+                this.parameters.update(draw.queryFig, drawOption);
+                $.get(this.getUrl(drawOption), function (EQ) {
                     wwd.removeLayer(layer);
                     layer = draw.placeMarkCreation(EQ, earthquakes);
                 });

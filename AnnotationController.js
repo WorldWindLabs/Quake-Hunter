@@ -30,6 +30,18 @@ define(['./USGS'], function (USGS) {
         this.magSlider = $("#magSlider");
         this.dateSlider = $("#dateSlider");
         this.opacitySlider = $("#opacitySlider");
+        // this.drawingSelector = $("#flip-1");
+        //
+        // this.drawingSelector.slider({
+        //     value: "off",
+        //     // min:     0,
+        //     // max:     100,
+        //     // step:    5,
+        //     animate: true,
+        //     stop: function (event, ui) {
+        //         console.log(ui.value);
+        //     }
+        // });
 
         this.FromDate = $("#fromdatepicker").datepicker({
             changeMonth: true,
