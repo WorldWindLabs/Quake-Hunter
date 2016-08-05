@@ -1,8 +1,8 @@
 NASA WebWorldWind *Quake Hunter* Earthquake Visualization Application
 ====================
-**Organization:** NASA Ames Research Center (PX)
-**Manager:** Patrick Hogan
-**Authors:** Benjamin Chang, Gabriel Militão, Farah Salah, Khaled Sharif
+**Organization:** NASA Ames Research Center (PX)  
+**Manager:** Patrick Hogan  
+**Authors:** Benjamin Chang, Gabriel Militão, Farah Salah, Khaled Sharif  
 **Acknowledgements:** Miguel Del Castillo, Bert Stewart
 
 1. Introduction
