@@ -12,7 +12,7 @@ This is an earthquake visualization app built in NASA WebWorldWind. With the wea
 2. How to Run *Quake Hunters*
 -----
 ###Run it the easy way:
-You can go to this [website](http://worldwind.arc.nasa.gov/quakehunter) to use the web app.
+You can go to this worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
