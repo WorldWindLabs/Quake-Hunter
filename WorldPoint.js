@@ -28,8 +28,6 @@ define(['./worldwindlib'],
                 this.X = x;
                 this.Y = y;
 
-                console.log(pickList.objects[0].position);
-
                 this.Long = pickList.objects[0].position.longitude;
                 this.Lati = pickList.objects[0].position.latitude;
                 this.Alti = pickList.objects[0].position.altitude;

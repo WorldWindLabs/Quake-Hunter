@@ -1,8 +1,8 @@
 NASA WebWorldWind *Quake Hunter* Earthquake Visualization Application
 ====================
-**Organization:** NASA Ames Research Center (PX)
-**Manager:** Patrick Hogan
-**Authors:** Benjamin Chang, Gabriel Militão, Farah Salah, Khaled Sharif
+**Organization:** NASA Ames Research Center (PX)  
+**Manager:** Patrick Hogan  
+**Authors:** Benjamin Chang, Gabriel Militão, Farah Salah, Khaled Sharif  
 **Acknowledgements:** Miguel Del Castillo, Bert Stewart
 
 1. Introduction
@@ -12,9 +12,9 @@ This is an earthquake visualization app built in NASA WebWorldWind. With the wea
 2. How to Run *Quake Hunters*
 -----
 ###Run it the easy way:
-You can go to this [website]() to use the web app.
+You can go to worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
-You can download or clone the repository in to local storage and run the `app.html` in a webserver (WebStorm provides a built in webserver).
+You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
 3. How To Use
 -----
@@ -32,9 +32,9 @@ Try a geographically constrained query along a subduction zone or fault line (Th
 
 4. Example Usage
 ------
-![Initial Query]()
+![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app1.png)
 The initial query of the most recent 30 days of earthquake events in the range of magnitude 2.5-10  
-![Geographically constrained query]()
+![Geographically constrained query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app2.png)
 A query showing the subduction zone in Kodiak Alaska.
 
 5. Future Work
