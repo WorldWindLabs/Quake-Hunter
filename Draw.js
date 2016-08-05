@@ -85,8 +85,10 @@ define(['./Circle',
                         Metadata.setminDate(startdate);
                         Metadata.setmaxDate(enddate);
 
-                        Metadata.setminMagnitude(earthquakes.minMagnitude);
-                        Metadata.setmaxMagnitude(earthquakes.maxMagnitude);
+                        console.log(earthquakes);
+
+                        Metadata.setminMagnitude(earthquakes.parameters.minMagnitude);
+                        Metadata.setmaxMagnitude(earthquakes.parameters.maxMagnitude);
                     }
 
                     updateMetadata();

@@ -8,25 +8,6 @@ define(['./USGS'], function (USGS) {
     var AnnotationController = function (worldWindow, queryParameters, control) {
         this.worldWindow = worldWindow;
 
-        function initializeUI(queryParameters) {
-            var initialQuery = queryParameters.initialQuery;
-            //  Pre-populate dropdowns with initial dates
-            $("#fromdatepicker").datepicker("setDate", initialQuery.fromDate.split("T")[0]);
-            $("#todatepicker").datepicker("setDate", initialQuery.toDate.split("T")[0]);
-
-            // $("#magSlider").slider("option", "values", [initialQuery.minMag, initialQuery.maxMag]);
-            // $("#magSliderValue").html($("#magSlider").slider("values", 0).toString() + " to " +
-            //     $("#magSlider").slider("values", 1).toString() + " Richter");
-
-            queryParameters.setFromDate(initialQuery.fromDate.split("T")[0]);
-            queryParameters.setToDate(initialQuery.toDate.split("T")[0]);
-            queryParameters.setMinMagnitude(initialQuery.minMag);
-            queryParameters.setMaxMagnitude(initialQuery.maxMag);
-
-        }
-
-        initializeUI(queryParameters);
-
         this.magSlider = $("#magSlider");
         this.dateSlider = $("#dateSlider");
         this.opacitySlider = $("#opacitySlider");
@@ -109,6 +90,25 @@ define(['./USGS'], function (USGS) {
             initializeUI(queryParameters);
             control.redraw();
         });
+
+        function initializeUI(queryParameters) {
+            var initialQuery = queryParameters.initialQuery;
+            //  Pre-populate dropdowns with initial dates
+            $("#fromdatepicker").datepicker("setDate", initialQuery.fromDate.split("T")[0]);
+            $("#todatepicker").datepicker("setDate", initialQuery.toDate.split("T")[0]);
+
+            $("#magSlider").slider("option", "values", [initialQuery.minMag, initialQuery.maxMag]);
+            $("#magSliderValue").html($("#magSlider").slider("values", 0).toString() + " to " +
+                $("#magSlider").slider("values", 1).toString() + " Richter");
+
+            queryParameters.setFromDate(initialQuery.fromDate.split("T")[0]);
+            queryParameters.setToDate(initialQuery.toDate.split("T")[0]);
+            queryParameters.setMinMagnitude(initialQuery.minMag);
+            queryParameters.setMaxMagnitude(initialQuery.maxMag);
+
+        }
+
+        initializeUI(queryParameters);
 
         $("#magSliderValue").html(this.magSlider.slider("values", 0).toString() + " to " +
             this.magSlider.slider("values", 1).toString() + " Richter");
