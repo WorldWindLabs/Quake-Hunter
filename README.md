@@ -34,7 +34,7 @@ Try a geographically constrained query along a subduction zone or fault line (Th
 ------
 ![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app1.png)
 The initial query of the most recent 30 days of earthquake events in the range of magnitude 2.5-10  
-![Geographically constrained query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app2.png)
+![Geographically constrained query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/Query75-today.png)
 A query showing the subduction zone in Kodiak Alaska.
 
 5. Future Work
