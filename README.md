@@ -1,4 +1,4 @@
-NASA WebWorldWind *Quake Hunter* Earthquake Visualization Application
+*Quake Hunter* Earthquake Activity Visualizer
 ====================
 **Organization:** NASA Ames Research Center (PX)  
 **Manager:** Patrick Hogan  
