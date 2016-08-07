@@ -1,4 +1,4 @@
-*Quake Hunter* Earthquake Activity Visualizer
+*Quake Hunter*: Earthquake Activity Visualizer
 ====================
 **Organization:** NASA Ames Research Center (PX)  
 **Manager:** Patrick Hogan  
