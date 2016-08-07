@@ -27,13 +27,13 @@ You can download or clone the repository in to local storage and run the `index.
 ###Visualization of subsurface features:
 Try a geographically constrained query along a subduction zone or fault line (These are represented by the brown lines).
   * Set a specific sector of the planet to query earthquakes within.
-  * Visualize a longer period of earthquakes (>20 years) and within the recommended magnitude range (2.5-10).
-  * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, a rift zone, or a hotspot.
+  * Visualize a longer period of earthquakes (>20 years) and within the magnitude range M3-10.
+  * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
 
 4. Example Usage
 ------
 ![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app1.png)
-The initial query of the most recent 30 days of earthquake events in the range of magnitude 2.5-10  
+The initial query of the most recent 30 days of earthquake events in the range of magnitude M3-10  
 ![Geographically constrained query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/Query75-today.png)
 A query showing the subduction zone in Kodiak Alaska.
 
