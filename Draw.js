@@ -61,16 +61,17 @@ define(['./Circle',
 
                 function PopulateEarthquakeLayer (GeoJSON) {
                     for (var i = 0; i < GeoJSON.features.length; i++) {
+                        var eq = GeoJSON.features[i];
+
+                        var placeMark = new EQPlacemark(eq.geometry.coordinates, control.coloringMode, eq.properties.mag, eq.properties.time);
+                        earthquakeLayer.addRenderable(placeMark.placemark);
+
                         // var polygon = new EQPolygon(GeoJSON.features[i].geometry['coordinates']);
                         // polygonLayer.addRenderable(polygon.polygon);
 
                         // var polygon = new Cylinder(GeoJSON.features[i].geometry['coordinates'], GeoJSON.features[i].properties['mag'] * 5e5);
-                        // polygonLayer.addRenderable(polygon.cylinder);
+                        // earthquakeLayer.addRenderable(polygon.cylinder);
 
-                        if (GeoJSON.features[i].geometry.coordinates[2]  != 0) {
-                            var placeMark = new EQPlacemark(GeoJSON.features[i].geometry.coordinates, GeoJSON.features[i].properties.mag);
-                            earthquakeLayer.addRenderable(placeMark.placemark);
-                        }
                     }
                     return earthquakeLayer;
                 }
@@ -194,32 +195,46 @@ define(['./Circle',
                         drawingState = drawingStates.ONE_V;
                     }
                 }
+            };
 
-                function drawFig(p1, p2) {
-                    var fig;
-                    if (drawing.getDrawMode() == "rectangle") {
-                        fig = drawRectangle(p1, p2);
+            function drawFig(p1, p2) {
+                var fig;
+                if (drawing.getDrawMode() == "rectangle") {
+                    fig = drawRectangle(p1, p2);
+                }
+                else if (drawing.getDrawMode() == "circle") {
+                    fig = drawCircle(p1, p2);
+                }
+                fig.p1 = p1;
+                fig.p2 = p2;
+                return fig;
+            }
+
+            function drawRectangle(p1, p2) {
+                var myRectangle = new Rectangle(p1, p2);
+                drawLayer.addRenderable(myRectangle);
+                return myRectangle;
+            }
+
+            function drawCircle(p1, p2) {
+                var myCircle = new Circle(p1, p2);
+                drawLayer.addRenderable(myCircle);
+                return myCircle;
+            }
+
+            this.Drawer = function (event) {
+                if (drawing.getDrawMode() != "off" && drawingState == drawingStates.ONE_V) {
+                    var x = event.clientX,
+                        y = event.clientY;
+                    var placeMark;
+
+                    if (drawingState == drawingStates.ONE_V) {
+                        p2.update3Dfrom2D(x, y);
+
+                        drawLayer.removeRenderable(drawing.queryFig);
+                        drawing.queryFig = drawFig(p1, p2);
                     }
-                    else if (drawing.getDrawMode() == "circle") {
-                        fig = drawCircle(p1, p2);
-                    }
-                    fig.p1 = p1;
-                    fig.p2 = p2;
-                    return fig;
                 }
-
-                function drawRectangle(p1, p2) {
-                    var myRectangle = new Rectangle(p1, p2);
-                    drawLayer.addRenderable(myRectangle);
-                    return myRectangle;
-                }
-
-                function drawCircle(p1, p2) {
-                    var myCircle = new Circle(p1, p2);
-                    drawLayer.addRenderable(myCircle);
-                    return myCircle;
-                }
-
             };
 
             this.getDrawMode = function () {

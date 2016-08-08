@@ -123,41 +123,27 @@ define(['./Draw'], function(Draw) {
                 maxDepth = this.parameters.maxDepth;
 
             var resourcesUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
-            var query;
+            var query = "&starttime=" + FromDate +
+                "&endtime=" + ToDate +
+                "&minmagnitude=" + minMagnitude.toString() +
+                "&maxmagnitude=" + maxMagnitude.toString() +
+                "&mindepth=" + minDepth.toString() +
+                "&maxdepth=" + maxDepth.toString()+
+                "&limit=" + limit.toString();
+
             if (drawingType == 'circle') {
-                query = "starttime=" + FromDate +
-                    "&endtime=" + ToDate +
-                    "&minmagnitude=" + minMagnitude.toString() +
-                    "&maxmagnitude=" + maxMagnitude.toString() +
-                    "&longitude=" + origin.Long.toString() +
+                query += "&longitude=" + origin.Long.toString() +
                     "&latitude=" + origin.Lati.toString() +
-                    "&mindepth=" + minDepth.toString() +
-                    "&maxdepth=" + maxDepth.toString() +
                     "&maxradiuskm=" + radius3D.toString();
             }
             else if (drawingType == 'rectangle') {
-                query = "starttime=" + FromDate +
-                    "&endtime=" + ToDate +
-                    "&minmagnitude=" + minMagnitude.toString() +
-                    "&maxmagnitude=" + maxMagnitude.toString() +
-                    "&minlongitude=" + minLongitude.toString() +
+                query += "&minlongitude=" + minLongitude.toString() +
                     "&maxlongitude=" + maxLongitude.toString() +
                     "&minlatitude=" + minLatitude.toString() +
-                    "&maxlatitude=" + maxLatitude.toString()+
-                    "&mindepth=" + minDepth.toString() +
-                    "&maxdepth=" + maxDepth.toString();
-            }
-            else {
-                query = "starttime=" + FromDate +
-                    "&endtime=" + ToDate +
-                    "&minmagnitude=" + minMagnitude.toString() +
-                    "&maxmagnitude=" + maxMagnitude.toString() +
-                    "&mindepth=" + minDepth.toString() +
-                    "&maxdepth=" + maxDepth.toString();
+                    "&maxlatitude=" + maxLatitude.toString();
             }
 
-            var url = resourcesUrl + '&' + query + "&limit=" + limit.toString();
-            console.log(url);
+            var url = resourcesUrl + query;
             return url;
         };
 

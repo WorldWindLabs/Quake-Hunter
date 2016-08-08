@@ -11,15 +11,14 @@ define(['./worldwindlib'],
 
             var longitude = coordinates[0],
                 latitude = coordinates[1],
-                depth = coordinates[2],
-                magnitude = 5;
+                depth = coordinates[2];
 
             var placemark, highlightAttributes,
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(null);
 
             var canvas = document.createElement("canvas"),
                 ctx2d = canvas.getContext("2d");
-            var size = Math.abs(magnitude * 5),
+            var size = Math.abs(1),
                 c = size / 2 - 0.5,
                 outerRadius = size / 2.2;
             canvas.width = size;

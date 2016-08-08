@@ -7,7 +7,7 @@ define(['./worldwindlib'],
 
         "use strict";
 
-        function EQPlacemark(coordinates, magnitude) {
+        function EQPlacemark(coordinates, coloring, magnitude, time) {
 
             var longitude = coordinates[0],
                 latitude = coordinates[1],
@@ -26,17 +26,43 @@ define(['./worldwindlib'],
 
             canvas.height = size;
 
-            if (0 < magnitude && magnitude <= 3) {
-                ctx2d.fillStyle = ('rgb(0, 255, 0)');
-            } else if (3 < magnitude && magnitude <= 5) {
-                ctx2d.fillStyle = ('rgb(255, 255, 0)');
-            } else if (5 < magnitude && magnitude<= 7) {
-                ctx2d.fillStyle = ('rgb(255, 165, 0)');
-            } else if (7 < magnitude && magnitude <= 10) {
-                ctx2d.fillStyle = ('rgb(255, 0, 0)');
-            } else {
-                ctx2d.fillStyle = ('rgb(255, 255, 255)');
+            if (coloring == 'magnitude') {
+                if (0 < magnitude && magnitude <= 3) {
+                    ctx2d.fillStyle = ('rgb(0, 255, 0)');
+                } else if (3 < magnitude && magnitude <= 5) {
+                    ctx2d.fillStyle = ('rgb(255, 255, 0)');
+                } else if (5 < magnitude && magnitude<= 7) {
+                    ctx2d.fillStyle = ('rgb(255, 165, 0)');
+                } else if (7 < magnitude && magnitude <= 10) {
+                    ctx2d.fillStyle = ('rgb(255, 0, 0)');
+                } else {
+                    ctx2d.fillStyle = ('rgb(255, 255, 255)');
+                }
             }
+
+            else if (coloring == 'age') {
+                var d = new Date();
+                var deltaT = d.getTime() - time;
+
+                var hour = 60*60*1000,
+                    day = 24*hour,
+                    week = 7*day,
+                    month = 30*day;
+
+                if (0 < deltaT && deltaT <= hour) {
+                    ctx2d.fillStyle = ('rgb(0, 255, 0)');
+                } else if (hour < deltaT && deltaT <= day) {
+                    ctx2d.fillStyle = ('rgb(255, 255, 0)');
+                } else if (day < deltaT && deltaT <= week) {
+                    ctx2d.fillStyle = ('rgb(255, 165, 0)');
+                } else if (week < deltaT && deltaT <= month) {
+                    ctx2d.fillStyle = ('rgb(255, 0, 0)');
+                } else {
+                    ctx2d.fillStyle = ('rgb(255, 255, 255)');
+                }
+            }
+
+
             ctx2d.globalAlpha = 0.85;
             ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
             ctx2d.fill();

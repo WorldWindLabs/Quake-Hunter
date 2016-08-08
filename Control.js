@@ -54,6 +54,10 @@ define(['./Circle',
                 this.drawMode = value;
             };
 
+            this.setColoringMode = function (value) {
+                this.coloringMode = value;
+            };
+
             var UIController = new AnnotationController(wwd, earthquakes.parameters, this);
 
             this.redraw = function () {
@@ -85,6 +89,7 @@ define(['./Circle',
 
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.
                 wwd.addEventListener("mousedown", myControl.handler.Click);
+                wwd.addEventListener("mousemove", myControl.handler.Drawer);
             };
 
         };
@@ -102,15 +107,15 @@ define(['./Circle',
             wwd.addLayer(layers[l].layer);
         }
 
-        var screenOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.85, WorldWind.OFFSET_FRACTION, 0);
-        var screenImage1 = new WorldWind.ScreenImage(screenOffset, "./images/magnitudelegend.png");
-        screenImage1.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0, WorldWind.OFFSET_FRACTION, -0.5);
-        screenImage1.imageScale = 0.35;
-
-        var screenImageLayer = new WorldWind.RenderableLayer();
-        screenImageLayer.displayName = "Screen Images";
-        screenImageLayer.addRenderable(screenImage1);
-        wwd.addLayer(screenImageLayer);
+        // var screenOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.85, WorldWind.OFFSET_FRACTION, 0);
+        // var screenImage1 = new WorldWind.ScreenImage(screenOffset, "./images/magnitudelegend.png");
+        // screenImage1.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0, WorldWind.OFFSET_FRACTION, -0.5);
+        // screenImage1.imageScale = 0.35;
+        //
+        // var screenImageLayer = new WorldWind.RenderableLayer();
+        // screenImageLayer.displayName = "Screen Images";
+        // screenImageLayer.addRenderable(screenImage1);
+        // wwd.addLayer(screenImageLayer);
 
         // Layer Manager
         var layerManger = new LayerManager(wwd);

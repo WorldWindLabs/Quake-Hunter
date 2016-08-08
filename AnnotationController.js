@@ -13,10 +13,16 @@ define(['./USGS'], function (USGS) {
         this.opacitySlider = $("#opacitySlider");
 
         this.drawingSelector = $("#drawingSelection");
-
         var drawingSelector = this.drawingSelector;
         this.drawingSelector.on( "change", function() {
             control.setDrawMode(drawingSelector.val());
+        });
+
+        this.coloringMode = $("#coloringMode");
+        var coloringMode = this.coloringMode;
+        this.coloringMode.on("change", function() {
+            control.setColoringMode(coloringMode.val());
+            control.redraw();
         });
 
         this.depthSlider = $("#depthSlider");
@@ -140,6 +146,7 @@ define(['./USGS'], function (USGS) {
 
             drawingSelector[0].selectedIndex = 0;
             control.setDrawMode(drawingSelector.val());
+            control.setColoringMode(coloringMode.val());
         }
 
         initializeUI(queryParameters);
