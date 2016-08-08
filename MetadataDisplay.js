@@ -21,6 +21,8 @@ define([''], function(ww) {
         this.max_datePlaceholder = document.getElementById('maxDate');
         this.minMagnitudePlaceholder = document.getElementById('minMagnitude');
         this.maxMagnitudePlaceholder = document.getElementById('maxMagnitude');
+        this.minDepthPlaceholder = document.getElementById('minDepth');
+        this.maxDepthPlaceholder = document.getElementById('maxDepth')
     };
 
     Metadata.prototype.setMagnitude = function(value) {
@@ -65,6 +67,14 @@ define([''], function(ww) {
 
     Metadata.prototype.setmaxMagnitude = function (value) {
         this.maxMagnitudePlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setminDepth = function (value) {
+        this.minDepthPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setmaxDepth = function (value) {
+        this.maxDepthPlaceholder.textContent = value;
     };
 
     return Metadata;
