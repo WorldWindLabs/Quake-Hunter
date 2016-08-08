@@ -132,7 +132,7 @@ define(['./Draw'], function(Draw) {
             }
 
             var url = resourcesUrl + '&' + query + "&limit=" + limit.toString();
-            // console.log(url);
+            console.log(url);
             return url;
         };
 

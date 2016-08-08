@@ -26,13 +26,13 @@ define(['./worldwindlib'],
 
             canvas.height = size;
 
-            if (0 < magnitude && magnitude <= 2.5) {
+            if (0 < magnitude && magnitude <= 3) {
                 ctx2d.fillStyle = ('rgb(0, 255, 0)');
-            } else if (2.5 < magnitude && magnitude <= 5) {
+            } else if (3 < magnitude && magnitude <= 5) {
                 ctx2d.fillStyle = ('rgb(255, 255, 0)');
-            } else if (5 < magnitude && magnitude<= 7.5) {
+            } else if (5 < magnitude && magnitude<= 7) {
                 ctx2d.fillStyle = ('rgb(255, 165, 0)');
-            } else if (7.5 < magnitude && magnitude <= 10) {
+            } else if (7 < magnitude && magnitude <= 10) {
                 ctx2d.fillStyle = ('rgb(255, 0, 0)');
             } else {
                 ctx2d.fillStyle = ('rgb(255, 255, 255)');

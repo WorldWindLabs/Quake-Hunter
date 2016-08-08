@@ -66,8 +66,10 @@ define(['./Circle',
                         // var polygon = new Cylinder(GeoJSON.features[i].geometry['coordinates'], GeoJSON.features[i].properties['mag'] * 5e5);
                         // polygonLayer.addRenderable(polygon.cylinder);
 
-                        var placeMark = new EQPlacemark(GeoJSON.features[i].geometry.coordinates, GeoJSON.features[i].properties.mag);
-                        earthquakeLayer.addRenderable(placeMark.placemark);
+                        if (GeoJSON.features[i].geometry.coordinates[2]  != 0) {
+                            var placeMark = new EQPlacemark(GeoJSON.features[i].geometry.coordinates, GeoJSON.features[i].properties.mag);
+                            earthquakeLayer.addRenderable(placeMark.placemark);
+                        }
                     }
                     return earthquakeLayer;
                 };
