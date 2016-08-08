@@ -31,18 +31,17 @@ define(['./Circle',
 
         "use strict";
 
-        var Draw = function (wwd, Metadata) {
+        var Draw = function (wwd, Metadata, control) {
             var drawing = this;
             var data;
             var myearthquake;
 
             var drawingStates = {
-                OFF: 0,
+                ZERO_V: 0,
                 ONE_V: 1,
-                TWO_V: 2,
-                ON: 3
+                TWO_V: 2
             };
-            var drawingState = drawingStates.ON;
+            var drawingState = drawingStates.ZERO_V;
 
             var p1 = new WorldPoint(wwd);
             var p2 = new WorldPoint(wwd);
@@ -51,14 +50,16 @@ define(['./Circle',
 
             // Highlight Picking
             var highlightedItems = [];
+            var earthquakeLayer = new WorldWind.RenderableLayer("Earthquakes");
+            wwd.addLayer(earthquakeLayer);
 
             this.placeMarkCreation = function (GeoJSON, earthquakes) {
                 // Polygon Generation
                 data = GeoJSON;
                 myearthquake = earthquakes;
-                var EarthquakeLayer = function (GeoJSON) {
-                    earthquakeLayer = new WorldWind.RenderableLayer("Earthquakes");
+                earthquakeLayer.removeAllRenderables();
 
+                function PopulateEarthquakeLayer (GeoJSON) {
                     for (var i = 0; i < GeoJSON.features.length; i++) {
                         // var polygon = new EQPolygon(GeoJSON.features[i].geometry['coordinates']);
                         // polygonLayer.addRenderable(polygon.polygon);
@@ -70,10 +71,9 @@ define(['./Circle',
                         earthquakeLayer.addRenderable(placeMark.placemark);
                     }
                     return earthquakeLayer;
-                };
+                }
 
-                var earthquakeLayer = new EarthquakeLayer(GeoJSON);
-                wwd.addLayer(earthquakeLayer);
+                PopulateEarthquakeLayer(GeoJSON);
 
                 function updateMetadata() {
                     Metadata.seteq_count(GeoJSON.features.length);
@@ -161,13 +161,13 @@ define(['./Circle',
                 }
             };
 
-            this.Click = function (event) {
-                var drawLayer = new WorldWind.RenderableLayer("Drawing");
-                wwd.addLayer(drawLayer);
+            var drawLayer = new WorldWind.RenderableLayer("Drawing");
+            wwd.addLayer(drawLayer);
 
+            this.Click = function (event) {
                 var earthquakes = myearthquake;
 
-                if (drawingState != drawingStates.OFF && $("#flip-1").val() != "off") {
+                if (drawing.getDrawMode() != "off") {
                     var x = event.clientX,
                         y = event.clientY;
                     var placeMark;
@@ -180,9 +180,8 @@ define(['./Circle',
                         drawing.queryFig = drawFig(p1, p2);
                         drawingState = drawingStates.TWO_V;
                         earthquakes.redraw(drawing);
-                        // drawingState = drawingStates.OFF;
                     }
-                    else if (drawingState == drawingStates.ON) {
+                    else if (drawingState == drawingStates.ZERO_V) {
                         p1.update3Dfrom2D(x, y);
                         placeMark = new Point([p1.Long, p1.Lati, 0]);
                         drawLayer.addRenderable(placeMark.placemark);
@@ -212,15 +211,23 @@ define(['./Circle',
 
                 function drawCircle(p1, p2) {
                     var myCircle = new Circle(p1, p2);
-                    // drawLayer.addRenderable(myCircle);
+                    drawLayer.addRenderable(myCircle);
                     return myCircle;
                 }
 
             };
 
             this.getDrawMode = function () {
-                this.drawMode = $("#flip-1").val();
-                return this.drawMode;
+                if (control.drawMode == "off") {
+                    drawingState = drawingStates.ZERO_V;
+                }
+                return control.drawMode;
+            };
+
+            this.reset = function () {
+                drawLayer.removeAllRenderables();
+                earthquakeLayer.removeAllRenderables();
+                drawingState = drawingStates.ZERO_V;
             };
         };
         return Draw;

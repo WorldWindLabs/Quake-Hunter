@@ -47,12 +47,22 @@ define(['./Circle',
         var Control = function () {
             var earthquakes =  new USGS(wwd, this);
             var metadata = new Metadata();
-            this.handler = new Draw(wwd, metadata);
+            this.handler = new Draw(wwd, metadata, this);
             var Opacity = 0.5;
+
+            this.setDrawMode = function (value) {
+                this.drawMode = value;
+            };
+
             var UIController = new AnnotationController(wwd, earthquakes.parameters, this);
 
             this.redraw = function () {
                 earthquakes.redraw(this.handler);
+            };
+
+            this.reset = function () {
+                this.handler.reset();
+                this.redraw();
             };
 
             this.getOpacity = function () {
@@ -63,6 +73,8 @@ define(['./Circle',
                 this.Opacity = value;
                 wwd.surfaceOpacity = this.Opacity;
             };
+
+
 
             this.initializeHandlers = function () {
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.

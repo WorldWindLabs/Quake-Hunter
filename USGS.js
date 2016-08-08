@@ -49,7 +49,8 @@ define(['./Draw'], function(Draw) {
                 }
 
                 if (mode == "circle") {
-                    console.log("IMPLEMENT CIRCLE UPDATE QUERY");
+                    this.Origin = fig.origin;
+                    this.Radius = fig.radius3D;
                 }
             };
 
@@ -138,16 +139,13 @@ define(['./Draw'], function(Draw) {
 
         var earthquakes = this;
         var firstTime = true;
-        var layer;
 
         this.redraw = function(draw) {
-            var drawOption = draw.getDrawMode();
-            var drawingState = 0;
-            var drawFig = 0;
+            var drawOption = control.drawMode;
 
             if (firstTime) {
                 $.get(this.getUrl(), function (EQ) {
-                    layer = draw.placeMarkCreation(EQ, earthquakes);
+                    draw.placeMarkCreation(EQ, earthquakes);
                     control.initializeHandlers();
                 });
                 firstTime = false;
@@ -155,8 +153,7 @@ define(['./Draw'], function(Draw) {
             else {
                 this.parameters.update(draw.queryFig, drawOption);
                 $.get(this.getUrl(drawOption), function (EQ) {
-                    wwd.removeLayer(layer);
-                    layer = draw.placeMarkCreation(EQ, earthquakes);
+                    draw.placeMarkCreation(EQ, earthquakes);
                 });
             }
         };

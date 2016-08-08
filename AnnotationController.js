@@ -11,18 +11,13 @@ define(['./USGS'], function (USGS) {
         this.magSlider = $("#magSlider");
         this.dateSlider = $("#dateSlider");
         this.opacitySlider = $("#opacitySlider");
-        // this.drawingSelector = $("#flip-1");
-        //
-        // this.drawingSelector.slider({
-        //     value: "off",
-        //     // min:     0,
-        //     // max:     100,
-        //     // step:    5,
-        //     animate: true,
-        //     stop: function (event, ui) {
-        //         console.log(ui.value);
-        //     }
-        // });
+
+        this.drawingSelector = $("#drawingSelection");
+
+        var drawingSelector = this.drawingSelector;
+        this.drawingSelector.on( "change", function() {
+            control.setDrawMode(drawingSelector.val());
+        });
 
         this.FromDate = $("#fromdatepicker").datepicker({
             changeMonth: true,
@@ -100,7 +95,7 @@ define(['./USGS'], function (USGS) {
 
         this.reset = $("#reset").on("click", function () {
             initializeUI(queryParameters);
-            control.redraw();
+            control.reset();
         });
 
         function initializeUI(queryParameters) {
@@ -118,6 +113,8 @@ define(['./USGS'], function (USGS) {
             queryParameters.setMinMagnitude(initialQuery.minMag);
             queryParameters.setMaxMagnitude(initialQuery.maxMag);
 
+            drawingSelector[0].selectedIndex = 0;
+            control.setDrawMode(drawingSelector.val());
         }
 
         initializeUI(queryParameters);

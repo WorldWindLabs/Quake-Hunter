@@ -90,6 +90,7 @@ define(['./Rectangle',
             square.radius3D = this.radius3D;
             square.attributes.imageSource = new WorldWind.ImageSource(CircleImage);
             square.attributes.drawInterior = true;
+            // square.attributes.drawOutline = false;
 
             return square;
         };
