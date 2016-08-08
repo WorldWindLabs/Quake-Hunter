@@ -67,8 +67,10 @@ define(['./Circle',
                         // var polygon = new Cylinder(GeoJSON.features[i].geometry['coordinates'], GeoJSON.features[i].properties['mag'] * 5e5);
                         // polygonLayer.addRenderable(polygon.cylinder);
 
-                        var placeMark = new EQPlacemark(GeoJSON.features[i].geometry.coordinates, GeoJSON.features[i].properties.mag);
-                        earthquakeLayer.addRenderable(placeMark.placemark);
+                        if (GeoJSON.features[i].geometry.coordinates[2]  != 0) {
+                            var placeMark = new EQPlacemark(GeoJSON.features[i].geometry.coordinates, GeoJSON.features[i].properties.mag);
+                            earthquakeLayer.addRenderable(placeMark.placemark);
+                        }
                     }
                     return earthquakeLayer;
                 }
@@ -91,6 +93,9 @@ define(['./Circle',
 
                     Metadata.setminMagnitude(earthquakes.parameters.minMagnitude);
                     Metadata.setmaxMagnitude(earthquakes.parameters.maxMagnitude);
+
+                    Metadata.setminDepth(earthquakes.parameters.minDepth);
+                    Metadata.setmaxDepth(earthquakes.parameters.maxDepth);
                 }
 
                 updateMetadata();

@@ -26,10 +26,16 @@ define(['./Draw'], function(Draw) {
             this.MinLatitude = -90;
             this.MaxLatitude = 90;
 
+            this.minDepth = 0;
+            this.maxDepth = 1000;
+
             this.initialQuery = {minMag: 2.5,
                 maxMag: 10,
                 fromDate: minDateISO.join('-'),
-                toDate: maxDateISO.join('-')};
+                toDate: maxDateISO.join('-'),
+                minDepth: 0,
+                maxDepth: 1000,
+                limit: 20000};
 
             this.update = function (fig, mode) {
                 if (mode == "rectangle") {
@@ -73,6 +79,14 @@ define(['./Draw'], function(Draw) {
             this.setLimit = function (value) {
                 this.Limit = value;
             };
+
+            this.setMinDepth = function (value) {
+                this.minDepth = value
+            };
+
+            this.setMaxDepth = function (value) {
+                this.maxDepth = value;
+            };
             
             this.setMinLatitude = function(value) {
                 this.MinLatitude = value;
@@ -104,7 +118,9 @@ define(['./Draw'], function(Draw) {
                 minLatitude = this.parameters.MinLatitude,
                 maxLatitude = this.parameters.MaxLatitude,
                 minLongitude = this.parameters.MinLongitude,
-                maxLongitude = this.parameters.MaxLongitude;
+                maxLongitude = this.parameters.MaxLongitude,
+                minDepth = this.parameters.minDepth,
+                maxDepth = this.parameters.maxDepth;
 
             var resourcesUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
             var query;
@@ -115,6 +131,8 @@ define(['./Draw'], function(Draw) {
                     "&maxmagnitude=" + maxMagnitude.toString() +
                     "&longitude=" + origin.Long.toString() +
                     "&latitude=" + origin.Lati.toString() +
+                    "&mindepth=" + minDepth.toString() +
+                    "&maxdepth=" + maxDepth.toString() +
                     "&maxradiuskm=" + radius3D.toString();
             }
             else if (drawingType == 'rectangle') {
@@ -125,15 +143,21 @@ define(['./Draw'], function(Draw) {
                     "&minlongitude=" + minLongitude.toString() +
                     "&maxlongitude=" + maxLongitude.toString() +
                     "&minlatitude=" + minLatitude.toString() +
-                    "&maxlatitude=" + maxLatitude.toString();
+                    "&maxlatitude=" + maxLatitude.toString()+
+                    "&mindepth=" + minDepth.toString() +
+                    "&maxdepth=" + maxDepth.toString();
             }
             else {
-                query = "starttime=" + FromDate + "&endtime=" + ToDate + "&minmagnitude=" +
-                    minMagnitude.toString() + "&maxmagnitude=" + maxMagnitude.toString();
+                query = "starttime=" + FromDate +
+                    "&endtime=" + ToDate +
+                    "&minmagnitude=" + minMagnitude.toString() +
+                    "&maxmagnitude=" + maxMagnitude.toString() +
+                    "&mindepth=" + minDepth.toString() +
+                    "&maxdepth=" + maxDepth.toString();
             }
 
             var url = resourcesUrl + '&' + query + "&limit=" + limit.toString();
-            // console.log(url);
+            console.log(url);
             return url;
         };
 
