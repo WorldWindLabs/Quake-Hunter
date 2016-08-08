@@ -109,12 +109,10 @@ define(['./USGS'], function (USGS) {
             if (limit > 20000){
                 alert("Can not query beyond 20,000 events")
             } else {
-                // console.log(limit.value);
                 queryParameters.setLimit(limit);
                 control.redraw()
             }
         });
-
 
         this.reset = $("#reset").on("click", function () {
             initializeUI(queryParameters);
