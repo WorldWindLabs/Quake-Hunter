@@ -91,6 +91,9 @@ define(['./Circle',
 
                     Metadata.setminMagnitude(earthquakes.parameters.minMagnitude);
                     Metadata.setmaxMagnitude(earthquakes.parameters.maxMagnitude);
+
+                    Metadata.setminDepth(earthquakes.parameters.minDepth);
+                    Metadata.setmaxDepth(earthquakes.parameters.maxDepth);
                 }
 
                 updateMetadata();

@@ -11,6 +11,8 @@ define(['./USGS'], function (USGS) {
         this.magSlider = $("#magSlider");
         this.dateSlider = $("#dateSlider");
         this.opacitySlider = $("#opacitySlider");
+        this.depthSlider = $("#depthSlider");
+
         // this.drawingSelector = $("#flip-1");
         //
         // this.drawingSelector.slider({
@@ -68,6 +70,25 @@ define(['./USGS'], function (USGS) {
 
         });
 
+        this.depthSlider.slider({
+            range: true,
+            values: [0, 1000],
+            min: 0,
+            max: 1000,
+            step: 100,
+            animate: true,
+            slide: function (event, ui) {
+                $("#depthSliderValue").html(ui.values[0].toString() + " to " +
+                ui.values[1].toString() + " KM");
+            },
+
+            stop: function (event, ui) {
+                queryParameters.setMinDepth(ui.values[0]);
+                queryParameters.setMaxDepth(ui.values[1]);
+                control.redraw()
+            }
+        });
+
 
         this.opacitySlider.slider({
             value: 50,
@@ -113,10 +134,16 @@ define(['./USGS'], function (USGS) {
             $("#magSliderValue").html($("#magSlider").slider("values", 0).toString() + " to " +
                 $("#magSlider").slider("values", 1).toString() + " Richter");
 
+            $("#depthSlider").slider("option", "values", [initialQuery.minDepth, initialQuery.maxDepth]);
+            $("#depthSliderValue").html($("#depthSlider").slider("values", 0).toString() + " to " +
+                $("#depthSlider").slider("values", 1).toString() + " KM");
+
             queryParameters.setFromDate(initialQuery.fromDate.split("T")[0]);
             queryParameters.setToDate(initialQuery.toDate.split("T")[0]);
             queryParameters.setMinMagnitude(initialQuery.minMag);
             queryParameters.setMaxMagnitude(initialQuery.maxMag);
+            queryParameters.setMinDepth(initialQuery.minDepth);
+            queryParameters.setMaxDepth(initialQuery.maxDepth);
 
         }
 
@@ -124,6 +151,8 @@ define(['./USGS'], function (USGS) {
 
         $("#magSliderValue").html(this.magSlider.slider("values", 0).toString() + " to " +
             this.magSlider.slider("values", 1).toString() + " Richter");
+        $("#depthSliderValue").html(this.depthSlider.slider("values", 0).toString() + " to " +
+            this.depthSlider.slider("values", 1).toString() + " KM");
         $("#dateSliderValue").html(this.dateSlider.slider("values", 0).toString() + " to " +
             this.dateSlider.slider("values", 1).toString() + " days");
         $("#opacitySliderValue").html(this.opacitySlider.slider("value").toString() + "% opacity");
