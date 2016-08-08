@@ -104,17 +104,14 @@ define(['./USGS'], function (USGS) {
             }
         });
 
-        this.limiter = $("#limitSet").selectmenu({
-            select: function (event, ui) {
-
-                if ($("#limitSet").val() == '1000') {
-                    queryParameters.setLimit($("#limitSet").val());
-                    control.redraw();
-                }
-                else if ($("#limitSet").val() == "balls to the wall") {
-                    queryParameters.setLimit($("#limitSet").val());
-                    control.redraw();
-                }
+        this.limitset = $("#limitSet").on("click", function () {
+            var limit = document.getElementById("limit").value;
+            if (limit > 20000){
+                alert("Can not query beyond 20,000 events")
+            } else {
+                // console.log(limit.value);
+                queryParameters.setLimit(limit);
+                control.redraw()
             }
         });
 
@@ -138,12 +135,15 @@ define(['./USGS'], function (USGS) {
             $("#depthSliderValue").html($("#depthSlider").slider("values", 0).toString() + " to " +
                 $("#depthSlider").slider("values", 1).toString() + " KM");
 
+            document.getElementById('limit').value = "";
+
             queryParameters.setFromDate(initialQuery.fromDate.split("T")[0]);
             queryParameters.setToDate(initialQuery.toDate.split("T")[0]);
             queryParameters.setMinMagnitude(initialQuery.minMag);
             queryParameters.setMaxMagnitude(initialQuery.maxMag);
             queryParameters.setMinDepth(initialQuery.minDepth);
             queryParameters.setMaxDepth(initialQuery.maxDepth);
+            queryParameters.setLimit(initialQuery.limit);
 
         }
 

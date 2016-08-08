@@ -156,7 +156,9 @@
                 </select>
 
                 <br><br>
-
+                <p>Limit: <input class="textBox" id="limit" type="text" maxlength="30" style="color:#000000"/>
+                    <button id="limitSet" onclick="limitSet" style="color: #000000">Submit</button>
+                </p>
                 <br>
                 <button id="reset" style="color: #000000" onclick="reset">RESET</button>
 
@@ -179,8 +181,8 @@
         <p>End Date: <span id="maxDate"></span></p>
         <p>Min Magnitude: <span id="minMagnitude"></span></p>
         <p>Max Magnitude: <span id="maxMagnitude"></span></p>
-        <p>Min Depth: <span id="minDepth"></span></p>
-        <p>Max Depth: <span id="maxDepth"></span></p>
+        <p>Min Depth: <span id="minDepth"></span> km</p>
+        <p>Max Depth: <span id="maxDepth"></span> km</p>
         <br>
         <br>
         <h4><strong>Earthquake Info</strong></h4>
@@ -189,7 +191,7 @@
         <p>Date: <span id="time"></span></p>
         <p>Latitude: <span id="latitude"></span></p>
         <p>Longitude: <span id="longitude"></span></p>
-        <p>Depth (KM): <span id="depth"></span></p>
+        <p>Depth (km): <span id="depth"></span></p>
     </div>
 </div>
 <!--<script>-->

@@ -34,7 +34,8 @@ define(['./Draw'], function(Draw) {
                 fromDate: minDateISO.join('-'),
                 toDate: maxDateISO.join('-'),
                 minDepth: 0,
-                maxDepth: 1000};
+                maxDepth: 1000,
+                limit: 20000};
 
             this.update = function (fig, mode) {
                 if (mode == "rectangle") {
