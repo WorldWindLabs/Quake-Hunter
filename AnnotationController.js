@@ -89,7 +89,7 @@ define(['./USGS'], function (USGS) {
             values: [0, 1000],
             min: 0,
             max: 1000,
-            step: 100,
+            step: 10,
             animate: true,
             slide: function (event, ui) {
                 $("#depthSliderValue").html(ui.values[0].toString() + " to " +
@@ -156,6 +156,11 @@ define(['./USGS'], function (USGS) {
             queryParameters.setMinDepth(initialQuery.minDepth);
             queryParameters.setMaxDepth(initialQuery.maxDepth);
             queryParameters.setLimit(initialQuery.limit);
+
+            queryParameters.setMinLatitude((initialQuery.MinLatitude));
+            queryParameters.setMaxLatitude((initialQuery.MaxLatitude));
+            queryParameters.setMinLongitude((initialQuery.MinLongitude));
+            queryParameters.setMaxLongitude((initialQuery.MaxLongitude));
 
             drawingSelector[0].selectedIndex = 0;
             control.setDrawMode(drawingSelector.val());

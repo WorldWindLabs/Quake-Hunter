@@ -35,7 +35,11 @@ define(['./Draw'], function(Draw) {
                 toDate: maxDateISO.join('-'),
                 minDepth: 0,
                 maxDepth: 1000,
-                limit: 20000};
+                limit: 20000,
+                MinLongitude: -360,
+                MaxLongitude: 360,
+                MinLatitude: -90,
+                MaxLatitude: 90};
 
             this.update = function (fig, mode) {
                 if (mode == "rectangle") {
