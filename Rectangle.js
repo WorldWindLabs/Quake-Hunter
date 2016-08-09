@@ -2,7 +2,7 @@ define([''], function(ww) {
 
     "use strict";
 
-    var Rectangle = function (p1, p2) {
+    var Rectangle = function (p1, p2, hightlightActive) {
         var minLong = Math.min(p2.Long, p1.Long);
         var maxLong = Math.max(p2.Long, p1.Long);
 
@@ -11,10 +11,28 @@ define([''], function(ww) {
 
         var boundaries = [];
         boundaries[0] = [];
+        var step = 5, i;
+        var pointsLati =  Math.floor((maxLati - minLati)/step);
+        var pointsLong = Math.floor((maxLong - minLong)/step);
         boundaries[0].push(new WorldWind.Position(minLati, minLong, 0));
+        for (i = 1; i <= pointsLati; i++) {
+            boundaries[0].push(new WorldWind.Position(minLati+step*i, minLong, 0));
+        }
+
         boundaries[0].push(new WorldWind.Position(maxLati, minLong, 0));
+        for (i = 1; i <= pointsLong; i++) {
+            boundaries[0].push(new WorldWind.Position(maxLati, minLong+step*i, 0));
+        }
+
         boundaries[0].push(new WorldWind.Position(maxLati, maxLong, 0));
+        for (i = 1; i <= pointsLati; i++) {
+            boundaries[0].push(new WorldWind.Position(maxLati-step*i, maxLong, 0));
+        }
+
         boundaries[0].push(new WorldWind.Position(minLati, maxLong, 0));
+        for (i = 1; i <= pointsLong; i++) {
+            boundaries[0].push(new WorldWind.Position(minLati, maxLong-step*i, 0));
+        }
 
         // Create the polygon and assign its attributes.
         var polygon = new WorldWind.Polygon(boundaries, null);
@@ -33,9 +51,11 @@ define([''], function(ww) {
         polygonAttributes.drawVerticals = polygon.extrude;
         polygonAttributes.applyLighting = true;
         polygon.attributes = polygonAttributes;
-        var highlightAttributes = new WorldWind.ShapeAttributes(polygonAttributes);
-        highlightAttributes.outlineColor = WorldWind.Color.RED;
-        polygon.highlightAttributes = highlightAttributes;
+        if (hightlightActive) {
+            var highlightAttributes = new WorldWind.ShapeAttributes(polygonAttributes);
+            highlightAttributes.outlineColor = WorldWind.Color.RED;
+            polygon.highlightAttributes = highlightAttributes;
+        }
 
         return polygon;
     };
