@@ -46,7 +46,7 @@ define(['./Circle',
 
         var Control = function () {
             var earthquakes =  new USGS(wwd, this);
-            var metadata = new Metadata();
+            var metadata = new Metadata(this);
             this.handler = new Draw(wwd, metadata, this);
             var Opacity = 0.5;
 
@@ -61,7 +61,15 @@ define(['./Circle',
             var UIController = new AnnotationController(wwd, earthquakes.parameters, this);
 
             this.redraw = function () {
+                this.handler.startSpin();
+                layerManger.synchronizeLayerList();
                 earthquakes.redraw(this.handler);
+            };
+
+            this.endRedraw = function () {
+                console.log("end");
+                this.handler.stopSpin();
+                layerManger.synchronizeLayerList();
             };
 
             this.reset = function () {
@@ -107,20 +115,10 @@ define(['./Circle',
             wwd.addLayer(layers[l].layer);
         }
 
-        // var screenOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.85, WorldWind.OFFSET_FRACTION, 0);
-        // var screenImage1 = new WorldWind.ScreenImage(screenOffset, "./images/magnitudelegend.png");
-        // screenImage1.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0, WorldWind.OFFSET_FRACTION, -0.5);
-        // screenImage1.imageScale = 0.35;
-        //
-        // var screenImageLayer = new WorldWind.RenderableLayer();
-        // screenImageLayer.displayName = "Screen Images";
-        // screenImageLayer.addRenderable(screenImage1);
-        // wwd.addLayer(screenImageLayer);
-
+        var myControl  = new Control();
         // Layer Manager
         var layerManger = new LayerManager(wwd);
 
-        var myControl  = new Control();
         myControl.redraw();
 
     });

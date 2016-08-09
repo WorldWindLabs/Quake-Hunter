@@ -6,7 +6,8 @@ define([''], function(ww) {
     "use strict";
 
     // Data Display
-    var Metadata = function () {
+    var Metadata = function (control) {
+        this.control = control;
         // Individual Earthquakes
         this.magnitudePlaceholder = document.getElementById('magnitude');
         this.locPlaceholder = document.getElementById('location');
@@ -51,6 +52,7 @@ define([''], function(ww) {
 
     Metadata.prototype.seteq_count = function (value) {
         this.earthquakecountPlaceholder.textContent = value;
+        this.control.endRedraw();
     };
 
     Metadata.prototype.setminDate = function (value) {
