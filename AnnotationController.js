@@ -18,12 +18,25 @@ define(['./USGS'], function (USGS) {
             control.setDrawMode(drawingSelector.val());
         });
 
+        var legend = document.getElementById('legend');
+
         this.coloringMode = $("#coloringMode");
         var coloringMode = this.coloringMode;
         this.coloringMode.on("change", function() {
             control.setColoringMode(coloringMode.val());
+            updateLegend(coloringMode.val());
             control.redraw();
         });
+
+        function updateLegend(value) {
+            if (value == "age") {
+                legend.src = "./images/AgeLegend.svg";
+            }
+            else if (value == "magnitude") {
+                legend.src = "./images/MagnitudeLegend.svg";
+            }
+
+        }
 
         this.depthSlider = $("#depthSlider");
 

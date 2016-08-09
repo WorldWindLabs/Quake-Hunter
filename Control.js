@@ -67,7 +67,6 @@ define(['./Circle',
             };
 
             this.endRedraw = function () {
-                console.log("end");
                 this.handler.stopSpin();
                 layerManger.synchronizeLayerList();
             };

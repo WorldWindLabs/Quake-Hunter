@@ -144,6 +144,7 @@ define(['./Draw'], function(Draw) {
             }
 
             var url = resourcesUrl + query;
+            // console.log(url);
             return url;
         };
 

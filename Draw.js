@@ -53,7 +53,7 @@ define(['./Circle',
             var earthquakeLayer = new WorldWind.RenderableLayer("Earthquakes");
             wwd.addLayer(earthquakeLayer);
 
-            this.placeMarkCreation = function (GeoJSON, earthquakes) {
+                this.placeMarkCreation = function (GeoJSON, earthquakes) {
                 // Polygon Generation
                 data = GeoJSON;
                 myearthquake = earthquakes;
