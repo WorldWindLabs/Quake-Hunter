@@ -107,6 +107,18 @@ define(['./Draw'], function(Draw) {
             this.setMaxLongitude = function(value) {
                 this.MaxLongitude = value;
             };
+
+            // this.setoriginlati = function (value) {
+            //     this.Origin.Lati = value
+            // };
+            //
+            // this.setoriginlong = function (value) {
+            //     this.Origin.Long = value
+            // };
+            //
+            // this.setradius = function (value ) {
+            //     this.Radius = value
+            // }
         };
 
         this.parameters = new queryParameters();

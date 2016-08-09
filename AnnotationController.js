@@ -2,7 +2,7 @@
  * Copyright (C) 2014 United States Government as represented by the Administrator of the
  * National Aeronautics and Space Administration. All Rights Reserved.
  */
-define(['./USGS'], function (USGS) {
+define(['./USGS', './Draw'], function (USGS) {
     "use strict";
 
     var AnnotationController = function (worldWindow, queryParameters, control) {
@@ -156,11 +156,6 @@ define(['./USGS'], function (USGS) {
             queryParameters.setMinDepth(initialQuery.minDepth);
             queryParameters.setMaxDepth(initialQuery.maxDepth);
             queryParameters.setLimit(initialQuery.limit);
-
-            queryParameters.setMinLatitude((initialQuery.MinLatitude));
-            queryParameters.setMaxLatitude((initialQuery.MaxLatitude));
-            queryParameters.setMinLongitude((initialQuery.MinLongitude));
-            queryParameters.setMaxLongitude((initialQuery.MaxLongitude));
 
             drawingSelector[0].selectedIndex = 0;
             control.setDrawMode(drawingSelector.val());

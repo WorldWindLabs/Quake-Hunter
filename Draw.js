@@ -108,10 +108,20 @@ define(['./Circle',
                         Metadata.setmaxLatitude(round(earthquakes.parameters.MaxLatitude));
                         Metadata.setminLongitude(round(earthquakes.parameters.MinLongitude));
                         Metadata.setmaxLongitude(round(earthquakes.parameters.MaxLongitude));
-                    } else if (drawing.getDrawMode() === 'circle') {
+                    }
+                    else if (drawing.getDrawMode() === 'circle') {
                         Metadata.setRLatitude(round(earthquakes.parameters.Origin.Lati));
                         Metadata.setRLongitude(round(earthquakes.parameters.Origin.Long));
                         Metadata.setRadius(round(earthquakes.parameters.Radius));
+                    }
+                    else {
+                        Metadata.setminLatitude(null);
+                        Metadata.setmaxLatitude(null);
+                        Metadata.setminLongitude(null);
+                        Metadata.setmaxLongitude(null);
+                        Metadata.setRLatitude(null);
+                        Metadata.setRLongitude(null);
+                        Metadata.setRadius(null);
                     }
                 }
 
