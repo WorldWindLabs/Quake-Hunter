@@ -183,7 +183,7 @@ define(['./Circle',
 
                         placeMark = new Point([p2.Long, p2.Lati, 0]);
                         drawLayer.addRenderable(placeMark.placemark);
-                        drawing.queryFig = drawFig(p1, p2);
+                        drawing.queryFig = drawFig(p1, p2, true);
                         drawingState = drawingStates.TWO_V;
                         earthquakes.redraw(drawing);
                     }
@@ -197,10 +197,10 @@ define(['./Circle',
                 }
             };
 
-            function drawFig(p1, p2) {
+            function drawFig(p1, p2, highlight) {
                 var fig;
                 if (drawing.getDrawMode() == "rectangle") {
-                    fig = drawRectangle(p1, p2);
+                    fig = drawRectangle(p1, p2, highlight);
                 }
                 else if (drawing.getDrawMode() == "circle") {
                     fig = drawCircle(p1, p2);
@@ -232,7 +232,7 @@ define(['./Circle',
                         p2.update3Dfrom2D(x, y);
 
                         drawLayer.removeRenderable(drawing.queryFig);
-                        drawing.queryFig = drawFig(p1, p2);
+                        drawing.queryFig = drawFig(p1, p2, false);
                     }
                 }
             };
