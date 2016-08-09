@@ -97,7 +97,7 @@ define(['./worldwindlib'],
                 var color = getColor().name;
 
                 return './images/dots/' + color + ".svg";
-            }
+            };
 
             // Create the placemark.
             placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, -depth * 1000));
