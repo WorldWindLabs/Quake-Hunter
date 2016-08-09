@@ -21,7 +21,7 @@ define(['./worldwindlib'],
             return configuration;
         };
 
-        var plateBoundariesLayer = new WorldWind.RenderableLayer("World Borders");
+        var plateBoundariesLayer = new WorldWind.RenderableLayer("Tectonic Plates");
         var plateBoundariesJSON = new WorldWind.GeoJSONParser("./new_eq_app_files/plate_boundaries.json");
         plateBoundariesJSON.load(shapeConfigurationCallback, plateBoundariesLayer);
         return plateBoundariesLayer;

@@ -53,7 +53,7 @@ define(['./Circle',
             var earthquakeLayer = new WorldWind.RenderableLayer("Earthquakes");
             wwd.addLayer(earthquakeLayer);
 
-            this.placeMarkCreation = function (GeoJSON, earthquakes) {
+                this.placeMarkCreation = function (GeoJSON, earthquakes) {
                 // Polygon Generation
                 data = GeoJSON;
                 myearthquake = earthquakes;
@@ -100,7 +100,7 @@ define(['./Circle',
                 }
 
                 updateMetadata();
-
+                earthquakeLayer.showSpinner = false;
                 return earthquakeLayer;
             };
             // The common pick-handling function.
@@ -248,6 +248,14 @@ define(['./Circle',
                 drawLayer.removeAllRenderables();
                 earthquakeLayer.removeAllRenderables();
                 drawingState = drawingStates.ZERO_V;
+            };
+
+            this.startSpin = function () {
+                earthquakeLayer.showSpinner = true;
+            };
+
+            this.stopSpin = function () {
+                earthquakeLayer.showSpinner = false;
             };
         };
         return Draw;
