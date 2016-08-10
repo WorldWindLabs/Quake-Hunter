@@ -23,7 +23,15 @@ define([''], function(ww) {
         this.minMagnitudePlaceholder = document.getElementById('minMagnitude');
         this.maxMagnitudePlaceholder = document.getElementById('maxMagnitude');
         this.minDepthPlaceholder = document.getElementById('minDepth');
-        this.maxDepthPlaceholder = document.getElementById('maxDepth')
+        this.maxDepthPlaceholder = document.getElementById('maxDepth');
+        this.drawnMaxLatPlaceholder = document.getElementById('drawnMaxLat');
+        this.drawnMinLatPlaceholder = document.getElementById('drawnMinLat');
+        this.drawnMaxLongPlaceholder = document.getElementById('drawnMaxLong');
+        this.drawnMinLongPlaceholder = document.getElementById('drawnMinLong');
+        this.drawnRLatPlaceholder = document.getElementById('drawnRLat');
+        this.drawnRLongPlaceholder = document.getElementById('drawnRLong');
+        this.drawnRadiusPlaceholder = document.getElementById('drawnRadius');
+
     };
 
     Metadata.prototype.setMagnitude = function(value) {
@@ -79,6 +87,34 @@ define([''], function(ww) {
         this.maxDepthPlaceholder.textContent = value;
     };
 
+    Metadata.prototype.setminLatitude = function (value) {
+        this.drawnMinLatPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setmaxLatitude = function (value) {
+        this.drawnMaxLatPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setminLongitude = function (value) {
+        this.drawnMinLongPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setmaxLongitude = function (value) {
+        this.drawnMaxLongPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setRLatitude = function (value) {
+        this.drawnRLatPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setRLongitude = function (value) {
+        this.drawnRLongPlaceholder.textContent = value;
+    };
+
+    Metadata.prototype.setRadius = function (value) {
+        this.drawnRadiusPlaceholder.textContent = value;
+    };
+    
     return Metadata;
 
 });

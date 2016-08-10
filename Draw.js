@@ -89,6 +89,12 @@ define(['./Circle',
                     startdate = new Date(Math.min.apply(null, GeoJSON_dates));
                     enddate = new Date(Math.max.apply(null, GeoJSON_dates));
 
+                    console.log(earthquakes.parameters);
+
+                    function round(num) {
+                        return Math.ceil(num * 1000000) / 1000000;
+                    }
+
                     Metadata.setminDate(startdate);
                     Metadata.setmaxDate(enddate);
 
@@ -97,6 +103,26 @@ define(['./Circle',
 
                     Metadata.setminDepth(earthquakes.parameters.minDepth);
                     Metadata.setmaxDepth(earthquakes.parameters.maxDepth);
+                    if (drawing.getDrawMode() === 'rectangle') {
+                        Metadata.setminLatitude(round(earthquakes.parameters.MinLatitude));
+                        Metadata.setmaxLatitude(round(earthquakes.parameters.MaxLatitude));
+                        Metadata.setminLongitude(round(earthquakes.parameters.MinLongitude));
+                        Metadata.setmaxLongitude(round(earthquakes.parameters.MaxLongitude));
+                    }
+                    else if (drawing.getDrawMode() === 'circle') {
+                        Metadata.setRLatitude(round(earthquakes.parameters.Origin.Lati));
+                        Metadata.setRLongitude(round(earthquakes.parameters.Origin.Long));
+                        Metadata.setRadius(round(earthquakes.parameters.Radius));
+                    }
+                    else {
+                        Metadata.setminLatitude(null);
+                        Metadata.setmaxLatitude(null);
+                        Metadata.setminLongitude(null);
+                        Metadata.setmaxLongitude(null);
+                        Metadata.setRLatitude(null);
+                        Metadata.setRLongitude(null);
+                        Metadata.setRadius(null);
+                    }
                 }
 
                 updateMetadata();

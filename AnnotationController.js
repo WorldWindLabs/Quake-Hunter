@@ -2,7 +2,7 @@
  * Copyright (C) 2014 United States Government as represented by the Administrator of the
  * National Aeronautics and Space Administration. All Rights Reserved.
  */
-define(['./USGS'], function (USGS) {
+define(['./USGS', './Draw'], function (USGS) {
     "use strict";
 
     var AnnotationController = function (worldWindow, queryParameters, control) {
@@ -89,7 +89,7 @@ define(['./USGS'], function (USGS) {
             values: [0, 1000],
             min: 0,
             max: 1000,
-            step: 100,
+            step: 10,
             animate: true,
             slide: function (event, ui) {
                 $("#depthSliderValue").html(ui.values[0].toString() + " to " +
