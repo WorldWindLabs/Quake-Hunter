@@ -84,7 +84,7 @@ define(['./worldwindlib'],
                 canvas.width = size;
                 canvas.height = size;
 
-                ctx2d.fillStyle = getColor();
+                ctx2d.fillStyle = getColor().code;
 
                 ctx2d.globalAlpha = 0.85;
                 ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
@@ -97,7 +97,7 @@ define(['./worldwindlib'],
                 var color = getColor().name;
 
                 return './images/dots/' + color + ".svg";
-            };
+            }
 
             // Create the placemark.
             placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, -depth * 1000));
