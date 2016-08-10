@@ -62,13 +62,6 @@ define(['./Rectangle',
                 return canvas;
             };
 
-
-            var CircleImage = new Image();
-            CircleImage.onload = function(){
-                // imageCircle.src = this.src;
-            };
-            CircleImage.src = "./images/circle.png";
-
             this.origin = p1;
             this.radius3D = getDistanceFromLatLonInKm(p1.Lati, p1.Long, p2.Lati, p2.Long);
 
@@ -84,11 +77,12 @@ define(['./Rectangle',
             upperVertex.setLong(p1.Long + alpha);
             upperVertex.setLati(p1.Lati + alpha);
 
-            var square = new Rectangle(lowerVertex, upperVertex);
+            var square = new Rectangle(lowerVertex, upperVertex, false);
 
             square.origin = p1;
             square.radius3D = this.radius3D;
-            square.attributes.imageSource = new WorldWind.ImageSource(CircleImage);
+            // square.attributes.imageSource = ["./images/Circle.png"];
+            square.attributes.imageSource = renderedCircle();
             square.attributes.drawInterior = true;
             // square.attributes.drawOutline = false;
 
