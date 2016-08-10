@@ -89,8 +89,6 @@ define(['./Circle',
                     startdate = new Date(Math.min.apply(null, GeoJSON_dates));
                     enddate = new Date(Math.max.apply(null, GeoJSON_dates));
 
-                    console.log(earthquakes.parameters);
-
                     function round(num) {
                         return Math.ceil(num * 1000000) / 1000000;
                     }
