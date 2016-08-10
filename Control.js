@@ -95,7 +95,7 @@ define(['./Circle',
                 var tapRecognizer = new WorldWind.TapRecognizer(wwd, myControl.handler.Pick);
 
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.
-                wwd.addEventListener("mousedown", myControl.handler.Click);
+                wwd.addEventListener("dblclick", myControl.handler.Click);
                 wwd.addEventListener("mousemove", myControl.handler.Drawer);
             };
 
