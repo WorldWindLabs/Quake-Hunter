@@ -2,7 +2,7 @@ define([''], function(ww) {
 
     "use strict";
 
-    var Rectangle = function (p1, p2, hightlightActive) {
+    var Rectangle = function (p1, p2, highlightActive) {
         var minLong = Math.min(p2.Long, p1.Long);
         var maxLong = Math.max(p2.Long, p1.Long);
 
@@ -51,7 +51,7 @@ define([''], function(ww) {
         polygonAttributes.drawVerticals = polygon.extrude;
         polygonAttributes.applyLighting = true;
         polygon.attributes = polygonAttributes;
-        if (hightlightActive) {
+        if (highlightActive) {
             var highlightAttributes = new WorldWind.ShapeAttributes(polygonAttributes);
             highlightAttributes.outlineColor = WorldWind.Color.RED;
             polygon.highlightAttributes = highlightAttributes;
