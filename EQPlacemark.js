@@ -109,11 +109,11 @@ define(['./worldwindlib'],
             placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
 
             // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
-            var dotImage = getImage();
-            placemarkAttributes.imageScale = magnitude / (5*1e1);
+            // var dotImage = getImage();
+            // placemarkAttributes.imageScale = magnitude / (5*1e1);
 
-            // var dotImage = new WorldWind.ImageSource(renderCircle());
-            // placemarkAttributes.imageScale = magnitude / 1e1;
+            var dotImage = new WorldWind.ImageSource(renderCircle());
+            placemarkAttributes.imageScale = magnitude / 1e1;
 
             placemarkAttributes.imageSource = dotImage;
 
@@ -124,8 +124,8 @@ define(['./worldwindlib'],
             // the default highlight attributes so that all properties are identical except the image scale. You could
             // instead vary the color, image, or other property to control the highlight representation.
             highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-            highlightAttributes.imageScale = magnitude / (2*1e1);
-            // highlightAttributes.imageScale = 1.2;
+            // highlightAttributes.imageScale = magnitude / (2*1e1);
+            highlightAttributes.imageScale = 1.2;
             highlightAttributes.imageSource = dotImage;
 
             placemark.highlightAttributes = highlightAttributes;
