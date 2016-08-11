@@ -77,12 +77,12 @@ define(['./Rectangle',
             upperVertex.setLong(p1.Long + alpha);
             upperVertex.setLati(p1.Lati + alpha);
 
-            var square = new Rectangle(lowerVertex, upperVertex, false);
+            var square = new Rectangle(lowerVertex, upperVertex, false, false);
 
             square.origin = p1;
             square.radius3D = this.radius3D;
-            // square.attributes.imageSource = ["./images/Circle.png"];
-            square.attributes.imageSource = renderedCircle();
+            square.attributes.imageSource = ["./images/circle.png"];
+            // square.attributes.imageSource = renderedCircle();
             square.attributes.drawInterior = true;
             // square.attributes.drawOutline = false;
 
