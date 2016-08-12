@@ -2,7 +2,7 @@ define([''], function(ww) {
 
     "use strict";
 
-    var Rectangle = function (p1, p2, highlightActive) {
+    var Rectangle = function (p1, p2, highlightActive, wraping) {
         var minLong = Math.min(p2.Long, p1.Long);
         var maxLong = Math.max(p2.Long, p1.Long);
 
@@ -15,23 +15,31 @@ define([''], function(ww) {
         var pointsLati =  Math.floor((maxLati - minLati)/step);
         var pointsLong = Math.floor((maxLong - minLong)/step);
         boundaries[0].push(new WorldWind.Position(minLati, minLong, 0));
-        for (i = 1; i <= pointsLati; i++) {
-            boundaries[0].push(new WorldWind.Position(minLati+step*i, minLong, 0));
+        if (wraping) {
+            for (i = 1; i <= pointsLati; i++) {
+                boundaries[0].push(new WorldWind.Position(minLati+step*i, minLong, 0));
+            }
         }
 
         boundaries[0].push(new WorldWind.Position(maxLati, minLong, 0));
-        for (i = 1; i <= pointsLong; i++) {
-            boundaries[0].push(new WorldWind.Position(maxLati, minLong+step*i, 0));
+        if (wraping) {
+            for (i = 1; i <= pointsLong; i++) {
+                boundaries[0].push(new WorldWind.Position(maxLati, minLong + step * i, 0));
+            }
         }
 
         boundaries[0].push(new WorldWind.Position(maxLati, maxLong, 0));
-        for (i = 1; i <= pointsLati; i++) {
-            boundaries[0].push(new WorldWind.Position(maxLati-step*i, maxLong, 0));
+        if (wraping) {
+            for (i = 1; i <= pointsLati; i++) {
+                boundaries[0].push(new WorldWind.Position(maxLati - step * i, maxLong, 0));
+            }
         }
 
         boundaries[0].push(new WorldWind.Position(minLati, maxLong, 0));
-        for (i = 1; i <= pointsLong; i++) {
-            boundaries[0].push(new WorldWind.Position(minLati, maxLong-step*i, 0));
+        if (wraping) {
+            for (i = 1; i <= pointsLong; i++) {
+                boundaries[0].push(new WorldWind.Position(minLati, maxLong - step * i, 0));
+            }
         }
 
         // Create the polygon and assign its attributes.

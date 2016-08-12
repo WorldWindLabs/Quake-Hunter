@@ -235,7 +235,7 @@ define(['./Circle',
             }
 
             function drawRectangle(p1, p2) {
-                var myRectangle = new Rectangle(p1, p2);
+                var myRectangle = new Rectangle(p1, p2, true, true);
                 drawLayer.addRenderable(myRectangle);
                 return myRectangle;
             }
