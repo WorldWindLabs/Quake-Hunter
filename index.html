@@ -14,16 +14,16 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="col-sm-8" id="globe" style="width: 100%; height: 100%; position: fixed; left: 0">
-        <canvas id="canvasOne" width="1920" height="1080" style="position: fixed; left: 0; width: 100%; height: 100%">
-            Your browser does not support HTML5 Canvas.
-        </canvas>
+    <div class="container">
+        <div class="col-sm-8" id="globe" style="width: 100%; height: 100%; position: fixed; left: 0">
+            <canvas id="canvasOne" width="1920" height="1080" style="position: fixed; left: 0; width: 100%; height: 100%">
+                Your browser does not support HTML5 Canvas.
+            </canvas>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-3" style="
+    <div class="row">
+        <div class="col-sm-3" style="
             display: inline;
             position: fixed;
             left: 0;
@@ -32,164 +32,167 @@
             width: 15%;
 
             ">
-        <br>
-        <div style="text-align: center;">
-            <img src="./new_eq_app_files/NASA_logo.svg.png" style="width: 50%;height: 50%;">
-        </div>
-        <h3 style="text-align:center;font-size: 100%;"><em>Quake Hunter v0.2.3</em></h3>
+            <br>
+            <div style="text-align: center;">
+                <img src="./new_eq_app_files/NASA_logo.svg.png" style="width: 50%;height: 50%;">
+            </div>
+            <div>
+                <h3 style="text-align:center;font-size: 100%;"><em>Quake Hunter v0.2.3</em></h3>
+                <h5 style="text-align:center; font-size: 14px;"><strong>Developed by:</strong> <br>
+                <a href="https://github.com/Gagaus" style="color: #FFFFFF">Gabriel Militão</a>
+                    &amp; <a href="https://github.com/bench4ng" style="color: #FFFFFF">Benjamin Chang</a></h5>
+                    <br>
+                <p style="text-align: center; font-size: 100%;">
+                    Developed at NASA Ames Research Center with the WorldWind Development Team
+                </p>
+            </div>
+            <h6>Projection</h6>
+            <div class="dropdown" id="projectionDropdown" style="height: 10px%">
+            </div>
 
-        <h6>Projection</h6>
-        <div class="dropdown" id="projectionDropdown" style="height: 10px%">
-        </div>
-
-        <h6>Destination</h6>
-        <div class="input-group" id="searchBox">
-            <input type="text" class="form-control" placeholder="GoTo" id="searchText"/>
-            <span class="input-group-btn">
+            <h6>Destination</h6>
+            <div class="input-group" id="searchBox">
+                <input type="text" class="form-control" placeholder="GoTo" id="searchText" />
+                <span class="input-group-btn">
                     <button id="searchButton" class="btn btn-primary" type="button">
                         <span class="glyphicon glyphicon-search"></span>
                 </button>
                 </span>
-        </div>
-
-        <!--<br>-->
-            <!--<h5>Layers</h5>-->
-        <!--<div class="list-group" id="layerList">-->
-        <!--</div>-->
-        <!--<br>-->
-    <br>
-        <div>
-            <label>From: </label>
-            <input type="text" id="fromdatepicker" style="color:#000000; position: relative;
-             display: block">
-            <br>
-            <label>To: </label>
-            <input type="text" id="todatepicker" style="color:#000000; position: relative;
-             display: block">
-        </div>
-
-        <div class="list-group" id="annotationList" style="width: 100%; text-align: center;">
-            <div class="input-group" id="annotationBox" style="width: 100%;text-align: center;align-content: center;">
-
-                <br>
-
-                <h4 style="font-size: 100%;">Magnitude Range</h4>
-                <div id="magSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                     style="width: 80%;">
-                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                         style="left: 61.4286%; width: 38.5714%;">
-
-                    </div>
-                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 75.7143%;">
-
-                    </span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                 style="left: 100%;">
-
-                </span>
-                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                         style="width: 24.2857%; left: 75.7143%;"></div>
-                </div>
-
-                <h5><span id="magSliderValue">5.3 to 7 Richter</span></h5>
-                <br>
-
-                <h4 style="font-size: 100%;">Depth Range</h4>
-                <div id="depthSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                     style="width: 80%;">
-                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                         style="left: 61.4286%; width: 38.5714%;">
-
-                    </div>
-                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 75.7143%;">
-
-                    </span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
-                                 style="left: 100%;">
-
-                </span>
-                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                         style="width: 24.2857%; left: 75.7143%;"></div>
-                </div>
-
-                <h5><span id="depthSliderValue">0 to 1000 KM</span></h5>
-                <br>
-
-                <h4 style="font-size: 100%;">Surface Opacity</h4>
-                <div id="opacitySlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                     style="width: 80%;">
-
-                </div>
-
-                <h5><span id="opacitySliderValue">% opacity</span></h5>
-
-                <br>
-
-                <label for="drawingSelection">Drawing Mode:</label>
-                <select name="drawingSelection" id="drawingSelection" data-role="slider" style="color: #000000">
-                    <option value="off">Off</option>
-                    <option value="circle">Circle</option>
-                    <option value="rectangle">Rectangle</option>
-                </select>
-
-                <label for="coloringMode">Drawing Mode:</label>
-                <select name="coloringMode" id="coloringMode" data-role="slider" style="color: #000000">
-                    <option value="magnitude">Magnitude</option>
-                    <option value="age">Age</option>
-                </select>
             </div>
 
-            <label>Limit: </label>
-            <input class="textBox" id="limit" type="text" maxlength="30" style="color:#000000"/>
-            <button id="limitSet" onclick="limitSet" style="color: #000000">Submit</button>
-            <br><br>
-            <button id="reset" type="submit" class="btn btn-primary">
-                <i class="icon-user icon-white"></i> Reset
-            </button>
+            <!--<br>-->
+            <!--<h5>Layers</h5>-->
+            <!--<div class="list-group" id="layerList">-->
+            <!--</div>-->
+            <!--<br>-->
+            <br>
+            <div>
+                <label>From: </label>
+                <input type="text" id="fromdatepicker" style="color:#000000; position: relative;
+             display: block">
+                <br>
+                <label>To: </label>
+                <input type="text" id="todatepicker" style="color:#000000; position: relative;
+             display: block">
+            </div>
+
+            <div class="list-group" id="annotationList" style="width: 100%; text-align: center;">
+                <div class="input-group" id="annotationBox" style="width: 100%;text-align: center;align-content: center;">
+
+                    <br>
+
+                    <h4 style="font-size: 100%;">Magnitude Range</h4>
+                    <div id="magSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="width: 80%;">
+                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 61.4286%; width: 38.5714%;">
+
+                        </div>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 75.7143%;">
+
+                    </span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%;">
+
+                </span>
+                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="width: 24.2857%; left: 75.7143%;"></div>
+                    </div>
+
+                    <h5><span id="magSliderValue">5.3 to 7 Richter</span></h5>
+                    <br>
+
+                    <h4 style="font-size: 100%;">Depth Range</h4>
+                    <div id="depthSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="width: 80%;">
+                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 61.4286%; width: 38.5714%;">
+
+                        </div>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 75.7143%;">
+
+                    </span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%;">
+
+                </span>
+                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="width: 24.2857%; left: 75.7143%;"></div>
+                    </div>
+
+                    <h5><span id="depthSliderValue">0 to 1000 KM</span></h5>
+                    <br>
+
+                    <h4 style="font-size: 100%;">Surface Opacity</h4>
+                    <div id="opacitySlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="width: 80%;">
+
+                    </div>
+
+                    <h5><span id="opacitySliderValue">% opacity</span></h5>
+
+                    <br>
+
+                    <label for="drawingSelection">Drawing Mode:</label>
+                    <select name="drawingSelection" id="drawingSelection" data-role="slider" style="color: #000000">
+                        <option value="off">Off</option>
+                        <option value="circle">Circle</option>
+                        <option value="rectangle">Rectangle</option>
+                    </select>
+
+                    <label for="coloringMode">Drawing Mode:</label>
+                    <select name="coloringMode" id="coloringMode" data-role="slider" style="color: #000000">
+                        <option value="magnitude">Magnitude</option>
+                        <option value="age">Age</option>
+                    </select>
+                </div>
+
+                <label>Limit: </label>
+                <input class="textBox" id="limit" type="text" maxlength="30" style="color:#000000" />
+                <button id="limitSet" onclick="limitSet" style="color: #000000">Submit</button>
+                <br>
+                <br>
+                <button id="reset" type="submit" class="btn btn-primary">
+                    <i class="icon-user icon-white"></i> Reset
+                </button>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-2" style="
+        <div class="col-sm-2" style="
         position: fixed;
         right: 0;
         background: rgba(0,0,0,0.5);
         color: #FFFFFF;
         width: 15%;
         ">
-        <h3><strong>USGS API Query Info</strong></h3>
-        <p style="font-size: 18px"><strong>Number of Eathquakes: </strong><span id="eq_count"></span></p>
-        <p style="font-size: 18px"><strong>Start Date: </strong><span id="minDate"></span></p>
-        <p style="font-size: 18px"><strong>End Date: </strong><span id="maxDate"></span></p>
-        <p style="font-size: 18px"><strong>Min Magnitude: </strong><span id="minMagnitude"></span></p>
-        <p style="font-size: 18px"><strong>Max Magnitude: </strong><span id="maxMagnitude"></span></p>
-        <p style="font-size: 18px"><strong>Min Depth: </strong><span id="minDepth"></span> km</p>
-        <p style="font-size: 18px"><strong>Max Depth: </strong><span id="maxDepth"></span> km</p>
         <br>
-        <p style="font-size: 18px"><strong>Drawn Min Latitude: </strong><span id="drawnMinLat"></span></p>
-        <p style="font-size: 18px"><strong>Drawn Max Latitude: </strong><span id="drawnMaxLat"></span></p>
-        <p style="font-size: 18px"><strong>Drawn Min Longitude: </strong><span id="drawnMinLong"></span></p>
-        <p style="font-size: 18px"><strong>Drawn Max Longitude: </strong><span id="drawnMaxLong"></span></p>
-        <p style="font-size: 18px"><strong>Origin Latitude: </strong><span id="drawnRLat"></span></p>
-        <p style="font-size: 18px"><strong>Origin Longitude: </strong><span id="drawnRLong"></span></p>
-        <p style="font-size: 18px"><strong>Drawn Radius: </strong><span id="drawnRadius"></span></p>
+        <div style="text-align: center">
+            <img src="./new_eq_app_files/usgs.png" style="width: 75%;height: 75%;">
+        </div>
+            <h3><strong>USGS API Query Info</strong></h3>
+            <p style="font-size: 18px"><strong>Number of Eathquakes: </strong><span id="eq_count"></span></p>
+            <p style="font-size: 18px"><strong>Start Date: </strong><span id="minDate"></span></p>
+            <p style="font-size: 18px"><strong>End Date: </strong><span id="maxDate"></span></p>
+            <p style="font-size: 18px"><strong>Min Magnitude: </strong><span id="minMagnitude"></span></p>
+            <p style="font-size: 18px"><strong>Max Magnitude: </strong><span id="maxMagnitude"></span></p>
+            <p style="font-size: 18px"><strong>Min Depth: </strong><span id="minDepth"></span> km</p>
+            <p style="font-size: 18px"><strong>Max Depth: </strong><span id="maxDepth"></span> km</p>
+            <br>
+            <p style="font-size: 18px"><strong>Drawn Min Latitude: </strong><span id="drawnMinLat"></span></p>
+            <p style="font-size: 18px"><strong>Drawn Max Latitude: </strong><span id="drawnMaxLat"></span></p>
+            <p style="font-size: 18px"><strong>Drawn Min Longitude: </strong><span id="drawnMinLong"></span></p>
+            <p style="font-size: 18px"><strong>Drawn Max Longitude: </strong><span id="drawnMaxLong"></span></p>
+            <p style="font-size: 18px"><strong>Origin Latitude: </strong><span id="drawnRLat"></span></p>
+            <p style="font-size: 18px"><strong>Origin Longitude: </strong><span id="drawnRLong"></span></p>
+            <p style="font-size: 18px"><strong>Drawn Radius: </strong><span id="drawnRadius"></span></p>
 
-        <hr>
-        <h5><strong>Earthquake Info</strong></h5>
-        <p style="font-size: 18px"><strong>Magnitude: </strong><span id="magnitude"></span></p>
-        <p style="font-size: 18px"><strong>Location: </strong><span id="location"></span></p>
-        <p style="font-size: 18px"><strong>Date: </strong><span id="time"></span></p>
-        <p style="font-size: 18px"><strong>Latitude: </strong><span id="latitude"></span></p>
-        <p style="font-size: 18px"><strong>Longitude: </strong><span id="longitude"></span></p>
-        <p style="font-size: 18px"><strong>Depth (km): </strong><span id="depth"></span></p>
-    </div>
-    <div>
+            <hr>
+            <h5><strong>Earthquake Info</strong></h5>
+            <p style="font-size: 18px"><strong>Magnitude: </strong><span id="magnitude"></span></p>
+            <p style="font-size: 18px"><strong>Location: </strong><span id="location"></span></p>
+            <p style="font-size: 18px"><strong>Date: </strong><span id="time"></span></p>
+            <p style="font-size: 18px"><strong>Latitude: </strong><span id="latitude"></span></p>
+            <p style="font-size: 18px"><strong>Longitude: </strong><span id="longitude"></span></p>
+            <p style="font-size: 18px"><strong>Depth (km): </strong><span id="depth"></span></p>
+        </div>
+        <div>
 
-        <img src="./images/MagnitudeLegend.svg" id="legend" style="position: fixed;bottom: 10px;right: 10px;width: 275px" />
+            <img src="./images/MagnitudeLegend.svg" id="legend" style="position: fixed;bottom: 10px;right: 10px;width: 275px" />
+        </div>
     </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script data-main="Control"
-        src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script data-main="Control" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 
 </body>
 
