@@ -23,6 +23,19 @@ define(['./USGS', './Draw'], function (USGS) {
             control.setDrawMode(drawingSelector.val());
         });
 
+
+        // this.drawRectangle = $("#drawRectangle").on("click", function () {
+        //     control.setDrawMode("rectangle");
+        // });
+        //
+        // this.drawCircle = $("#drawCricle").on("click", function () {
+        //     control.setDrawMode("circle");
+        // });
+        //
+        // this.drawOff = $("#drawOff").on("click", function () {
+        //     control.setDrawMode("off");
+        // });
+
         var legend = document.getElementById('legend');
 
         this.coloringMode = $("#coloringMode");

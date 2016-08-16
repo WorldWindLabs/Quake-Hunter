@@ -1,0 +1,93 @@
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*border: 1px solid #ccc;*/
+    background-color: black;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: #eeeeee;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: rgba(143, 143, 143, 0.68);}
+
+/* Create an active/current tablink class */
+ul.tab li a[target] {background-color: rgba(67, 167, 199, 1);}
+
+
+/* Style the tab content */
+.tabcontentLeft {
+    display: none;
+    padding: 6px 11px;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+    height: 100%;
+    top: 38px;
+    position: fixed;
+    background: rgba(46,74,110,0.5);
+    color: #FFFFFF;
+    width: 20%;
+    left: 0;
+    overflow: auto;
+    /*margin: 50px auto 0 auto;*/
+}
+
+.tabcontentRight {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 100%;
+    top: 38px;
+    position: fixed;
+    background: rgba(46,74,110,0.5);
+    color: #FFFFFF;
+    width: 15%;
+    right: 0;
+    overflow: auto;
+    /*margin: 50px auto 0 auto;*/
+}
+
+.tabcontentInfo {
+    font-size: 10px;
+    display: none;
+    height: 100%;
+    top: 85px;
+    position: fixed;
+    color: #FFFFFF;
+    width: auto;
+    overflow: auto;
+}
+
+.tabcontentSpecial {
+    width: 0%;
+    height: 0%;
+    display: none;
+}
+
+
+@font-face {
+    font-family: 'megrim';
+    src: url('./Megrim.ttf') format('truetype');
+}
+.logo{
+    font-family: 'megrim';
+    font-size: 16px;
+}
+
+

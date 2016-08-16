@@ -44,6 +44,15 @@ define(['./Circle',
         // Make the surface semi-transparent in order to see the sub-surface shapes.
         wwd.surfaceOpacity = 0.5;
 
+        wwd.navigator.lookAtLocation.altitude = 0;
+        wwd.navigator.range = 2.5e7;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (location) {
+                wwd.navigator.lookAtLocation.latitude = location.coords.latitude;
+                wwd.navigator.lookAtLocation.longitude = location.coords.longitude;
+            });
+        }
+
         var Control = function () {
             var earthquakes =  new USGS(wwd, this);
             var metadata = new Metadata(this);
@@ -101,11 +110,16 @@ define(['./Circle',
 
         };
 
+        var viewControlsLayer = new WorldWind.ViewControlsLayer(wwd);
+        viewControlsLayer.alignment = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.25, WorldWind.OFFSET_FRACTION, 0);
+        viewControlsLayer.placement = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.25, WorldWind.OFFSET_FRACTION, 0);
+
         var layers = [
             {layer: new WorldWind.BMNGLayer(), enabled: true},
             {layer: new WorldWind.CompassLayer(), enabled: false},
             {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
-            {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true},
+            {layer: viewControlsLayer, enabled: true},
+            // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true},
             {layer: new TectonicPlateLayer, enabled: true}
         ];
 
