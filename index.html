@@ -22,9 +22,12 @@
 <ul class="tab"
     style="z-index: 999; position: fixed; left: 0; height: 38px; width: 100%; background: rgba(46,74,110,1); overflow: visible">
     <li><a class="tablinksLeft logo" onclick="openTabLeft(event, 'how-to')"><strong>Quake Hunter</strong></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span class="glyphicon glyphicon-globe"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a>
+    </li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span
+            class="glyphicon glyphicon-globe"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a>
+    </li>
 
     <!--Toggle switches for drawing modes-->
     <!--<li><a class="tablinksLeft" id="drawOff">Off</a></li>-->
@@ -101,6 +104,7 @@
                 &amp; <a href="https://github.com/bench4ng" style="color: #FFFFFF">Benjamin Chang</a></h5>
             <br>
             <br>
+            <br>
         </div>
     </div>
 
@@ -164,19 +168,18 @@
                     </div>
                     <h5><span id="opacitySliderValue">% opacity</span></h5>
                 </div>
-                <br>
             </div>
+            <h5 style="text-align: left;">Color Mode:</h5>
             <div class="form-group">
-                <label for="coloringMode">Color Mode:</label>
                 <select class="form-control" name="coloringMode" id="coloringMode" data-role="slider"
                         style="color: #000000">
                     <option value="magnitude">Magnitude</option>
                     <option value="age">Age</option>
                 </select>
             </div>
-            <br>
+            <h5 style="text-align: left">Limit Displayed Events</h5>
             <div class="input-group">
-                <input id="limit" maxlength="30" type="text" class="form-control" placeholder="Limit Displayed Events">
+                <input id="limit" maxlength="30" type="number" class="form-control" placeholder="e.g. '1000'">
                 <span class="input-group-btn">
                     <button id="limitSet" onclick="limitSet" class="btn btn-primary" type="button"><span
                             class="glyphicon glyphicon-eye-close"></span></button>
@@ -223,12 +226,13 @@
             <div>
                 <h5>How To:</h5>
                 <p style="text-align: justify;">
-                    To use the drawing mode, choose from the drop down how you would like to select earthquakes on the
-                    globe, and double click
-                    to drop vertecies (points) on the globe.
-
+                    To use the drawing mode, choose from the drop down how you would like to select the earthquakes,
+                    and double click on the globe to begin drawing. Double click again to end drawing.
+                </p>
+                <p>
                     To remove the outline of your drawing, go to "Globe Options" and remove the "Drawing" layer.
-
+                </p>
+                <p>
                     To clear the drawing, click the reset button on the navigation bar.
                 </p>
             </div>

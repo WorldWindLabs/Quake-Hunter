@@ -12,14 +12,14 @@ define(['./USGS', './Draw'], function (USGS) {
         this.dateSlider = $("#dateSlider");
         this.opacitySlider = $("#opacitySlider");
 
-        var firstTime = true;
+        // var firstTime = true;
         this.drawingSelector = $("#drawingSelection");
         var drawingSelector = this.drawingSelector;
         this.drawingSelector.on( "change", function() {
-            if (firstTime) {
-                alert("Double Click to select points");
-                firstTime = false;
-            }
+            // if (firstTime) {
+            //     alert("Double Click to select points");
+            //     firstTime = false;
+            // }
             control.setDrawMode(drawingSelector.val());
         });
 
