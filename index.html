@@ -23,9 +23,12 @@
 <ul class="tab"
     style="z-index: 999; position: fixed; left: 0; height: 38px; width: 100%; background: rgba(46,74,110,1); overflow: visible">
     <li><a class="tablinksLeft logo" onclick="openTabLeft(event, 'how-to')"><strong>Quake Hunter</strong></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span class="glyphicon glyphicon-globe"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a>
+    </li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span
+            class="glyphicon glyphicon-globe"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a>
+    </li>
 
     <!--Toggle switches for drawing modes-->
     <!--<li><a class="tablinksLeft" id="drawOff">Off</a></li>-->
@@ -44,7 +47,7 @@
         </canvas>
     </div>
     <!--<div class="row">-->
-    <div id="how-to" class="col-sm-2 tabcontentLeft"
+    <div id="how-to" class="col-sm-2 tabcontentLeft leftTabPadding"
          style="font-size: 12px !important; width: 25% !important;background: rgba(46,74,110,0.8)">
         <br>
         <div style="text-align: center">
@@ -117,7 +120,8 @@
         <ul style="text-align: justify; padding-left: 5%;">
             <li style="padding-top: 8px;">
                 If the earthquakes are not loading immediately after you enter search parameters, it may be loading.
-                Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in excess of 5000
+                Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
+                excess of 5000
                 earthquakes, the load may take a while.
             </li>
             <li style="padding-top: 8px;">
@@ -147,7 +151,7 @@
         <br>
     </div>
 
-    <div id="controls" class="col-sm-2 tabcontentLeft" style="font-size: 12px !important;">
+    <div id="controls" class="col-sm-2 tabcontentLeft leftTabPadding" style="font-size: 12px !important;">
         <div class="smallRule">
             <h4 style="text-align: center ">Search Options:</h4>
         </div>
@@ -171,10 +175,12 @@
             </div>
         </div>
         <div class="list-group" id="annotationList" style="width: 100%; text-align: center;">
-            <div class="input-group" id="annotationBox" style="width: 100%;text-align: center;align-content: center;">
+            <div class="input-group" id="annotationBox"
+                 style="width: 100%;text-align: center;align-content: center;">
                 <div class="smallRule">
                     <h5><strong>Magnitude Range</strong></h5>
-                    <div id="magSlider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                    <div id="magSlider"
+                         class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
                          style="width: 100%;">
                         <div class="ui-slider-range ui-widget-header ui-corner-all"
                              style="left: 61.4286%; width: 38.5714%;"></div>
@@ -233,7 +239,7 @@
         </div>
     </div>
 
-    <div id="options_div" class="col-sm-2 tabcontentLeft" style="font-size: 12px !important;">
+    <div id="options_div" class="col-sm-2 tabcontentLeft leftTabPadding" style="font-size: 12px !important;">
         <div class="smallRule">
             <h4 style="text-align: center">Globe Options:</h4>
         </div>
@@ -255,7 +261,7 @@
         </div>
     </div>
 
-    <div id="drawing" class="col-sm-2 tabcontentLeft" style="font-size: 12px !important;">
+    <div id="drawing" class="col-sm-2 tabcontentLeft leftTabPadding" style="font-size: 12px !important;">
         <div class="smallRule">
             <h4 style="text-align: center">Drawing Mode:</h4>
         </div>
