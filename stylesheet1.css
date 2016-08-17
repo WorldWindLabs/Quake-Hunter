@@ -99,3 +99,10 @@ ul.tab li a[target] {background-color: rgba(67, 167, 199, 1);}
 .containerFont {
     font-family: 'Helvetica Light', Fallback, sans-serif;
 }
+
+.smallRule {
+    border: 1px solid #FFF;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}

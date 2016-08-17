@@ -55,6 +55,7 @@ define(['./Rectangle',
 
                 canvas.width = size;
                 canvas.height = size;
+                canvas.lineWidth = 1;
 
                 ctx2d.arc(c, c, radius, 0, 2 * Math.PI, false);
                 ctx2d.fill();
