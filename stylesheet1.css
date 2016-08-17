@@ -67,7 +67,7 @@ ul.tab li a[target] {background-color: rgba(67, 167, 199, 1);}
     font-size: 10px;
     display: none;
     height: 100%;
-    top: 85px;
+    top: 95px;
     position: fixed;
     color: #FFFFFF;
     width: auto;
@@ -85,9 +85,17 @@ ul.tab li a[target] {background-color: rgba(67, 167, 199, 1);}
     font-family: 'megrim';
     src: url('./new_eq_app_files/Megrim.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Helvetica Light';
+    src: url('./new_eq_app_files/Helvetica Light.ttf') format('truetype');
+}
+
 .logo{
-    font-family: 'megrim';
+    font-family: 'megrim', Fallback, sans-serif;
     font-size: 16px;
 }
 
-
+.containerFont {
+    font-family: 'Helvetica Light', Fallback, sans-serif;
+}

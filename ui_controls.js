@@ -1,6 +1,7 @@
 /**
  * Created by Ben on 8/15/16.
  */
+
 function openTabLeft(evt, tabName) {
     // Declare all variables
     var i, tabcontentLeft, tablinksLeft;
@@ -154,56 +155,6 @@ function openTabInfo(evt, tabName) {
     }
 }
 
-function openTabLeft(evt, tabName) {
-    // Declare all variables
-    var i, tabcontentLeft, tablinksLeft;
-
-    //If the page has just been loaded, Get all elements with class="tabcontentLeft" and hide them
-    if (!document.isInit) {
-
-        document.isInit = 1;
-        tabcontentLeft = document.getElementsByClassName("tabcontentLeft");
-        for (i = 0; i < tabcontentLeft.length; i++) {
-            tabcontentLeft[i].style.display = "none";
-            console.log("here");
-        }
-    }
-
-    // Get all elements with class="tablinksLeft" and remove the attribute "active"
-    tablinksLeft = document.getElementsByClassName("tablinksLeft");
-    for (i = 0; i < tablinksLeft.length; i++) {
-        if (tablinksLeft[i].hasAttribute("target", "active")) {
-
-            tablinksLeft[i].removeAttribute("target", "active");
-        }
-
-    }
-
-    // Show the current tab, and add an "active" attribute to the link
-    // that opened the tab, or removes it if it was already open
-
-    if (document.getElementById(tabName).style.display == "none") {
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.setAttribute("target", "active");
-
-    }
-    else {
-        document.getElementById(tabName).style.display = "none";
-        document.getElementById(tabName).className.replace("active", "");
-        evt.currentTarget.removeAttribute("target", "active");
-
-
-    }
-
-    // remove all other tabs except for the one that was clicked, but do not let this apply to he help tab
-
-    tabcontentLeft = document.getElementsByClassName("tabcontentLeft");
-    for (i = 0; i < tabcontentLeft.length; i++) {
-
-        if (tabcontentLeft[i].id != tabName.toString())
-            tabcontentLeft[i].style.display = "none";
-    }
-}
 
 $('.tabcontentInfo').perfectScrollbar();
 $('.tabcontentLeft').perfectScrollbar();

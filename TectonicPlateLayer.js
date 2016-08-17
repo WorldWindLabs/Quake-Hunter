@@ -3,12 +3,10 @@
  */
 
 define(['./worldwindlib'],
-    function(WorldWind) {
+    function (WorldWind) {
 
-    "use strict";
-
-    function TectonicPlateLayer() {
-        var shapeConfigurationCallback = function (geometry, properties) {
+        "use strict";
+        function shapeConfigurationCallback(geometry, properties) {
             var configuration = {};
             configuration.attributes = new WorldWind.ShapeAttributes(null);
             configuration.attributes.drawOutline = true;
@@ -21,28 +19,31 @@ define(['./worldwindlib'],
             return configuration;
         };
 
-        var plateBoundariesLayer = new WorldWind.RenderableLayer("Tectonic Plates");
-        var plateBoundariesJSON = new WorldWind.GeoJSONParser("./new_eq_app_files/plate_boundaries.json");
-        plateBoundariesJSON.load(shapeConfigurationCallback, plateBoundariesLayer);
-        return plateBoundariesLayer;
-    }
+        function TectonicPlateLayer() {
+
+            var plateBoundariesLayer = new WorldWind.RenderableLayer("Tectonic Plates");
+            var plateBoundariesJSON = new WorldWind.GeoJSONParser("./new_eq_app_files/plate_boundaries.json");
+            console.log(plateBoundariesJSON);
+            plateBoundariesJSON.load(null, shapeConfigurationCallback, plateBoundariesLayer);
+            return plateBoundariesLayer;
+        }
 
 
-    return TectonicPlateLayer;
+        return TectonicPlateLayer;
 
-    // var TectonicPlateLayer = function () {
-    //     WorldWind.RenderableLayer.call(this, "Blue Marble Image");
-    //
-    //     var surfaceImage = new WorldWind.SurfaceImage(WorldWind.Sector.FULL_SPHERE,
-    //        './images/wms_plate_boundaries.png');
-    //
-    //     this.addRenderable(surfaceImage);
-    //
-    //     this.pickEnabled = false;
-    //     this.minActiveAltitude = 3e6;
-    // };
-    //
-    // TectonicPlateLayer.prototype = Object.create(WorldWind.RenderableLayer.prototype);
-    //
-    // return TectonicPlateLayer;
-});
+        // var TectonicPlateLayer = function () {
+        //     WorldWind.RenderableLayer.call(this, "Blue Marble Image");
+        //
+        //     var surfaceImage = new WorldWind.SurfaceImage(WorldWind.Sector.FULL_SPHERE,
+        //        './images/wms_plate_boundaries.png');
+        //
+        //     this.addRenderable(surfaceImage);
+        //
+        //     this.pickEnabled = false;
+        //     this.minActiveAltitude = 3e6;
+        // };
+        //
+        // TectonicPlateLayer.prototype = Object.create(WorldWind.RenderableLayer.prototype);
+        //
+        // return TectonicPlateLayer;
+    });
