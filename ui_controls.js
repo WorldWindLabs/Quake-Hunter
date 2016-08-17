@@ -13,7 +13,6 @@ function openTabLeft(evt, tabName) {
         tabcontentLeft = document.getElementsByClassName("tabcontentLeft");
         for (i = 0; i < tabcontentLeft.length; i++) {
             tabcontentLeft[i].style.display = "none";
-            console.log("here");
         }
     }
 

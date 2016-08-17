@@ -23,12 +23,9 @@
 <ul class="tab"
     style="z-index: 999; position: fixed; left: 0; height: 38px; width: 100%; background: rgba(46,74,110,1); overflow: visible">
     <li><a class="tablinksLeft logo" onclick="openTabLeft(event, 'how-to')"><strong>Quake Hunter</strong></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a>
-    </li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span
-            class="glyphicon glyphicon-globe"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a>
-    </li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span class="glyphicon glyphicon-globe"></span></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a></li>
 
     <!--Toggle switches for drawing modes-->
     <!--<li><a class="tablinksLeft" id="drawOff">Off</a></li>-->
@@ -118,6 +115,11 @@
         <br>
         <h5><strong>Preformance Tips:</strong></h5>
         <ul style="text-align: justify; padding-left: 5%;">
+            <li style="padding-top: 8px;">
+                If the earthquakes are not loading immediately after you enter search parameters, it may be loading.
+                Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in excess of 5000
+                earthquakes, the load may take a while.
+            </li>
             <li style="padding-top: 8px;">
                 If you continually run into performance issues, consider using
                 Google Chrome or Apple Safari to run the web app.
@@ -262,7 +264,7 @@
             <select class="form-control" name="drawingSelection" id="drawingSelection" data-role="slider"
                     style="color: #000000">
                 <option value="off">Off</option>
-                <option value="circle">Circle</option>
+                <!--<option value="circle">Circle</option>-->
                 <option value="rectangle">Rectangle</option>
             </select>
         </div>
