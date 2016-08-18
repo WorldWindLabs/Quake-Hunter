@@ -46,6 +46,7 @@ excess of 5000 earthquakes, the load may take a while.
 ------
 ![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_overview.png)
 The initial query of the most recent 30 days of earthquake events in the range of magnitude M3-10  
+
 ![Geographically constrained query 1](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_query1.png)
 ![Geographically constrained query 2](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_query2.png)
 A query showing the subduction zone in Kodiak Alaska.
