@@ -35,10 +35,10 @@ Try a geographically constrained query along a subduction zone or fault line (Th
 Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
 excess of 5000 earthquakes, the load may take a while.
 * If you continually run into performance issues, consider using
-                Google Chrome or Apple Safari to run the web app.
-*                Try removing the tectonic plate layer for improved browsing speeds in the app.
-*                Consider limiting the earthquake event search to less than 2000 events for quicker load times
-*                For larger queries, the preformance greatly improves if searches are geographically constrained. To
+  Google Chrome or Apple Safari to run the web app.
+* Try removing the tectonic plate layer for improved browsing speeds in the app.
+* Consider limiting the earthquake event search to less than 2000 events for quicker load times
+* For larger queries, the preformance greatly improves if searches are geographically constrained. To
         do this, use the drawing tool to limit where earthquakes are shown.
 
 
