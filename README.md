@@ -54,5 +54,6 @@ A query showing the subduction zone in Kodiak Alaska.
 ---
 * Time series of EQ
 * EQ Forecasting implementation (see [NASA WebWorldWind Research](https://github.com/NASAWorldWindResearch/EarthquakeApp))
+
 ----
 Updated as of 18/08/2016 (August 18th, 2016)
