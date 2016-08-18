@@ -22,12 +22,12 @@
 
 <ul class="tab"
     style="z-index: 999; position: fixed; left: 0; height: 38px; width: 100%; background: rgba(46,74,110,1); overflow: visible">
-    <li><a class="tablinksLeft logo" onclick="openTabLeft(event, 'how-to')"><strong>Quake Hunter</strong></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')"><span class="glyphicon glyphicon-tasks"></span></a>
+    <li><a class="tablinksLeft logo" onclick="openTabLeft(event, 'how-to')" title="Info"><strong>Quake Hunter</strong></a></li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'controls')" title="Controls"><span class="glyphicon glyphicon-tasks"></span></a>
     </li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')"><span
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')" title="Globe Options"><span
             class="glyphicon glyphicon-globe"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')"><span class="glyphicon glyphicon-pencil"></span></a>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')" title="Drawing Tools"><span class="glyphicon glyphicon-pencil"></span></a>
     </li>
 
     <!--Toggle switches for drawing modes-->
@@ -35,9 +35,9 @@
     <!--<li><a class="tablinksLeft" id="drawCircle" onclick="openTabLeft(event, 'drawCircleHolder')">Circle</a></li>-->
     <!--<li><a class="tablinksLeft" id="drawRectangle" onclick="openTabLeft(event, 'drawRectHolder')">Rectangle</a></li>-->
 
-    <li><a class="tablinksLeft" id="reset"><span class="glyphicon glyphicon-repeat"></span></a></li>
+    <li><a class="tablinksLeft" id="reset" title="Reset"><span class="glyphicon glyphicon-repeat"></span></a></li>
     <li><a class="tablinksRight" onclick="openTabRight(event, 'information')"
-           style="position: fixed; right: 1%"><span class="glyphicon glyphicon-stats"></span></a></li>
+           style="position: fixed; right: 1%" title="Stats"><span class="glyphicon glyphicon-stats"></span></a></li>
 </ul>
 
 <div class="container containerFont">
