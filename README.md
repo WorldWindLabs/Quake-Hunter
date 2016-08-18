@@ -2,8 +2,8 @@
 ====================
 **Organization:** NASA Ames Research Center (PX)  
 **Manager:** Patrick Hogan, Jonathan Stock  
-**Authors:** Gabriel Militão, Benjamin Chang, Khaled Sharif, Farah Salah  
-**Acknowledgements:** Miguel Del Castillo, Bert Stewart
+**Authors:** Gabriel Militão, Benjamin Chang  
+**Acknowledgements:**  Khaled Sharif, Farah Salah, Miguel Del Castillo, Bert Stewart
 
 1. Introduction
 -----
