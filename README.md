@@ -29,6 +29,7 @@ Try a geographically constrained query along a subduction zone or fault line (Th
   * Set a specific sector of the planet to query earthquakes within.
   * Visualize a longer period of earthquakes (>20 years) and within the magnitude range M3-10.
   * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
+
 ###Preformance Tips:
 * If the earthquakes are not loading immediately after you enter search parameters, it may be loading. 
 Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
