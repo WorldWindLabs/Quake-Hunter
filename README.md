@@ -12,7 +12,7 @@ This is an earthquake visualization app built in NASA WebWorldWind with support 
 2. How to Run *Quake Hunter*
 -----
 ###Run it the easy way:
-You can go to worldwind.arc.nasa.gov/quakehunter to use the web app.
+You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
@@ -29,18 +29,27 @@ Try a geographically constrained query along a subduction zone or fault line (Th
   * Set a specific sector of the planet to query earthquakes within.
   * Visualize a longer period of earthquakes (>20 years) and within the magnitude range M3-10.
   * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
+###Preformance Tips:
+* If the earthquakes are not loading immediately after you enter search parameters, it may be loading. 
+Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
+excess of 5000 earthquakes, the load may take a while.
+* If you continually run into performance issues, consider using
+                Google Chrome or Apple Safari to run the web app.
+*                Try removing the tectonic plate layer for improved browsing speeds in the app.
+*                Consider limiting the earthquake event search to less than 2000 events for quicker load times
+*                For larger queries, the preformance greatly improves if searches are geographically constrained. To
+        do this, use the drawing tool to limit where earthquakes are shown.
+
 
 4. Example Usage
 ------
-![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/new_eq_app1.png)
+![Initial Query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_overview.png)
 The initial query of the most recent 30 days of earthquake events in the range of magnitude M3-10  
-![Geographically constrained query](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/Query75-today.png)
+![Geographically constrained query 1](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_query1.png)
+![Geographically constrained query 2](https://github.com/NASAWorldWindResearch/Quake-Hunter-App/blob/master/documentation_pix/QH_query2.png)
 A query showing the subduction zone in Kodiak Alaska.
 
 5. Future Work
 ---
 * Time series of EQ
 * EQ Forecasting implementation (see [NASA WebWorldWind Research](https://github.com/NASAWorldWindResearch/EarthquakeApp))
-* Toggle between magnitude and age color coding
-* Greater UI control over layers
-    * Toggle between placemarks, polygons, lines, etc.
