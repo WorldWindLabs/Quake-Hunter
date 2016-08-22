@@ -44,12 +44,12 @@ define(['./worldwindlib'],
                     }
                 }
 
-                else if (coloring == 'age') {
+                else if (coloring == 'time') {
                     var toDate = new Date(query.ToDate);
                     var fromDate = new Date(query.FromDate);
                     var deltaT = toDate - time;
                     var percentInterval = 100*deltaT/(toDate - fromDate);
-                    
+
                     if (0 < percentInterval && percentInterval <= 10) {
                         color.code = red;
                         color.name = "red";

@@ -145,7 +145,8 @@ define(['./Draw'], function(Draw) {
                 "&maxmagnitude=" + maxMagnitude.toString() +
                 "&mindepth=" + minDepth.toString() +
                 "&maxdepth=" + maxDepth.toString()+
-                "&limit=" + limit.toString();
+                "&limit=" + limit.toString() +
+                "&orderby=" + control.coloringMode;
 
             if (drawingType == 'circle') {
                 query += "&longitude=" + origin.Long.toString() +
@@ -158,7 +159,6 @@ define(['./Draw'], function(Draw) {
                     "&minlatitude=" + minLatitude.toString() +
                     "&maxlatitude=" + maxLatitude.toString();
             }
-
             var url = resourcesUrl + query;
             // console.log(url);
             return url;

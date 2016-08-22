@@ -47,7 +47,7 @@ define(['./USGS', './Draw'], function (USGS) {
         });
 
         function updateLegend(value) {
-            if (value == "age") {
+            if (value == "time") {
                 legend.src = "./images/AgeLegend.svg";
             }
             else if (value == "magnitude") {
@@ -107,7 +107,7 @@ define(['./USGS', './Draw'], function (USGS) {
             values: [0, 1000],
             min: 0,
             max: 1000,
-            step: 10,
+            step: 1,
             animate: true,
             slide: function (event, ui) {
                 $("#depthSliderValue").html(ui.values[0].toString() + " to " +
