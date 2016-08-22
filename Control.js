@@ -15,8 +15,7 @@ define(['./Circle',
         './TectonicPlateLayer',
         './WorldPoint',
         './Draw',
-        './MetadataDisplay',
-        './graphing'],
+        './MetadataDisplay'],
     function (Circle,
               Cylinder,
               LayerManager,
@@ -30,8 +29,7 @@ define(['./Circle',
               TectonicPlateLayer,
               WorldPoint,
               Draw,
-              Metadata,
-              graphing) {
+              Metadata) {
 
         "use strict";
 
