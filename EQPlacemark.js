@@ -7,7 +7,7 @@ define(['./worldwindlib'],
 
         "use strict";
 
-        function EQPlacemark(coordinates, coloring, magnitude, time) {
+        function EQPlacemark(coordinates, coloring, magnitude, time, query) {
 
             var longitude = coordinates[0],
                 latitude = coordinates[1],
@@ -45,29 +45,23 @@ define(['./worldwindlib'],
                 }
 
                 else if (coloring == 'age') {
-                    var d = new Date();
-                    var deltaT = d.getTime() - time;
-
-                    var hour = 60*60*1000,
-                        day = 24*hour,
-                        week = 7*day,
-                        month = 30*day;
-
-                    if (0 < deltaT && deltaT <= hour) {
-                        color.code = ('rgb(0, 255, 0)');
-                        color.name = "('rgb(0, 255, 0)')";
-                    } else if (hour < deltaT && deltaT <= day) {
-                        color.code = yellow;
-                        color.name = "yellow";
-                    } else if (day < deltaT && deltaT <= week) {
-                        color.code = orange;
-                        color.name = "orange";
-                    } else if (week < deltaT && deltaT <= month) {
+                    var toDate = new Date(query.ToDate);
+                    var fromDate = new Date(query.FromDate);
+                    var deltaT = toDate - time;
+                    var percentInterval = 100*deltaT/(toDate - fromDate);
+                    
+                    if (0 < percentInterval && percentInterval <= 10) {
                         color.code = red;
                         color.name = "red";
+                    } else if (10 < percentInterval && percentInterval <= 30) {
+                        color.code = orange;
+                        color.name = "orange";
+                    } else if (30 < percentInterval && percentInterval <= 60) {
+                        color.code = yellow;
+                        color.name = "yellow";
                     } else {
-                        color.code = white;
-                        color.name = "white";
+                        color.code = green;
+                        color.name = "green";
                     }
                 }
                 return color;

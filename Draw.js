@@ -63,7 +63,7 @@ define(['./Circle',
                     for (var i = 0; i < GeoJSON.features.length; i++) {
                         var eq = GeoJSON.features[i];
 
-                        var placeMark = new EQPlacemark(eq.geometry.coordinates, control.coloringMode, eq.properties.mag, eq.properties.time);
+                        var placeMark = new EQPlacemark(eq.geometry.coordinates, control.coloringMode, eq.properties.mag, eq.properties.time, myearthquake.parameters);
                         earthquakeLayer.addRenderable(placeMark.placemark);
 
                         // var polygon = new EQPolygon(GeoJSON.features[i].geometry['coordinates']);
