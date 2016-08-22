@@ -53,13 +53,13 @@ define(['./Circle',
             var earthquakeLayer = new WorldWind.RenderableLayer("Earthquakes");
             wwd.addLayer(earthquakeLayer);
 
-                this.placeMarkCreation = function (GeoJSON, earthquakes) {
+            this.placeMarkCreation = function (GeoJSON, earthquakes) {
                 // Polygon Generation
                 data = GeoJSON;
                 myearthquake = earthquakes;
                 earthquakeLayer.removeAllRenderables();
 
-                function PopulateEarthquakeLayer (GeoJSON) {
+                function PopulateEarthquakeLayer(GeoJSON) {
                     for (var i = 0; i < GeoJSON.features.length; i++) {
                         var eq = GeoJSON.features[i];
 
@@ -127,6 +127,86 @@ define(['./Circle',
                 earthquakeLayer.showSpinner = false;
                 return earthquakeLayer;
             };
+
+            this.graph = function (GeoJSON) {
+                function magHistogram() {
+                    console.log(GeoJSON);
+                    var mag = [];
+                    for (var i = 0; i < GeoJSON.features.length; i++) {
+                        mag.push(GeoJSON.features[i].properties.mag);
+                    }
+                    var data = [
+                        {
+                            x: mag,
+                            type: 'histogram',
+                            marker: {
+                                color: 'rgba(72,105,187,1)'
+                            }
+                        }
+                    ];
+                    var layout = {
+                        title: "Magnitude Distribution",
+                        xaxis: {title: "Magnitude"},
+                        yaxis: {title: "Frequency"}
+                    };
+                    Plotly.newPlot('magHistogram', data, layout);
+                }
+
+                function activityTimeSeries() {
+                    var dateHolder = [];
+
+                    for (var i = 0; i < GeoJSON.features.length; i++) {
+                        dateHolder.push(new Date(GeoJSON.features[i].properties.time).toISOString().split("T")[0]);
+                    }
+                    dateHolder.sort();
+                    var dateEventFrequencies = {
+                        Date: [],
+                        EventFrequency: []
+                    };
+
+                    var dateIndex = 0;
+                    var counter = 0;
+
+                    dateEventFrequencies.Date[dateIndex] = dateHolder[0];
+                    console.log(dateHolder);
+                    var j;
+                    for (j = 1; j <= dateHolder.length; j++) {
+                        if (dateEventFrequencies.Date[dateIndex] === dateHolder[j]) {
+                            counter++;
+                        }
+                        else{
+                            dateEventFrequencies.EventFrequency.push(counter);
+                            counter = 0;
+                            dateIndex++;
+                            dateEventFrequencies.Date[dateIndex] = dateHolder[j];
+                        }
+                    }
+                    // DONT MIND THIS...
+                    dateEventFrequencies.EventFrequency[0] = dateEventFrequencies.EventFrequency[0] + 1 ;
+                    dateEventFrequencies.Date.pop();
+                    console.log(dateEventFrequencies);
+
+                    var data = [
+                        {
+                            x: dateEventFrequencies.Date,
+                            y: dateEventFrequencies.EventFrequency,
+                            type: 'scatter'
+                        }
+                    ];
+
+                    var layout = {
+                        title: "Earthquake Activity",
+                        xaxis: {title: "Date"},
+                        yaxis: {title: "Number of Earthquakes"}
+                    };
+
+                    Plotly.newPlot('TimeSeries', data, layout);
+                }
+
+                magHistogram();
+                activityTimeSeries();
+            };
+
             // The common pick-handling function.
             this.Pick = function (o) {
                 // The input argument is either an Event or a TapRecognizer. Both have the same properties for determining

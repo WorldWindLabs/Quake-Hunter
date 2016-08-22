@@ -7,12 +7,19 @@
     <!--required by Web World Wind. See SimplestExample.html for an example of using Web World Wind without them.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--JQuery UI-->
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <!--Local Stylesheet-->
     <link rel="stylesheet" href="./stylesheet1.css"/>
+    <!--Perfect Scrollbar CSS-->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.12/css/perfect-scrollbar.min.css"/>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <title>Quake Hunter</title>
 </head>
@@ -27,17 +34,21 @@
     </li>
     <li><a class="tablinksLeft" onclick="openTabLeft(event, 'options_div')" title="Globe Options"><span
             class="glyphicon glyphicon-globe"></span></a></li>
-    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')" title="Drawing Tools"><span class="glyphicon glyphicon-pencil"></span></a>
-    </li>
+    <li><a class="tablinksLeft" onclick="openTabLeft(event, 'drawing')" title="Drawing Tools">
+        <span class="glyphicon glyphicon-pencil"></span></a></li>
+    <li><a class="tablinksLeft" id="reset" title="Reset"><span class="glyphicon glyphicon-repeat"></span></a></li>
 
     <!--Toggle switches for drawing modes-->
     <!--<li><a class="tablinksLeft" id="drawOff">Off</a></li>-->
     <!--<li><a class="tablinksLeft" id="drawCircle" onclick="openTabLeft(event, 'drawCircleHolder')">Circle</a></li>-->
     <!--<li><a class="tablinksLeft" id="drawRectangle" onclick="openTabLeft(event, 'drawRectHolder')">Rectangle</a></li>-->
 
-    <li><a class="tablinksLeft" id="reset" title="Reset"><span class="glyphicon glyphicon-repeat"></span></a></li>
+
     <li><a class="tablinksRight" onclick="openTabRight(event, 'information')"
-           style="position: fixed; right: 1%" title="Stats"><span class="glyphicon glyphicon-stats"></span></a></li>
+           style="position: fixed; right: 1%; width: 3%;" title="Stats">
+        <i class="fa fa-info" aria-hidden="true"></i></a></li>
+    <li><a class="tablinksRight" onclick="openTabRight(event, 'graphs')"
+           style="position: fixed; right: 4%" title="Graphs"><i class="fa fa-bar-chart" aria-hidden="true"></i></a></li>
 </ul>
 
 <div class="container containerFont">
@@ -339,6 +350,21 @@
         </div>
     </div>
 
+    <div id="graphs" class="col-sm-2 tabcontentRight" style="width: 40% !important;">
+        <ul class="tab"
+            style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
+            <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'magHistogram')" style="font-size: 16px">Histogram</a>
+            </li>
+            <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'TimeSeries')" style="font-size: 16px">Time Series</a>
+            </li>
+            <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'draw_info')" style="font-size: 16px">Draw</a></li>
+        </ul>
+
+        <div class="tabcontentGraphs" id="magHistogram" style="display: initial;"></div>
+        <div class="tabcontentGraphs" id="TimeSeries"></div>
+
+    </div>
+
     <!--Holder Dividers to highlight what drawing tools are being used.....will fix later-->
     <!--<div id="drawCircleHolder" class="tabcontentSpecial"></div>-->
     <!--<div id="drawRectHolder" class="tabcontentSpecial"></div>-->
@@ -349,13 +375,20 @@
     </div>
 </div>
 
+<!--Spin.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<!--JQuery and JQuery UI-->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<!--Bootstrap-->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!--Perfect Scrollbar-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.12/js/perfect-scrollbar.jquery.js"></script>
-
+<!--Plotly.js-->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!--UI Controls-->
 <script type="text/javascript" src="ui_controls.js"></script>
+<!--Require.js and main app-->
 <script data-main="Control" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 
 </body>

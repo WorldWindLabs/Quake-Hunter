@@ -80,6 +80,14 @@ ul.tab li a[target] {background-color: rgba(67, 167, 199, 1);}
     display: none;
 }
 
+.tabcontentGraphs {
+    display: none;
+    top: 95px;
+    position: fixed;
+    color: #FFFFFF;
+    width: 490px;
+    overflow: auto;
+}
 
 @font-face {
     font-family: 'megrim';

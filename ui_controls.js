@@ -63,7 +63,6 @@ function openTabRight(evt, tabName) {
         tabcontentRight = document.getElementsByClassName("tabcontentRight");
         for (i = 0; i < tabcontentRight.length; i++) {
             tabcontentRight[i].style.display = "none";
-            console.log("here");
         }
     }
 
@@ -114,7 +113,6 @@ function openTabInfo(evt, tabName) {
         tabcontentInfo = document.getElementsByClassName("tabcontentInfo");
         for (i = 0; i < tabcontentInfo.length; i++) {
             tabcontentInfo[i].style.display = "none";
-            console.log("here");
         }
     }
 
@@ -154,9 +152,61 @@ function openTabInfo(evt, tabName) {
     }
 }
 
+function openTabGraphs(evt, tabName) {
+    // Declare all variables
+    var i, tabcontentGraphs, tablinksGraphs;
 
-$('.tabcontentInfo').perfectScrollbar();
+    //If the page has just been loaded, Get all elements with class="tabcontentGraphs" and hide them
+    if (!document.isInit) {
+
+        document.isInit = 1;
+        tabcontentGraphs = document.getElementsByClassName("tabcontentGraphs");
+        for (i = 0; i < tabcontentGraphs.length; i++) {
+            tabcontentGraphs[i].style.display = "none";
+        }
+    }
+
+    // Get all elements with class="tablinksGraphs" and remove the attribute "active"
+    tablinksGraphs = document.getElementsByClassName("tablinksGraphs");
+    for (i = 0; i < tablinksGraphs.length; i++) {
+        if (tablinksGraphs[i].hasAttribute("target", "active")) {
+
+            tablinksGraphs[i].removeAttribute("target", "active");
+        }
+
+    }
+
+    // Show the current tab, and add an "active" attribute to the link
+    // that opened the tab, or removes it if it was already open
+
+    if (document.getElementById(tabName).style.display == "none") {
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.setAttribute("target", "active");
+
+    }
+    else {
+        document.getElementById(tabName).style.display = "none";
+        document.getElementById(tabName).className.replace("active", "");
+        evt.currentTarget.removeAttribute("target", "active");
+
+
+    }
+
+    // remove all other tabs except for the one that was clicked, but do not let this apply to he help tab
+
+    tabcontentGraphs = document.getElementsByClassName("tabcontentGraphs");
+    for (i = 0; i < tabcontentGraphs.length; i++) {
+
+        if (tabcontentGraphs[i].id != tabName.toString())
+            tabcontentGraphs[i].style.display = "none";
+    }
+}
+
+
+
 $('.tabcontentLeft').perfectScrollbar();
 $('.tabcontentRight').perfectScrollbar();
+$('.tabcontentInfo').perfectScrollbar();
+$('.tabcontentGraphs').perfectScrollbar();
 
 

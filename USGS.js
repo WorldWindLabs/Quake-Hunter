@@ -2,7 +2,9 @@
  * Created by gagaus on 7/29/16.
  */
 
-define(['./Draw'], function(Draw) {
+define(['./Draw'],
+
+    function(Draw) {
     "use strict";
 
     // USGS API
@@ -174,6 +176,7 @@ define(['./Draw'], function(Draw) {
                 $.get(this.getUrl(), function (EQ) {
                     draw.placeMarkCreation(EQ, earthquakes);
                     control.initializeHandlers();
+                    draw.graph(EQ);
                 });
                 firstTime = false;
             }
@@ -181,6 +184,7 @@ define(['./Draw'], function(Draw) {
                 this.parameters.update(draw.queryFig, drawOption);
                 $.get(this.getUrl(drawOption), function (EQ) {
                     draw.placeMarkCreation(EQ, earthquakes);
+                    draw.graph(EQ);
                 });
             }
         };

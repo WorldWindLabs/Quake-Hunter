@@ -128,11 +128,9 @@ define(function () {
             var layerItem = $('<button class="list-group-item btn btn-block">' + layer.displayName + '</button>');
             layerListItem.append(layerItem);
 
-            console.log(layer.showSpinner);
-
             if (layer.showSpinner && Spinner) {
                 var opts = {
-                    scale: 0.9,
+                    scale: 0.9
                 };
                 var spinner = new Spinner(opts).spin();
                 layerItem.append(spinner.el);
