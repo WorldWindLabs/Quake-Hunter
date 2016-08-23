@@ -29,11 +29,11 @@ define(['./Rectangle',
             }
 
             function deg2rad(deg) {
-                return deg * (Math.PI/180)
+                return deg * (Math.PI/180);
             }
 
             function rad2deg(rad) {
-                return rad * (180/Math.PI)
+                return rad * (180/Math.PI);
             }
 
             function distance2d(p1, p2) {
@@ -55,7 +55,7 @@ define(['./Rectangle',
 
                 canvas.width = size;
                 canvas.height = size;
-                canvas.lineWidth = 1;
+                ctx2d.lineWidth = 100;
 
                 ctx2d.arc(c, c, radius, 0, 2 * Math.PI, false);
                 ctx2d.fill();
@@ -82,7 +82,7 @@ define(['./Rectangle',
 
             square.origin = p1;
             square.radius3D = this.radius3D;
-            square.attributes.imageSource = ["./images/circle.png"];
+            square.attributes.imageSource = ["./images/circle3.png"];
             // square.attributes.imageSource = renderedCircle();
             square.attributes.drawInterior = true;
             // square.attributes.drawOutline = false;

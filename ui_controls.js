@@ -188,8 +188,6 @@ function openTabGraphs(evt, tabName) {
         document.getElementById(tabName).style.display = "none";
         document.getElementById(tabName).className.replace("active", "");
         evt.currentTarget.removeAttribute("target", "active");
-
-
     }
 
     // remove all other tabs except for the one that was clicked, but do not let this apply to he help tab
@@ -202,11 +200,18 @@ function openTabGraphs(evt, tabName) {
     }
 }
 
-
-
 $('.tabcontentLeft').perfectScrollbar();
 $('.tabcontentRight').perfectScrollbar();
 $('.tabcontentInfo').perfectScrollbar();
 $('.tabcontentGraphs').perfectScrollbar();
 
-
+function checkNumber(box) {
+    var coords = box.value;
+    var Latitude = parseFloat((coords.split(",")[0]));
+    var Longitude = parseFloat((coords.split(",")[1]));
+    if (Latitude > 90 || Latitude < -90) {
+        alert('Please enter a valid Latitude between 90 and -90');
+    } else if (Longitude > 180 || Longitude < -180) {
+        alert('Please enter a valid Longitude between 180 and -180');
+    }
+}

@@ -2,10 +2,11 @@
  * Copyright (C) 2014 United States Government as represented by the Administrator of the
  * National Aeronautics and Space Administration. All Rights Reserved.
  */
-define(['./USGS', './Draw'], function (USGS) {
+define(['./USGS', './Draw'], function(USGS, Draw) {
     "use strict";
 
-    var AnnotationController = function (worldWindow, queryParameters, control) {
+
+    var AnnotationController = function(worldWindow, queryParameters, control) {
         this.worldWindow = worldWindow;
 
         this.magSlider = $("#magSlider");
@@ -15,7 +16,7 @@ define(['./USGS', './Draw'], function (USGS) {
         // var firstTime = true;
         this.drawingSelector = $("#drawingSelection");
         var drawingSelector = this.drawingSelector;
-        this.drawingSelector.on( "change", function() {
+        this.drawingSelector.on("change", function() {
             // if (firstTime) {
             //     alert("Double Click to select points");
             //     firstTime = false;
@@ -49,8 +50,7 @@ define(['./USGS', './Draw'], function (USGS) {
         function updateLegend(value) {
             if (value == "time") {
                 legend.src = "./images/AgeLegend.svg";
-            }
-            else if (value == "magnitude") {
+            } else if (value == "magnitude") {
                 legend.src = "./images/MagnitudeLegend.svg";
             }
 
@@ -64,7 +64,7 @@ define(['./USGS', './Draw'], function (USGS) {
             showButtonPanel: true,
             yearRange: "1925:nn",
             dateFormat: "yy-mm-dd",
-            onSelect: function (dateText, dateobj) {
+            onSelect: function(dateText, dateobj) {
                 queryParameters.setFromDate(dateText);
                 control.redraw();
             }
@@ -76,7 +76,7 @@ define(['./USGS', './Draw'], function (USGS) {
             showButtonPanel: true,
             yearRange: "1975:nn",
             dateFormat: "yy-mm-dd",
-            onSelect: function (dateText, dateobj) {
+            onSelect: function(dateText, dateobj) {
                 queryParameters.setToDate(dateText);
                 control.redraw();
             }
@@ -89,12 +89,12 @@ define(['./USGS', './Draw'], function (USGS) {
             max: 10.0,
             step: 0.1,
             animate: true,
-            slide: function (event, ui) {
+            slide: function(event, ui) {
                 $("#magSliderValue").html(ui.values[0].toString() + " to " +
                     ui.values[1].toString() + " Richter");
 
             },
-            stop: function (event, ui) {
+            stop: function(event, ui) {
                 queryParameters.setMinMagnitude(ui.values[0]);
                 queryParameters.setMaxMagnitude(ui.values[1]);
                 control.redraw();
@@ -109,15 +109,15 @@ define(['./USGS', './Draw'], function (USGS) {
             max: 1000,
             step: 1,
             animate: true,
-            slide: function (event, ui) {
+            slide: function(event, ui) {
                 $("#depthSliderValue").html(ui.values[0].toString() + " to " +
-                ui.values[1].toString() + " KM");
+                    ui.values[1].toString() + " KM");
             },
 
-            stop: function (event, ui) {
+            stop: function(event, ui) {
                 queryParameters.setMinDepth(ui.values[0]);
                 queryParameters.setMaxDepth(ui.values[1]);
-                control.redraw()
+                control.redraw();
             }
         });
 
@@ -128,25 +128,36 @@ define(['./USGS', './Draw'], function (USGS) {
             // max:     100,
             // step:    5,
             animate: true,
-            slide: function (event, ui) {
+            slide: function(event, ui) {
                 $("#opacitySliderValue").html(ui.value.toString() + "% opacity");
             },
-            stop: function (event, ui) {
-                control.setOpacity(ui.value/100);
+            stop: function(event, ui) {
+                control.setOpacity(ui.value / 100);
             }
         });
 
-        this.limitset = $("#limitSet").on("click", function () {
+        this.limitset = $("#limitSet").on("click", function() {
             var limit = document.getElementById("limit").value;
-            if (limit > 20000){
-                alert("Can not query beyond 20,000 events")
+            if (limit > 20000) {
+                alert("Can not query beyond 20,000 events");
             } else {
                 queryParameters.setLimit(limit);
-                control.redraw()
+                control.redraw();
             }
         });
 
-        this.reset = $("#reset").on("click", function () {
+        this.radiusSearch = $("#searchRadius").on("click", function() {
+            var origin = document.getElementById("coordSearch").value;
+            var radius = document.getElementById("radiusKMSearch").value;
+            control.setDrawMode("radialSearch");
+            queryParameters.setoriginlong(origin.split(",")[0]);
+            queryParameters.setoriginlati(origin.split(",")[1]);
+            queryParameters.setradius(radius);
+            control.radialsearchLookAt(origin);
+            control.redraw();
+        });
+
+        this.reset = $("#reset").on("click", function() {
             initializeUI(queryParameters);
             control.reset();
         });
@@ -164,6 +175,8 @@ define(['./USGS', './Draw'], function (USGS) {
             $("#depthSlider").slider("option", "values", [initialQuery.minDepth, initialQuery.maxDepth]);
             $("#depthSliderValue").html($("#depthSlider").slider("values", 0).toString() + " to " +
                 $("#depthSlider").slider("values", 1).toString() + " KM");
+            $("#coordSearch").val("");
+            $("#radiusKMSearch").val("");
 
             document.getElementById('limit').value = "";
 

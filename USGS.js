@@ -69,58 +69,58 @@ define(['./Draw'],
             this.setFromDate = function (value) {
                 this.FromDate = value;
             };
-            
+
             this.setToDate = function (value) {
                 this.ToDate = value;
             };
-            
+
             this.setMinMagnitude = function (value) {
                 this.minMagnitude = value;
             };
-            
+
             this.setMaxMagnitude = function (value) {
                 this.maxMagnitude = value;
             };
-            
+
             this.setLimit = function (value) {
                 this.Limit = value;
             };
 
             this.setMinDepth = function (value) {
-                this.minDepth = value
+                this.minDepth = value;
             };
 
             this.setMaxDepth = function (value) {
                 this.maxDepth = value;
             };
-            
+
             this.setMinLatitude = function(value) {
                 this.MinLatitude = value;
             };
-            
+
             this.setMaxLatitude = function(value) {
                 this.MaxLatitude = value;
             };
-            
+
             this.setMinLongitude = function(value) {
                 this.MinLongitude = value;
             };
-            
+
             this.setMaxLongitude = function(value) {
                 this.MaxLongitude = value;
             };
 
-            // this.setoriginlati = function (value) {
-            //     this.Origin.Lati = value
-            // };
-            //
-            // this.setoriginlong = function (value) {
-            //     this.Origin.Long = value
-            // };
-            //
-            // this.setradius = function (value ) {
-            //     this.Radius = value
-            // }
+            this.setoriginlati = function (value) {
+                this.radialLatitude = value;
+            };
+
+            this.setoriginlong = function (value) {
+                this.radialLongitude = value;
+            };
+
+            this.setradius = function (value ) {
+                this.Radius = value;
+            };
         };
 
         this.parameters = new queryParameters();
@@ -132,6 +132,8 @@ define(['./Draw'],
                 ToDate = this.parameters.ToDate,
                 limit = this.parameters.Limit,
                 origin = this.parameters.Origin,
+                radialLati = this.parameters.radialLatitude,
+                radialLong = this.parameters.radialLongitude,
                 radius3D = this.parameters.Radius,
                 minLatitude = this.parameters.MinLatitude,
                 maxLatitude = this.parameters.MaxLatitude,
@@ -160,6 +162,11 @@ define(['./Draw'],
                     "&maxlongitude=" + maxLongitude.toString() +
                     "&minlatitude=" + minLatitude.toString() +
                     "&maxlatitude=" + maxLatitude.toString();
+            }
+            else if (drawingType == 'radialSearch') {
+                query += "&longitude=" + radialLati.toString() +
+                    "&latitude=" + radialLong.toString() +
+                    "&maxradiuskm=" + radius3D.toString();
             }
             var url = resourcesUrl + query;
             // console.log(url);

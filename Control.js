@@ -94,7 +94,12 @@ define(['./Circle',
                 wwd.surfaceOpacity = this.Opacity;
             };
 
-
+            this.radialsearchLookAt = function(coordinates) {
+                var Latitude = parseFloat((coordinates.split(",")[0]));
+                var Longitude = parseFloat((coordinates.split(",")[1]));
+                var coords = new WorldWind.Location(Latitude, Longitude);
+                wwd.navigator.lookAtLocation = coords;
+            };
 
             this.initializeHandlers = function () {
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.

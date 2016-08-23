@@ -112,6 +112,11 @@ define(['./Circle',
                         Metadata.setRLongitude(round(earthquakes.parameters.Origin.Long));
                         Metadata.setRadius(round(earthquakes.parameters.Radius));
                     }
+                    else if (drawing.getDrawMode() === 'radialSearch'){
+                        Metadata.setRLatitude(round(earthquakes.parameters.radialLatitude));
+                        Metadata.setRLongitude(round(earthquakes.parameters.radialLongitude));
+                        Metadata.setRadius(round(earthquakes.parameters.Radius));
+                    }
                     else {
                         Metadata.setminLatitude(null);
                         Metadata.setmaxLatitude(null);
