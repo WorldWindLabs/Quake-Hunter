@@ -130,7 +130,6 @@ define(['./Circle',
 
             this.graph = function (GeoJSON) {
                 function magHistogram() {
-                    console.log(GeoJSON);
                     var mag = [];
                     for (var i = 0; i < GeoJSON.features.length; i++) {
                         mag.push(GeoJSON.features[i].properties.mag);
@@ -168,7 +167,6 @@ define(['./Circle',
                     var counter = 0;
 
                     dateEventFrequencies.Date[dateIndex] = dateHolder[0];
-                    console.log(dateHolder);
                     var j;
                     for (j = 1; j <= dateHolder.length; j++) {
                         if (dateEventFrequencies.Date[dateIndex] === dateHolder[j]) {
@@ -184,7 +182,6 @@ define(['./Circle',
                     // DONT MIND THIS...
                     dateEventFrequencies.EventFrequency[0] = dateEventFrequencies.EventFrequency[0] + 1 ;
                     dateEventFrequencies.Date.pop();
-                    console.log(dateEventFrequencies);
 
                     var data = [
                         {
@@ -196,7 +193,8 @@ define(['./Circle',
 
                     var layout = {
                         title: "Earthquake Activity",
-                        xaxis: {title: "Date"},
+                        xaxis: {title: "Date",
+                                rangeslider: {}},
                         yaxis: {title: "Number of Earthquakes"}
                     };
 

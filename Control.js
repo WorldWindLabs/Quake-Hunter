@@ -121,7 +121,7 @@ define(['./Circle',
             {layer: viewControlsLayer, enabled: true},
             // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true},
             {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: false},
-            {layer: new TectonicPlateLayer, enabled: true}
+            {layer: new TectonicPlateLayer(), enabled: true}
         ];
 
         for (var l = 0; l < layers.length; l++) {
