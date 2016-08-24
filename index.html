@@ -49,10 +49,10 @@
             <a class="tablinksRight" onclick="openTabRight(event, 'information')" style="position: fixed; right: 1%; width: 3%;" title="Stats">
                 <i class="fa fa-info" aria-hidden="true"></i></a>
         </li>
-        <!-- <li>
+        <li>
             <a class="tablinksRight" onclick="openTabRight(event, 'graphs')" style="position: fixed; right: 4%" title="Graphs">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i></a>
-        </li> -->
+        </li>
     </ul>
 
     <div class="container containerFont">
@@ -275,13 +275,26 @@
                 <button id="searchRadius" class="btn btn-primary" type="button">GO!</button>
         </div>
 
+        <div id="graphs" class="col-sm-2 tabcontentRight" style="width: 40% !important;">
+            <ul class="tab" style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
+                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'magHistogram')" style="font-size: 16px">Histogram</a>
+                </li>
+                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'TimeSeries')" style="font-size: 16px">Time Series</a>
+                </li>
+            </ul>
+
+            <div class="tabcontentGraphs" id="magHistogram" style="display: initial;"></div>
+            <div class="tabcontentGraphs" id="TimeSeries"></div>
+
+        </div>
+
         <div id="information" class="col-sm-2 tabcontentRight" style="width: 25% !important;">
             <ul class="tab" style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
                 <li><a class="tablinksInfo" onclick="openTabInfo(event, 'api_query_info')" style="font-size: 16px">Overview</a>
                 </li>
                 <li><a class="tablinksInfo" onclick="openTabInfo(event, 'event_info')" style="font-size: 16px">Event</a>
                 </li>
-                <li><a class="tablinksInfo" onclick="openTabInfo(event, 'draw_info')" style="font-size: 16px">Draw</a></li>
+                <li><a class="tablinksInfo" onclick="openTabInfo(event, 'draw_info')" style="font-size: 16px">Drawn</a></li>
             </ul>
             <div id="api_query_info" class="col-sm-2 tabcontentInfo" style="display: initial">
                 <h4><strong>Search Summary</strong></h4>
@@ -297,7 +310,7 @@
             </div>
 
             <div id="event_info" class="col-sm-2 tabcontentInfo">
-                <h4><strong>Earthquake Info</strong></h4>
+                <h4><strong>Earthquake Event Info</strong></h4>
                 <hr>
                 <p style="font-size: 12px"><strong>Magnitude: </strong><span id="magnitude"></span></p>
                 <p style="font-size: 12px"><strong>Location: </strong><span id="location"></span></p>
@@ -308,7 +321,7 @@
             </div>
 
             <div id="draw_info" class="col-sm-2 tabcontentInfo">
-                <h4><strong>Draw Info</strong></h4>
+                <h4><strong>Drawn Region Info</strong></h4>
                 <hr>
                 <p style="font-size: 12px"><strong>Drawn Min Latitude: </strong><span id="drawnMinLat"></span></p>
                 <p style="font-size: 12px"><strong>Drawn Max Latitude: </strong><span id="drawnMaxLat"></span></p>
@@ -319,19 +332,6 @@
                 <p style="font-size: 12px"><strong>Origin Longitude: </strong><span id="drawnRLong"></span></p>
                 <p style="font-size: 12px"><strong>Drawn Radius: </strong><span id="drawnRadius"></span></p>
             </div>
-        </div>
-
-        <div id="graphs" class="col-sm-2 tabcontentRight" style="width: 40% !important;">
-            <ul class="tab" style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
-                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'magHistogram')" style="font-size: 16px">Histogram</a>
-                </li>
-                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'TimeSeries')" style="font-size: 16px">Time Series</a>
-                </li>
-            </ul>
-
-            <div class="tabcontentGraphs" id="magHistogram" style="display: initial;"></div>
-            <div class="tabcontentGraphs" id="TimeSeries"></div>
-
         </div>
 
         <div>

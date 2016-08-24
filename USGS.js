@@ -11,7 +11,8 @@ define(['./Draw'],
     var USGS = function (wwd, control) {
         var currentTimeUTC = +new Date();
         var minDateISO = new Date(currentTimeUTC + -30 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
-        var maxDateISO = new Date(currentTimeUTC + 0 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
+        // Set one day into the future to account for potential time zone issues.
+        var maxDateISO = new Date(currentTimeUTC + 1 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
         minDateISO[minDateISO.length - 1] = minDateISO[minDateISO.length - 1].split('.')[0];
         maxDateISO[maxDateISO.length - 1] = maxDateISO[maxDateISO.length - 1].split('.')[0];
 
@@ -169,7 +170,7 @@ define(['./Draw'],
                     "&maxradiuskm=" + radius3D.toString();
             }
             var url = resourcesUrl + query;
-            // console.log(url);
+            console.log(url);
             return url;
         };
 
