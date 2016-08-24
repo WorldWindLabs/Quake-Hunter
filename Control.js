@@ -94,11 +94,19 @@ define(['./Circle',
                 wwd.surfaceOpacity = this.Opacity;
             };
 
-            this.radialsearchLookAt = function(coordinates) {
-                var Latitude = parseFloat((coordinates.split(",")[0]));
-                var Longitude = parseFloat((coordinates.split(",")[1]));
+            this.goToAnimator = new WorldWind.GoToAnimator(wwd);
+
+            this.FancyLookAt = function(coordinatesString) {
+                var Latitude = parseFloat((coordinatesString.split(",")[0]));
+                var Longitude = parseFloat((coordinatesString.split(",")[1]));
                 var coords = new WorldWind.Location(Latitude, Longitude);
-                wwd.navigator.lookAtLocation = coords;
+                this.goToAnimator.goTo(coords, null);
+            };
+
+            this.currentGeoJSON = null;
+
+            this.CurGeoJSON = function(GeoJSON) {
+                this.currentGeoJSON = GeoJSON;
             };
 
             this.initializeHandlers = function () {

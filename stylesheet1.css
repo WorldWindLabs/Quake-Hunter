@@ -87,7 +87,7 @@ ul.tab li a[target] {background-color:rgb(67, 167, 199);background-color: rgba(6
     position: fixed;
     color: #FFFFFF;
     width: 490px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 @font-face {
@@ -119,4 +119,18 @@ ul.tab li a[target] {background-color:rgb(67, 167, 199);background-color: rgba(6
 .leftTabPadding {
     padding-left: 1.5%;
     padding-right: 1.5%;
+}
+
+.tourButtonsUP {
+    position: fixed;
+    bottom: 5%;
+    /*right: 48%;*/
+    height: 5%;
+}
+
+.tourButtonsDOWN {
+    position: fixed;
+    bottom: 5%;
+    right: 50%;
+    height: 5%;
 }

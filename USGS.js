@@ -170,7 +170,7 @@ define(['./Draw'],
                     "&maxradiuskm=" + radius3D.toString();
             }
             var url = resourcesUrl + query;
-            console.log(url);
+            // console.log(url);
             return url;
         };
 
@@ -185,6 +185,7 @@ define(['./Draw'],
                     draw.placeMarkCreation(EQ, earthquakes);
                     control.initializeHandlers();
                     draw.graph(EQ);
+                    control.CurGeoJSON(EQ);
                 });
                 firstTime = false;
             }
@@ -193,6 +194,7 @@ define(['./Draw'],
                 $.get(this.getUrl(drawOption), function (EQ) {
                     draw.placeMarkCreation(EQ, earthquakes);
                     draw.graph(EQ);
+                    control.CurGeoJSON(EQ);
                 });
             }
         };

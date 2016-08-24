@@ -153,13 +153,59 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
             queryParameters.setoriginlong(origin.split(",")[0]);
             queryParameters.setoriginlati(origin.split(",")[1]);
             queryParameters.setradius(radius);
-            control.radialsearchLookAt(origin);
+            control.FancyLookAt(origin);
             control.redraw();
         });
 
         this.reset = $("#reset").on("click", function() {
             initializeUI(queryParameters);
             control.reset();
+        });
+
+        var GeoJSONHandler = function(controlGeoJSON) {
+            var GeoJSON = controlGeoJSON;
+            var highMag = [];
+            for (var i = 0; i < GeoJSON.features.length; i++) {
+                if (GeoJSON.features[i].properties.mag > 3.5) {
+                    highMag.push(GeoJSON.features[i]);
+                }
+            }
+            return highMag
+        };
+
+        var index = 0;
+
+        this.tourUP = $("#forward").on("click", function(){
+            console.log(index);
+            var highMag = GeoJSONHandler(control.currentGeoJSON);
+            if (index === highMag.length - 1) {
+                index = 0;
+                var first = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
+                control.FancyLookAt(first);
+                index++;
+            } else {
+                var next = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
+                control.FancyLookAt(next);
+                index++;
+            }
+            console.log(index);
+        });
+
+        this.tourDOWN = $("#backward").on("click", function(){
+            console.log(index);
+            var highMag = GeoJSONHandler(control.currentGeoJSON);
+            if (index === 0) {
+                index = highMag.length;
+                index--;
+                var last = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
+                control.FancyLookAt(last);
+                index--
+            } else {
+                index--;
+                var previous = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
+                control.FancyLookAt(previous);
+            }
+            console.log(index);
         });
 
         function initializeUI(queryParameters) {
