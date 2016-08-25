@@ -277,13 +277,16 @@
 
         <div id="graphs" class="col-sm-2 tabcontentRight" style="width: 40% !important;">
             <ul class="tab" style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
-                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'magHistogram')" style="font-size: 16px">Histogram</a>
+                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'magHistogram')" style="font-size: 16px">Magnitude</a>
+                </li>
+                <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'depthHistogram')" style="font-size: 16px">Depth</a>
                 </li>
                 <li><a class="tablinksGraphs" onclick="openTabGraphs(event, 'TimeSeries')" style="font-size: 16px">Time Series</a>
                 </li>
             </ul>
 
             <div class="tabcontentGraphs" id="magHistogram" style="display: initial;"></div>
+            <div class="tabcontentGraphs" id="depthHistogram"></div>
             <div class="tabcontentGraphs" id="TimeSeries"></div>
 
         </div>

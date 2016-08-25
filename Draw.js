@@ -156,6 +156,28 @@ define(['./Circle',
                     Plotly.newPlot('magHistogram', data, layout, {displaylogo: false});
                 }
 
+                function depthHistogram() {
+                    var depth = [];
+                    for (var i = 0; i < GeoJSON.features.length; i++) {
+                        depth.push(GeoJSON.features[i].geometry.coordinates[2]);
+                    }
+                    var data = [
+                        {
+                            x: depth,
+                            type: 'histogram',
+                            marker: {
+                                color: 'rgba(72,105,187,1)'
+                            }
+                        }
+                    ];
+                    var layout = {
+                        title: "Depth (km) Distribution",
+                        xaxis: {title: "Depth (km)"},
+                        yaxis: {title: "Frequency"}
+                    };
+                    Plotly.newPlot('depthHistogram', data, layout, {displaylogo: false});
+                }
+
                 function activityTimeSeries() {
                     var dateHolder = [];
 
@@ -207,6 +229,7 @@ define(['./Circle',
                 }
 
                 magHistogram();
+                depthHistogram();
                 activityTimeSeries();
             };
 
