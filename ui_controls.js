@@ -182,7 +182,6 @@ function openTabGraphs(evt, tabName) {
     if (document.getElementById(tabName).style.display == "none") {
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.setAttribute("target", "active");
-
     }
     else {
         document.getElementById(tabName).style.display = "none";
@@ -198,6 +197,69 @@ function openTabGraphs(evt, tabName) {
         if (tabcontentGraphs[i].id != tabName.toString())
             tabcontentGraphs[i].style.display = "none";
     }
+}
+
+function openRightTabTour(evt, tabName) {
+    // Declare all variables
+    var i, tabcontentRight, tablinksRight;
+
+    //If the page has just been loaded, Get all elements with class="tabcontentRight" and hide them
+    if (!document.isInit) {
+
+        document.isInit = 1;
+        tabcontentRight = document.getElementsByClassName("tabcontentRight");
+        for (i = 0; i < tabcontentRight.length; i++) {
+            tabcontentRight[i].style.display = "none";
+        }
+    }
+
+    // Get all elements with class="tablinksRight" and remove the attribute "active"
+    tablinksRight = document.getElementsByClassName("tablinksRight");
+    for (i = 0; i < tablinksRight.length; i++) {
+        if (tablinksRight[i].hasAttribute("target", "active")) {
+
+            tablinksRight[i].removeAttribute("target", "active");
+        }
+
+    }
+    // Show the current tab, and add an "active" attribute to the link
+    // that opened the tab, or removes it if it was already open
+
+    if (document.getElementById(tabName).style.display == "none") {
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.setAttribute("target", "active");
+
+    }
+
+    // remove all other tabs except for the one that was clicked, but do not let this apply to he help tab
+
+    tabcontentRight = document.getElementsByClassName("tabcontentRight");
+    for (i = 0; i < tabcontentRight.length; i++) {
+
+        if (tabcontentRight[i].id != tabName.toString())
+            tabcontentRight[i].style.display = "none";
+    }
+}
+
+function openEventInfoTab(evt) {
+    var i, tabcontentInfo, tablinksInfo;
+
+    tablinksInfo = document.getElementsByClassName("tablinksInfo");
+    for (i = 0; i < tablinksInfo.length; i++) {
+        if (tablinksInfo[i].hasAttribute("target", "active")) {
+
+            tablinksInfo[i].removeAttribute("target", "active");
+        }
+    }
+
+    tabcontentInfo = document.getElementsByClassName("tabcontentInfo");
+    for (i = 0; i < tabcontentInfo.length; i++) {
+
+        if (tabcontentInfo[i].id != 'event_info'.toString())
+            tabcontentInfo[i].style.display = "none";
+    }
+    evt.currentTarget.setAttribute("target", "active");
+    document.getElementById('event_info').style.display = "block"
 }
 
 $('.tabcontentLeft').perfectScrollbar();

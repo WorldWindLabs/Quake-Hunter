@@ -158,6 +158,7 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
         });
 
         this.reset = $("#reset").on("click", function() {
+            index = 0;
             initializeUI(queryParameters);
             control.reset();
         });
@@ -176,36 +177,36 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
         var index = 0;
 
         this.tourUP = $("#forward").on("click", function(){
-            console.log(index);
             var highMag = GeoJSONHandler(control.currentGeoJSON);
             if (index === highMag.length - 1) {
                 index = 0;
                 var first = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
                 control.FancyLookAt(first);
+                control.tourMetadataDisplay(highMag, index);
                 index++;
             } else {
                 var next = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
                 control.FancyLookAt(next);
+                control.tourMetadataDisplay(highMag, index);
                 index++;
             }
-            console.log(index);
         });
 
         this.tourDOWN = $("#backward").on("click", function(){
-            console.log(index);
             var highMag = GeoJSONHandler(control.currentGeoJSON);
             if (index === 0) {
                 index = highMag.length;
                 index--;
                 var last = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
                 control.FancyLookAt(last);
+                control.tourMetadataDisplay(highMag, index);
                 index--
             } else {
                 index--;
                 var previous = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
                 control.FancyLookAt(previous);
+                control.tourMetadataDisplay(highMag, index);
             }
-            console.log(index);
         });
 
         function initializeUI(queryParameters) {

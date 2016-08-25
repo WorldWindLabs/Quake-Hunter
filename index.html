@@ -46,7 +46,7 @@
         </li>
 
         <li>
-            <a class="tablinksRight" onclick="openTabRight(event, 'information')" style="position: fixed; right: 1%; width: 3%;" title="Stats">
+            <a class="tablinksRight" onclick="openTabRight(event, 'information');" style="position: fixed; right: 1%; width: 3%;" title="Stats">
                 <i class="fa fa-info" aria-hidden="true"></i></a>
         </li>
         <li>
@@ -290,7 +290,7 @@
 
         <div id="information" class="col-sm-2 tabcontentRight" style="width: 25% !important;">
             <ul class="tab" style="z-index: 999; position: fixed; width: auto; background: rgba(46,74,110,1); overflow: visible">
-                <li><a class="tablinksInfo" onclick="openTabInfo(event, 'api_query_info')" style="font-size: 16px">Overview</a>
+                <li><a class="tablinksInfo" onclick="openTabInfo(event, 'api_query_info');" style="font-size: 16px">Overview</a>
                 </li>
                 <li><a class="tablinksInfo" onclick="openTabInfo(event, 'event_info')" style="font-size: 16px">Event</a>
                 </li>
@@ -299,7 +299,7 @@
             <div id="api_query_info" class="col-sm-2 tabcontentInfo" style="display: initial">
                 <h4><strong>Search Summary</strong></h4>
                 <hr>
-                <p style="font-size: 12px"><strong>Number of Eathquakes: </strong><span id="eq_count"></span></p>
+                <p style="font-size: 12px"><strong>Number of Eathquakes: </strong><span id="eq_count" ></span></p>
                 <p style="font-size: 12px"><strong>Start Date: </strong><span id="minDate"></span></p>
                 <p style="font-size: 12px"><strong>End Date: </strong><span id="maxDate"></span></p>
                 <p style="font-size: 12px"><strong>Min Magnitude: </strong><span id="minMagnitude"></span></p>
@@ -339,8 +339,8 @@
         </div>
 
         <div text align="center">
-            <button id="forward" class="btn btn-primary tourButtonsUP" type="button"><span class="glyphicon glyphicon-menu-right"></span></button>
-            <button id="backward" class="btn btn-primary tourButtonsDOWN" type="button"><span class="glyphicon glyphicon-menu-left"></span></button>
+            <button id="forward" class="btn btn-default tourButtonsUP" onclick="openRightTabTour(event, 'information');openEventInfoTab(event)" type="button"><span class="glyphicon glyphicon-menu-right"></span></button>
+            <button id="backward" class="btn btn-default tourButtonsDOWN" onclick="openRightTabTour(event, 'information');openEventInfoTab(event)" type="button"><span class="glyphicon glyphicon-menu-left"></span></button>
         </div>
     </div>
 

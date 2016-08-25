@@ -57,6 +57,7 @@ define(['./Circle',
             var earthquakes =  new USGS(wwd, this);
             var metadata = new Metadata(this);
             this.handler = new Draw(wwd, metadata, this);
+            this.goToAnimator = new WorldWind.GoToAnimator(wwd);
             var Opacity = 0.5;
 
             this.setDrawMode = function (value) {
@@ -94,8 +95,6 @@ define(['./Circle',
                 wwd.surfaceOpacity = this.Opacity;
             };
 
-            this.goToAnimator = new WorldWind.GoToAnimator(wwd);
-
             this.FancyLookAt = function(coordinatesString) {
                 var Latitude = parseFloat((coordinatesString.split(",")[0]));
                 var Longitude = parseFloat((coordinatesString.split(",")[1]));
@@ -107,6 +106,15 @@ define(['./Circle',
 
             this.CurGeoJSON = function(GeoJSON) {
                 this.currentGeoJSON = GeoJSON;
+            };
+
+            this.tourMetadataDisplay = function(array, index) {
+                metadata.setMagnitude(array[index].properties.mag);
+                metadata.setlocation(array[index].properties.place);
+                metadata.settime(new Date(array[index].properties.time));
+                metadata.setlatitude(array[index].geometry.coordinates[1]);
+                metadata.setlongitude(array[index].geometry.coordinates[0]);
+                metadata.setdepth(array[index].geometry.coordinates[2]);
             };
 
             this.initializeHandlers = function () {
