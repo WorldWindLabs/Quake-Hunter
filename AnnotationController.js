@@ -158,56 +158,58 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
         });
 
         this.reset = $("#reset").on("click", function() {
-            index = 0;
+            document.index = 0;
             initializeUI(queryParameters);
             control.reset();
         });
 
         var GeoJSONHandler = function(controlGeoJSON) {
             var GeoJSON = controlGeoJSON;
-            var highMag = [];
+            var eqArray = [];
             for (var i = 0; i < GeoJSON.features.length; i++) {
-                if (GeoJSON.features[i].properties.mag > 3.5) {
-                    highMag.push(GeoJSON.features[i]);
+                if (GeoJSON.features[i].properties.mag > 4.5) {
+                    eqArray.push(GeoJSON.features[i]);
                 }
             }
-            return highMag
+            return eqArray
         };
 
-        var index = 0;
+        this.touringfunctions = function () {
 
-        this.tourUP = $("#forward").on("click", function(){
-            var highMag = GeoJSONHandler(control.currentGeoJSON);
-            if (index === highMag.length - 1) {
-                index = 0;
-                var first = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
-                control.FancyLookAt(first);
-                control.tourMetadataDisplay(highMag, index);
-                index++;
-            } else {
-                var next = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
-                control.FancyLookAt(next);
-                control.tourMetadataDisplay(highMag, index);
-                index++;
-            }
-        });
+            document.index = 0;
 
-        this.tourDOWN = $("#backward").on("click", function(){
-            var highMag = GeoJSONHandler(control.currentGeoJSON);
-            if (index === 0) {
-                index = highMag.length;
-                index--;
-                var last = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
-                control.FancyLookAt(last);
-                control.tourMetadataDisplay(highMag, index);
-                index--
-            } else {
-                index--;
-                var previous = (highMag[index].geometry.coordinates[1].toString() + ","+ highMag[index].geometry.coordinates[0].toString());
-                control.FancyLookAt(previous);
-                control.tourMetadataDisplay(highMag, index);
-            }
-        });
+            var tourEventLookAt = function(array, index) {
+                var event = (array[index].geometry.coordinates[1].toString() + "," + array[index].geometry.coordinates[0].toString());
+                control.FancyLookAt(event);
+                control.tourMetadataDisplay(array, index);
+            };
+
+            this.tourUP = $("#forward").on("click", function () {
+                var highMag = GeoJSONHandler(control.currentGeoJSON);
+                if (document.index === highMag.length) {
+                    document.index = 0;
+                    tourEventLookAt(highMag, document.index);
+                    document.index++;
+                } else {
+                    tourEventLookAt(highMag, document.index);
+                    document.index++;
+                }
+            });
+
+            this.tourDOWN = $("#backward").on("click", function () {
+                var highMag = GeoJSONHandler(control.currentGeoJSON);
+                if (document.index === 0) {
+                    document.index = highMag.length;
+                    document.index--;
+                    tourEventLookAt(highMag, document.index);
+                } else {
+                    document.index--;
+                    tourEventLookAt(highMag, document.index);
+                }
+            });
+        };
+
+        this.touringfunctions();
 
         function initializeUI(queryParameters) {
             var initialQuery = queryParameters.initialQuery;

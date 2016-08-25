@@ -10,7 +10,7 @@ define(['./Draw'],
     // USGS API
     var USGS = function (wwd, control) {
         var currentTimeUTC = +new Date();
-        var minDateISO = new Date(currentTimeUTC + -30 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
+        var minDateISO = new Date(currentTimeUTC + -10 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
         // Set one day into the future to account for potential time zone issues.
         var maxDateISO = new Date(currentTimeUTC + 1 * 24 * 60 * 60 * 1000).toISOString().split(/[-]+/);
         minDateISO[minDateISO.length - 1] = minDateISO[minDateISO.length - 1].split('.')[0];
@@ -184,6 +184,7 @@ define(['./Draw'],
                 $.get(this.getUrl(), function (EQ) {
                     draw.placeMarkCreation(EQ, earthquakes);
                     control.initializeHandlers();
+                    control.mostRecentSigEQ(EQ);
                     draw.graph(EQ);
                     control.CurGeoJSON(EQ);
                 });

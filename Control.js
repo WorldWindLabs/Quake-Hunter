@@ -45,13 +45,13 @@ define(['./Circle',
         wwd.surfaceOpacity = 0.5;
 
         wwd.navigator.lookAtLocation.altitude = 0;
-        wwd.navigator.range = 2.5e7;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (location) {
-                wwd.navigator.lookAtLocation.latitude = location.coords.latitude;
-                wwd.navigator.lookAtLocation.longitude = location.coords.longitude;
-            });
-        }
+        wwd.navigator.range = 2e7;
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(function (location) {
+        //         wwd.navigator.lookAtLocation.latitude = location.coords.latitude;
+        //         wwd.navigator.lookAtLocation.longitude = location.coords.longitude;
+        //     });
+        // }
 
         var Control = function () {
             var earthquakes =  new USGS(wwd, this);
@@ -106,6 +106,24 @@ define(['./Circle',
 
             this.CurGeoJSON = function(GeoJSON) {
                 this.currentGeoJSON = GeoJSON;
+            };
+
+            this.mostRecentSigEQ = function(GeoJSON) {
+                var eqArray = [];
+                for (var i = 0; i < GeoJSON.features.length; i++) {
+                    if (GeoJSON.features[i].properties.mag > 4.5) {
+                        eqArray.push(GeoJSON.features[i]);
+                    }
+                }
+                eqArray.sort(function(a, b) {
+                    return parseFloat(b.properties.time) - parseFloat(a.properties.time);
+                });
+                var initevent = (eqArray[0].geometry.coordinates[1].toString() + "," + eqArray[0].geometry.coordinates[0].toString());
+                var Latitude = parseFloat((initevent.split(",")[0]));
+                var Longitude = parseFloat((initevent.split(",")[1]));
+                var coords2 = new WorldWind.Location(Latitude, Longitude);
+                wwd.navigator.lookAtLocation = coords2;
+                this.tourMetadataDisplay(eqArray, 0);
             };
 
             this.tourMetadataDisplay = function(array, index) {
