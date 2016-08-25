@@ -153,7 +153,7 @@ define(['./Circle',
                         xaxis: {title: "Magnitude"},
                         yaxis: {title: "Frequency"}
                     };
-                    Plotly.newPlot('magHistogram', data, layout);
+                    Plotly.newPlot('magHistogram', data, layout, {displaylogo: false});
                 }
 
                 function activityTimeSeries() {
@@ -203,7 +203,7 @@ define(['./Circle',
                         yaxis: {title: "Number of Earthquakes"}
                     };
 
-                    Plotly.newPlot('TimeSeries', data, layout);
+                    Plotly.newPlot('TimeSeries', data, layout, {displaylogo: false});
                 }
 
                 magHistogram();
