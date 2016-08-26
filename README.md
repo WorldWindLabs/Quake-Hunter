@@ -64,4 +64,4 @@ A query showing the subduction zone underneath Japan
 * EQ Forecasting implementation (see [NASA WebWorldWind Research](https://github.com/NASAWorldWindResearch/EarthquakeApp))
 
 ----
-Updated as of 18/08/2016 (August 18th, 2016)
+Updated as of 26/08/2016 (August 26th, 2016)
