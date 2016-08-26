@@ -86,8 +86,6 @@ ul.tab li a[target] {background-color:rgb(67, 167, 199);background-color: rgba(6
     top: 95px;
     position: fixed;
     color: #FFFFFF;
-    width: 490px;
-    /*width: 710px;*/
     overflow: hidden;
 }
 

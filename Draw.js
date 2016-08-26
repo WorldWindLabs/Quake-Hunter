@@ -134,6 +134,10 @@ define(['./Circle',
             };
 
             this.graph = function (GeoJSON) {
+
+                var width = (($(window).width()) * 0.38);
+                var height = ($(window).height() * 0.7);
+
                 function magHistogram() {
                     var mag = [];
                     for (var i = 0; i < GeoJSON.features.length; i++) {
@@ -151,7 +155,9 @@ define(['./Circle',
                     var layout = {
                         title: "Magnitude Distribution",
                         xaxis: {title: "Magnitude"},
-                        yaxis: {title: "Frequency"}
+                        yaxis: {title: "Frequency"},
+                        width: width,
+                        height: height
                     };
                     Plotly.newPlot('magHistogram', data, layout, {displaylogo: false});
                 }
@@ -173,7 +179,9 @@ define(['./Circle',
                     var layout = {
                         title: "Depth (km) Distribution",
                         xaxis: {title: "Depth (km)"},
-                        yaxis: {title: "Frequency"}
+                        yaxis: {title: "Frequency"},
+                        width: width,
+                        height: height
                     };
                     Plotly.newPlot('depthHistogram', data, layout, {displaylogo: false});
                 }
@@ -222,7 +230,9 @@ define(['./Circle',
                         title: "Earthquake Activity",
                         xaxis: {title: "Date",
                                 rangeslider: {}},
-                        yaxis: {title: "Number of Earthquakes"}
+                        yaxis: {title: "Number of Earthquakes"},
+                        width: width,
+                        height: height
                     };
 
                     Plotly.newPlot('TimeSeries', data, layout, {displaylogo: false});
@@ -231,6 +241,19 @@ define(['./Circle',
                 magHistogram();
                 depthHistogram();
                 activityTimeSeries();
+
+
+                $(window).resize(function() {
+                    var newWidth = (($(window).width()) * 0.38);
+                    var newHeight = ($(window).height() * 0.7);
+                    var update = {
+                        width: newWidth,
+                        height: newHeight
+                    };
+                    Plotly.relayout('magHistogram', update);
+                    Plotly.relayout('depthHistogram', update);
+                    Plotly.relayout('TimeSeries', update);
+                });
             };
 
             // The common pick-handling function.
