@@ -7,7 +7,7 @@
 
 1. Introduction
 -----
-This is an earthquake visualization app built in NASA WebWorldWind with support from the USGS Innovation Center for Earth Science, http://geography.wr.usgs.gov/ICES/. Given the wealth of USGS information on historic earthquakes, we designed and built an app that can aggregate and display nearly 100 years of seismic data dynamically. Quake Hunter is a valuable tool for understanding how tectonic plates interact with one another. *Quake Hunter* visualizes any range of earthquake data from the USGS, in 3D, either on the whole planet or in a user-defined geographically constrained area. With powerful querying tools, this application provids exactly what the user wants to see in terms of earthquake event data around the world.
+This is an earthquake visualization app built in NASA WebWorldWind with support from the USGS Innovation Center for Earth Science, http://geography.wr.usgs.gov/ICES/. Given the wealth of USGS information on historic earthquakes, we designed and built an app that can aggregate and display nearly 100 years of seismic data dynamically. Quake Hunter is a valuable tool for understanding how tectonic plates interact with one another. *Quake Hunter* visualizes any range of earthquake data from the USGS, in 3D, either on the whole planet or in a user-defined geographically constrained area. With powerful querying tools, this application provides exactly what the user wants to see in terms of earthquake event data around the world.
 
 2. How to Run *Quake Hunter*
 -----
