@@ -135,8 +135,8 @@ define(['./Circle',
 
             this.graph = function (GeoJSON) {
 
-                var width = (($(window).width()) * 0.38);
-                var height = ($(window).height() * 0.7);
+                var width = (($(window).width()) * 0.333);
+                var height = ($(window).height() * 0.65);
 
                 function magHistogram() {
                     var mag = [];
@@ -244,8 +244,8 @@ define(['./Circle',
 
 
                 $(window).resize(function() {
-                    var newWidth = (($(window).width()) * 0.38);
-                    var newHeight = ($(window).height() * 0.7);
+                    var newWidth = (($(window).width()) * 0.333);
+                    var newHeight = ($(window).height() * 0.65);
                     var update = {
                         width: newWidth,
                         height: newHeight
