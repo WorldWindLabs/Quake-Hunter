@@ -7,7 +7,7 @@
 
 1. Introduction
 -----
-This is an earthquake visualization app built in NASA WebWorldWind with support from the USGS Innovation Center for Earth Science, http://geography.wr.usgs.gov/ICES/. Given the wealth of USGS information on historic earthquakes, we designed and built an app that can aggregate and display nearly 100 years of seismic data dynamically. Quake Hunter is a valuable tool for understanding how tectonic plates interact with one another. *Quake Hunter* visualizes any range of earthquake data from the USGS, in 3D, either on the whole planet or in a user-defined geographically constrained area. With powerful querying tools, this application provides exactly what the user wants to see in terms of earthquake event data around the world.
+This is an earthquake visualization app built in NASA WebWorldWind with support from the USGS Innovation Center for Earth Science, http://geography.wr.usgs.gov/ICES/. Given the wealth of USGS information on historic earthquakes, we designed and built an app that can aggregate and display nearly 100 years of seismic data dynamically. *Quake Hunter* is a valuable tool for understanding how tectonic plates interact with one another. *Quake Hunter* visualizes any range of earthquake data from the USGS, in 3D, either on the whole planet or in a user-defined geographically constrained area. With powerful querying tools, this application provides exactly what the user wants to see in terms of earthquake event data around the world.
 
 2. How to Run *Quake Hunter*
 -----
@@ -16,7 +16,8 @@ You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
-###Europa Challenge 2016 video: https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
+###Europa Challenge 2016 video:
+https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
 
 3. How To Use
 -----
@@ -29,7 +30,7 @@ You can download or clone the repository in to local storage and run the `index.
   * The app should automatically generate a visualization of earthquake event hypocenters.
   * The reset button reverts the earthquakes displayed to the initial query.
   * Browse through the statistics of your query in the right hand side information and graphs panel. Magnitude and depth histograms, as well an earthquake activity time series graphs are all automatically generated from your query.
-  * You can download these graphs by clicking the camera button in the upper right hand corner of the graph plot area.
+  * You can download these graphs by clicking the camera icon in the upper right hand corner of the graph plot area.
 
 ###Visualization of subsurface features:
 Try a geographically constrained query along a subduction zone or fault line (These are represented by the brown lines).
@@ -67,4 +68,4 @@ A query showing the subduction zone underneath Japan
 * EQ Forecasting implementation (see [NASA WebWorldWind Research](https://github.com/NASAWorldWindResearch/EarthquakeApp))
 
 ----
-Updated as of 26/08/2016 (August 26th, 2016)
+Updated as of 28/08/2016 (August 28th, 2016)
