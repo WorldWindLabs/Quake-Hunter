@@ -32,6 +32,10 @@ You can download or clone the repository in to local storage and run the `index.
 ###Europa Challenge 2016 video:
 https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
 
+<a href="https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be">
+<img width="479" alt="youtube" src="https://cloud.githubusercontent.com/assets/19692086/18067526/0b4e6ae4-6df2-11e6-8bb3-5bf4bc268271.PNG">
+</a>
+
 3. How To Use
 -----
 ###Querying Earthquakes:
