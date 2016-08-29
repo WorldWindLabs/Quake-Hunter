@@ -1,7 +1,7 @@
 *Quake Hunter*: Earthquake Activity Visualizer
 ====================
 **Organization:** NASA Ames Research Center (PX)  
-**Manager:** Patrick Hogan, Jonathan Stock  
+**Manager:** Jonathan Stock  
 **Authors:** Gabriel Militão, Benjamin Chang  
 **Acknowledgements:**  Khaled Sharif, Farah Salah, Miguel Del Castillo, Bert Stewart
 
