@@ -17,6 +17,12 @@ Sections:
 
 5. [Future Work](#5-future-work) 
 
+###Europa Challenge 2016 video:
+https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
+
+<a href="https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be">
+<img width="479" alt="youtube" src="https://cloud.githubusercontent.com/assets/19692086/18067526/0b4e6ae4-6df2-11e6-8bb3-5bf4bc268271.PNG">
+</a>
 
 1. Introduction
 -----
@@ -28,13 +34,6 @@ This is an earthquake visualization app built in NASA WebWorldWind with support 
 You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
-
-###Europa Challenge 2016 video:
-https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
-
-<a href="https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be">
-<img width="479" alt="youtube" src="https://cloud.githubusercontent.com/assets/19692086/18067526/0b4e6ae4-6df2-11e6-8bb3-5bf4bc268271.PNG">
-</a>
 
 3. How To Use
 -----
