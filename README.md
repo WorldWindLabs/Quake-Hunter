@@ -16,7 +16,7 @@ You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
-###Europa Challenge 2016 video for entry: https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
+###Europa Challenge 2016 video: https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
 
 3. How To Use
 -----
@@ -37,7 +37,7 @@ Try a geographically constrained query along a subduction zone or fault line (Th
   * Visualize a longer period of earthquakes (>20 years) and within the magnitude range M3-10.
   * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
 
-###Preformance Tips:
+###Performance Tips:
 * If the earthquakes are not loading immediately after you enter search parameters, it may be loading.
 Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
 excess of 5000 earthquakes, the load may take a while.
