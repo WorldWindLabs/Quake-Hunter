@@ -16,6 +16,8 @@ You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
 ###Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
+###Europa Challenge 2016 video for entry: https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
+
 3. How To Use
 -----
 ###Querying Earthquakes:
@@ -28,6 +30,7 @@ You can download or clone the repository in to local storage and run the `index.
   * The reset button reverts the earthquakes displayed to the initial query.
   * Browse through the statistics of your query in the right hand side information and graphs panel. Magnitude and depth histograms, as well an earthquake activity time series graphs are all automatically generated from your query.
   * You can download these graphs by clicking the camera button in the upper right hand corner of the graph plot area.
+
 ###Visualization of subsurface features:
 Try a geographically constrained query along a subduction zone or fault line (These are represented by the brown lines).
   * Set a specific sector of the planet to query earthquakes within.
@@ -35,14 +38,14 @@ Try a geographically constrained query along a subduction zone or fault line (Th
   * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
 
 ###Preformance Tips:
-* If the earthquakes are not loading immediately after you enter search parameters, it may be loading. 
+* If the earthquakes are not loading immediately after you enter search parameters, it may be loading.
 Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
 excess of 5000 earthquakes, the load may take a while.
 * If you continually run into performance issues, consider using
   Google Chrome or Apple Safari to run the web app.
 * Try removing the tectonic plate layer for improved browsing speeds in the app.
 * Consider limiting the earthquake event search to less than 2000 events for quicker load times
-* For larger queries, the preformance greatly improves if searches are geographically constrained. To
+* For larger queries, the performance greatly improves if searches are geographically constrained. To
         do this, use the drawing tool to limit where earthquakes are shown.
 
 
