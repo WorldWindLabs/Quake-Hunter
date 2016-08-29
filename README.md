@@ -5,6 +5,19 @@
 **Authors:** Gabriel Militão, Benjamin Chang  
 **Acknowledgements:**  Khaled Sharif, Farah Salah, Miguel Del Castillo, Bert Stewart
 
+Sections:
+-----
+1. [Introduction](#1-introduction)
+
+2. [How to run Quake Hunter](#2-how-to-run-quake-hunter)
+
+3. [How to Use](#3-how-to-use)
+
+4. [Example Usage](#4-example-usage)
+
+5. [Future Work](#5-future-work) 
+
+
 1. Introduction
 -----
 This is an earthquake visualization app built in NASA WebWorldWind with support from the USGS Innovation Center for Earth Science, http://geography.wr.usgs.gov/ICES/. Given the wealth of USGS information on historic earthquakes, we designed and built an app that can aggregate and display nearly 100 years of seismic data dynamically. *Quake Hunter* is a valuable tool for understanding how tectonic plates interact with one another. *Quake Hunter* visualizes any range of earthquake data from the USGS, in 3D, either on the whole planet or in a user-defined geographically constrained area. With powerful querying tools, this application provides exactly what the user wants to see in terms of earthquake event data around the world.
