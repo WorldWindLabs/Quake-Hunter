@@ -153,10 +153,10 @@ define(['./Circle',
             };
 
             // Configure the USGS earthquake slab layers.
-            this.loadSlabData("CAS", "cascadia_slab1.0_clip.xyz", 401, WorldWind.Color.YELLOW);
-            this.loadSlabData("SOL", "sol_slab1.0_clip.xyz", 1001, WorldWind.Color.YELLOW);
-            this.loadSlabData("MEX", "mex_slab1.0_clip.xyz", 1251, WorldWind.Color.CYAN);
-            this.loadSlabData("ALU", "alu_slab1.0_clip.xyz", 2451, WorldWind.Color.MAGENTA);
+            this.loadSlabData("Cascadia slab", "cascadia_slab1.0_clip.xyz", 401, WorldWind.Color.YELLOW);
+            this.loadSlabData("Solomon slab", "sol_slab1.0_clip.xyz", 1001, WorldWind.Color.YELLOW);
+            this.loadSlabData("Mexico slab", "mex_slab1.0_clip.xyz", 1251, WorldWind.Color.CYAN);
+            this.loadSlabData("Aleutians slab", "alu_slab1.0_clip.xyz", 2451, WorldWind.Color.MAGENTA);
 
             // Establish the shapes and the controllers to handle picking.
             this.setupPicking();
@@ -216,6 +216,7 @@ define(['./Circle',
                 mesh.altitudeMode = WorldWind.ABSOLUTE;
                 mesh.highlightAttributes = highlightAttributes;
                 mesh.dataGrid = dataGrid;
+                meshLayer.enabled = false;
                 meshLayer.addRenderable(mesh);
             }
 
@@ -285,6 +286,7 @@ define(['./Circle',
         ];
 
         for (var l = 0; l < layers.length; l++) {
+            //console.log(layers[l].layer.displayName);
             layers[l].layer.enabled = layers[l].enabled;
             wwd.addLayer(layers[l].layer);
         }
