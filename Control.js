@@ -16,6 +16,7 @@ define(['./Circle',
         './WorldPoint',
         './Draw',
         './MetadataDisplay',
+        //'./LayersPanel',
         './DataGrid'],
     function (Circle,
               Cylinder,
@@ -55,9 +56,9 @@ define(['./Circle',
         //         wwd.navigator.lookAtLocation.longitude = location.coords.longitude;
         //     });
         // }
-
+        var layerManager = new LayerManager(wwd);
         var Control = function () {
-            //this.layersPanel = new LayersPanel(wwd);
+            //this.layerManager = new LayerManager(wwd);
             var earthquakes =  new USGS(wwd, this);
             var metadata = new Metadata(this);
             this.handler = new Draw(wwd, metadata, this);
@@ -76,13 +77,13 @@ define(['./Circle',
 
             this.redraw = function () {
                 this.handler.startSpin();
-                layerManger.synchronizeLayerList();
+                layerManager.synchronizeLayerList();
                 earthquakes.redraw(this.handler);
             };
 
             this.endRedraw = function () {
                 this.handler.stopSpin();
-                layerManger.synchronizeLayerList();
+                layerManager.synchronizeLayerList();
             };
 
             this.reset = function () {
@@ -218,7 +219,7 @@ define(['./Circle',
                 meshLayer.addRenderable(mesh);
             }
 
-            this.layersPanel.synchronizeLayerList();
+            layerManager.synchronizeLayerList();
             wwd.redraw();
         };
 
@@ -290,7 +291,7 @@ define(['./Circle',
 
         var myControl  = new Control();
         // Layer Manager
-        var layerManger = new LayerManager(wwd);
+        //var layerManger = new LayerManager(wwd);
 
         myControl.redraw();
 
