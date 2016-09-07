@@ -146,6 +146,10 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
             }
         });
 
+        this.setCoordinate = function (point) {
+            document.getElementById("coordSearch").value = point.Lati.toFixed(3).toString() + ',' + point.Long.toFixed(3).toString();
+        };
+
         this.radiusSearch = $("#searchRadius").on("click", function() {
             var origin = document.getElementById("coordSearch").value;
             var radius = document.getElementById("radiusKMSearch").value;

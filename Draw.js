@@ -326,9 +326,13 @@ define(['./Circle',
             this.Click = function (event) {
                 var earthquakes = myearthquake;
 
+                var point = new WorldPoint(wwd);
+                var x = event.clientX,
+                    y = event.clientY;
+                point.update3Dfrom2D(x, y);
+                control.updateSelectedPoint(point);
+
                 if (drawing.getDrawMode() != "off") {
-                    var x = event.clientX,
-                        y = event.clientY;
                     var placeMark;
 
                     if (drawingState == drawingStates.ONE_V) {

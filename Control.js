@@ -161,6 +161,10 @@ define(['./Circle',
             // Establish the shapes and the controllers to handle picking.
             this.setupPicking();
 
+            this.updateSelectedPoint = function (point) {
+                UIController.setCoordinate(point);
+            }
+
         };
 
         Control.prototype.loadSlabData = function (name, dataFile, width, color) {
