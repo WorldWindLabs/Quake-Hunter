@@ -74,7 +74,7 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true,
-            yearRange: "1975:nn",
+            yearRange: "1925:nn",
             dateFormat: "yy-mm-dd",
             onSelect: function(dateText, dateobj) {
                 queryParameters.setToDate(dateText);
