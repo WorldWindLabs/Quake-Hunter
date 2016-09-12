@@ -125,7 +125,7 @@ define(function () {
             if (layer.hide) {
                 continue;
             }
-            var layerItem = $('<button class="list-group-item btn btn-block">' + layer.displayName + '</button>');
+            var layerItem = $('<button class="list-group-item btn btn-block" style="color: black">' + layer.displayName + '</button>');
             layerListItem.append(layerItem);
 
             if (layer.showSpinner && Spinner) {
