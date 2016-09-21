@@ -328,16 +328,22 @@
         </div>
         <hr>
         <h4>Radius Search:</h4>
+        <p>
+            Right click on the globe or fill in.
+        </p>
         <h5 style="text-align: left">Coordinates:</h5>
         <div class="form-group">
             <input id="coordSearch" onchange="checkNumber(this)" maxlength="30" type="text" class="form-control"
                    placeholder="e.g. '57.7900, -152.4072'">
         </div>
         <h5 style="text-align: left">Radius (km):</h5>
-        <div class="form-group">
+        <div class="input-group">
             <input id="radiusKMSearch" maxlength="30" type="text" class="form-control" placeholder="e.g. '300'">
+            <span class="input-group-btn">
+                <button id="searchRadius" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></button>
+                </span>
         </div>
-        <button id="searchRadius" class="btn btn-primary" type="button">GO!</button>
+        <!-- <button id="searchRadius" class="btn btn-primary" type="button">GO!</button> -->
     </div>
 
     <div id="graphs" class="col-sm-2 tabcontentRight" style="width: 35% !important;">

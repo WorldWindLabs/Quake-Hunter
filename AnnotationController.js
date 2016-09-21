@@ -2,7 +2,7 @@
  * Copyright (C) 2014 United States Government as represented by the Administrator of the
  * National Aeronautics and Space Administration. All Rights Reserved.
  */
-define(['./USGS', './Draw'], function(USGS, Draw) {
+define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, control, WorldPoint) {
     "use strict";
 
 
@@ -161,6 +161,24 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
             control.redraw();
         });
 
+        this.rightclickhandler = function(event) {
+            var point = control.rightclickpoint;
+            var x = event.clientX,
+                y = event.clientY;
+            point.update3Dfrom2D(x, y);
+            control.updateSelectedPoint(point);
+            var origin = document.getElementById("coordSearch").value;
+            document.getElementById("radiusKMSearch").value = 500;
+            var radius = 500;
+            control.setDrawMode("radialSearch");
+            queryParameters.setoriginlong(origin.split(",")[0]);
+            queryParameters.setoriginlati(origin.split(",")[1]);
+            queryParameters.setradius(radius);
+            control.FancyLookAt(origin);
+            control.redraw();
+            // console.log(point);
+        };
+
         this.reset = $("#reset").on("click", function() {
             document.index = 0;
             initializeUI(queryParameters);
@@ -175,7 +193,7 @@ define(['./USGS', './Draw'], function(USGS, Draw) {
                     eqArray.push(GeoJSON.features[i]);
                 }
             }
-            return eqArray
+            return eqArray;
         };
 
         this.touringfunctions = function () {

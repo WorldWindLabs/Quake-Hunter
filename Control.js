@@ -140,6 +140,8 @@ define(['./Circle',
                 metadata.setdepth(array[index].geometry.coordinates[2]);
             };
 
+            this.rightclickpoint = new WorldPoint(wwd);
+
             this.initializeHandlers = function () {
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.
                 wwd.addEventListener("mousemove", myControl.handler.Pick);
@@ -150,6 +152,7 @@ define(['./Circle',
                 // Listen for mouse moves and highlight the placemarks that the cursor rolls over.
                 wwd.addEventListener("dblclick", myControl.handler.Click);
                 wwd.addEventListener("mousemove", myControl.handler.Drawer);
+                wwd.addEventListener("contextmenu", UIController.rightclickhandler);
             };
 
             // Configure the USGS earthquake slab layers.
