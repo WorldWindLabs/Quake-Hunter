@@ -143,7 +143,7 @@ define(['./Draw'],
                 minDepth = this.parameters.minDepth,
                 maxDepth = this.parameters.maxDepth;
 
-            var resourcesUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
+            var resourcesUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
             var query = "&starttime=" + FromDate +
                 "&endtime=" + ToDate +
                 "&minmagnitude=" + minMagnitude.toString() +

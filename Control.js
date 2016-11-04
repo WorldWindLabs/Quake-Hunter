@@ -171,7 +171,7 @@ define(['./Circle',
         };
 
         Control.prototype.loadSlabData = function (name, dataFile, width, color) {
-            var dataLocation = "https://worldwindserver.net/webworldwind/data/usgs/",
+            var dataLocation = "http://worldwindserver.net/webworldwind/data/usgs/",
                 url = dataLocation + dataFile;
 
             var xhr = new XMLHttpRequest();
