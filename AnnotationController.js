@@ -37,8 +37,6 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
         //     control.setDrawMode("off");
         // });
 
-        var legend = document.getElementById('legend');
-
         this.coloringMode = $("#coloringMode");
         var coloringMode = this.coloringMode;
         this.coloringMode.on("change", function() {
@@ -48,15 +46,49 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
         });
 
         function updateLegend(value) {
+            // var legend = document.getElementById('legend');
+
             if (value == "time") {
-                legend.src = "./images/AgeLegend.svg";
+                // legend.src = "./images/MagnitudeTimeLegend.svg";
+                var fromDate = new Date(queryParameters.FromDate);
+                var toDate = new Date(queryParameters.ToDate);
+                var interval = new Date(toDate - fromDate);
+
+                var percent = [0.1, 0.3, 0.6, 1];
+                for (var i in percent) {
+                    var ageRanges = document.getElementById('agerange' + i);
+                    var middle = new Date(fromDate);
+                    middle.setDate(middle.getDate() + interval.getDate()*percent[i]);
+                    var dd = middle.getDate();
+                    var mm = middle.getMonth() + 1;
+                    var y = middle.getYear() - 100;
+                    ageRanges.textContent = '<' + y + '-' + mm + '-' + dd;
+                }
+
+                $('#MagnitudeLegendTable').each(function() {
+                    $(this).hide();
+                });
+
+                $('#ageLegendTable').each(function() {
+                    $(this).show();
+                });
+
             } else if (value == "magnitude") {
-                legend.src = "./images/MagnitudeLegend.svg";
+                // legend.src = "./images/MagnitudeLegend.svg";
+                $('#ageLegendTable').each(function() {
+                    $(this).hide();
+                });
+
+                $('#MagnitudeLegendTable').each(function() {
+                    $(this).show();
+                });
             }
 
         }
 
         this.depthSlider = $("#depthSlider");
+
+
 
         this.FromDate = $("#fromdatepicker").datepicker({
             changeMonth: true,
@@ -262,6 +294,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             drawingSelector[0].selectedIndex = 0;
             control.setDrawMode(drawingSelector.val());
             control.setColoringMode(coloringMode.val());
+            updateLegend("time");
         }
 
         initializeUI(queryParameters);

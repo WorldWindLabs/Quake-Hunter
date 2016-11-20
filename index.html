@@ -13,6 +13,7 @@
     <!--JQuery UI-->
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
     <!--Local Stylesheet-->
     <link rel="stylesheet" href="./stylesheet1.css"/>
     <!--Perfect Scrollbar CSS-->
@@ -22,6 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <title>Quake Hunter</title>
+
 </head>
 
 <body>
@@ -414,7 +416,62 @@
     </div>
 
     <div>
-        <img src="./images/AgeLegend.svg" id="legend" style="position: fixed;bottom: 2%;right: 15%;width: 15%"/>
+
+        <table id="ageLegendTable" class="tablesorter" style="border: 1px; font-size: 11px; position: fixed;bottom: 1%;right: 15%;width: 15%;">
+            <tr>
+                <td style="text-align:center">Magnitude</td>
+                <td style="text-align:center"><img src="./images/White.svg" width="20"/></td>
+                <td style="text-align:center"><img src="./images/White.svg" width="30"/></td>
+                <td style="text-align:center"><img src="./images/White.svg" width="40"/></td>
+                <td style="text-align:center"><img src="./images/White.svg" width="50"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> </td>
+                <td style="text-align:center"> 0 - 3</td>
+                <td style="text-align:center"> 3 - 5</td>
+                <td style="text-align:center"> 5 - 7</td>
+                <td style="text-align:center"> 7 - 10</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">Age</td>
+                <td style="text-align:center"><img src="./images/Red.svg" width="42"/></td>
+                <td style="text-align:center"><img src="./images/Orange.svg" width="42"/></td>
+                <td style="text-align:center"><img src="./images/Yellow.svg" width="42"/></td>
+                <td style="text-align:center"><img src="./images/Green.svg" width="42"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> </td>
+                <td style="text-align:center"><span id="agerange0"> < 10% </span></td>
+                <td style="text-align:center"><span id="agerange1"> < 30% </span></td>
+                <td style="text-align:center"><span id="agerange2"> < 60% </span></td>
+                <td style="text-align:center"><span id="agerange3"> < 100% </span></td>
+            </tr>
+        </table>
+
+        <table id="MagnitudeLegendTable" class="tablesorter"  style="border: 1px; font-size: 11px; position: fixed;bottom: 1%;right: 15%;width: 15%;">
+            <tr>
+                <td style="text-align:center">Magnitude</td>
+                <td style="text-align:center"><img src="./images/Red.svg" width="20"/></td>
+                <td style="text-align:center"><img src="./images/Orange.svg" width="30"/></td>
+                <td style="text-align:center"><img src="./images/Yellow.svg" width="40"/></td>
+                <td style="text-align:center"><img src="./images/Green.svg" width="50"/></td>
+            </tr>
+            <tr>
+                <td style="text-align:center"> </td>
+                <td style="text-align:center"> 0 - 3</td>
+                <td style="text-align:center"> 3 - 5</td>
+                <td style="text-align:center"> 5 - 7</td>
+                <td style="text-align:center"> 7 - 10</td>
+            </tr>
+        </table>
+
+        <script language="javascript">
+            $('#MagnitudeLegendTable').each(function() {
+                $(this).hide();
+            });
+        </script>
+
+
     </div>
 
     <div text align="center">
