@@ -57,12 +57,12 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
                 var percent = [0.1, 0.3, 0.6, 1];
                 for (var i in percent) {
                     var ageRanges = document.getElementById('agerange' + i);
-                    var middle = new Date(fromDate);
-                    middle.setDate(middle.getDate() + interval.getDate()*percent[i]);
+                    var middle = new Date(toDate);
+                    middle.setDate(middle.getDate() - interval.getDate()*percent[i]);
                     var dd = middle.getDate();
                     var mm = middle.getMonth() + 1;
                     var y = middle.getYear() - 100;
-                    ageRanges.textContent = '<' + y + '-' + mm + '-' + dd;
+                    ageRanges.textContent = '>' + y + '-' + mm + '-' + dd;
                 }
 
                 $('#MagnitudeLegendTable').each(function() {
