@@ -62,7 +62,12 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
                     var dd = middle.getDate();
                     var mm = middle.getMonth() + 1;
                     var y = middle.getYear() - 100;
-                    ageRanges.textContent = '>' + y + '-' + mm + '-' + dd;
+                    if (percent[i] != 1)  {
+                        ageRanges.textContent = '<' + y + '-' + mm + '-' + dd;
+                    }
+                    else {
+                        ageRanges.textContent = y + '-' + mm + '-' + dd;
+                    }
                 }
 
                 $('#MagnitudeLegendTable').each(function() {
