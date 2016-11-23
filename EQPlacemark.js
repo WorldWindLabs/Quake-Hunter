@@ -50,41 +50,41 @@ define(['./worldwindlib'],
                     var deltaT = toDate - time;
                     var percentInterval = 100*deltaT/(toDate - fromDate);
 
-                    // if (0 < percentInterval && percentInterval <= 10) {
-                    //     color.code = red;
-                    //     color.name = "red";
-                    // } else if (10 < percentInterval && percentInterval <= 30) {
-                    //     color.code = orange;
-                    //     color.name = "orange";
-                    // } else if (30 < percentInterval && percentInterval <= 60) {
-                    //     color.code = yellow;
-                    //     color.name = "yellow";
-                    // } else {
-                    //     color.code = green;
-                    //     color.name = "green";
-                    // }
-
-                    var day = 86400000;
-                    var week = 7*day;
-                    var month = 31*day;
-                    var year = 365*day;
-
-                    if (deltaT <= day) {
-                        color.code = green;
-                        color.name = "green";
-                    } else if (deltaT <= week) {
-                        color.code = yellow;
-                        color.name = "yellow";
-                    } else if (deltaT <= month) {
-                        color.code = orange;
-                        color.name = "orange";
-                    } else if (deltaT <= year) {
+                    if (0 < percentInterval && percentInterval <= 10) {
                         color.code = red;
                         color.name = "red";
+                    } else if (10 < percentInterval && percentInterval <= 30) {
+                        color.code = orange;
+                        color.name = "orange";
+                    } else if (30 < percentInterval && percentInterval <= 60) {
+                        color.code = yellow;
+                        color.name = "yellow";
                     } else {
-                        color.code = white;
-                        color.name = "white";
+                        color.code = green;
+                        color.name = "green";
                     }
+
+                    // var day = 86400000;
+                    // var week = 7*day;
+                    // var month = 31*day;
+                    // var year = 365*day;
+                    //
+                    // if (deltaT <= day) {
+                    //     color.code = green;
+                    //     color.name = "green";
+                    // } else if (deltaT <= week) {
+                    //     color.code = yellow;
+                    //     color.name = "yellow";
+                    // } else if (deltaT <= month) {
+                    //     color.code = orange;
+                    //     color.name = "orange";
+                    // } else if (deltaT <= year) {
+                    //     color.code = red;
+                    //     color.name = "red";
+                    // } else {
+                    //     color.code = white;
+                    //     color.name = "white";
+                    // }
                 }
                 return color;
             }
