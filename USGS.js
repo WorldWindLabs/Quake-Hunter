@@ -32,7 +32,7 @@ define(['./Draw'],
             this.minDepth = 0;
             this.maxDepth = 1000;
 
-            this.initialQuery = {minMag: 2.5,
+            this.initialQuery = {minMag: 4,
                 maxMag: 10,
                 fromDate: minDateISO.join('-'),
                 toDate: maxDateISO.join('-'),

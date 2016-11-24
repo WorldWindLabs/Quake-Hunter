@@ -116,7 +116,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
 
         this.magSlider.slider({
             range: true,
-            values: [2.5, 10.0],
+            values: [4, 10.0],
             min: 0.0,
             max: 10.0,
             step: 0.1,
