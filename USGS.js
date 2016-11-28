@@ -186,6 +186,7 @@ define(['./Draw'],
                     control.initializeHandlers();
                     control.mostRecentSigEQ(EQ);
                     draw.graph(EQ);
+                    // earthquakes.geoJSON = EQ;
                     control.CurGeoJSON(EQ);
                 });
                 firstTime = false;

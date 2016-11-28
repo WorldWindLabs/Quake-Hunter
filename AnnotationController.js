@@ -24,6 +24,11 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             control.setDrawMode(drawingSelector.val());
         });
 
+        function update() {
+            populateLegend();
+            control.redraw();
+        }
+
 
         // this.drawRectangle = $("#drawRectangle").on("click", function () {
         //     control.setDrawMode("rectangle");
@@ -42,53 +47,32 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
         this.coloringMode.on("change", function() {
             control.setColoringMode(coloringMode.val());
             updateLegend(coloringMode.val());
-            control.redraw();
+            update();
         });
 
-        function updateLegend(value) {
-            // var legend = document.getElementById('legend');
+        function populateLegend() {
+            var fromDate = new Date(queryParameters.FromDate);
+            var toDate = new Date(queryParameters.ToDate);
+            var interval = new Date(toDate - fromDate);
 
-            if (value == "time") {
-                // legend.src = "./images/MagnitudeTimeLegend.svg";
-                var fromDate = new Date(queryParameters.FromDate);
-                var toDate = new Date(queryParameters.ToDate);
-                var interval = new Date(toDate - fromDate);
-
-                var percent = [0.1, 0.3, 0.6, 1];
-                for (var i in percent) {
-                    var ageRanges = document.getElementById('agerange' + i);
-                    var middle = new Date(toDate);
-                    middle.setDate(middle.getDate() - interval.getDate()*percent[i]);
-                    var dd = middle.getDate();
-                    var mm = middle.getMonth() + 1;
-                    var y = middle.getYear() - 100;
-                    ageRanges.textContent = '<' + y + '-' + mm + '-' + dd;
-                }
-
-                $('#MagnitudeLegendTable').each(function() {
-                    $(this).hide();
-                });
-
-                $('#ageLegendTable').each(function() {
-                    $(this).show();
-                });
-
-            } else if (value == "magnitude") {
-                // legend.src = "./images/MagnitudeLegend.svg";
-                $('#ageLegendTable').each(function() {
-                    $(this).hide();
-                });
-
-                $('#MagnitudeLegendTable').each(function() {
-                    $(this).show();
-                });
+            var percent = [0.1, 0.3, 0.6, 1];
+            for (var i in percent) {
+                var ageRanges = document.getElementById('agerange' + i);
+                var middle = new Date(toDate);
+                middle.setDate(middle.getDate() - interval.getDate()*percent[i]);
+                var dd = middle.getDate();
+                var mm = middle.getMonth() + 1;
+                var y = middle.getYear() - 100;
+                ageRanges.textContent = '<' + y + '-' + mm + '-' + dd;
             }
+        }
 
+        function updateLegend(value) {
+            $('#ageLegendTable').toggle();
+            $('#MagnitudeLegendTable').toggle();
         }
 
         this.depthSlider = $("#depthSlider");
-
-
 
         this.FromDate = $("#fromdatepicker").datepicker({
             changeMonth: true,
@@ -98,7 +82,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             dateFormat: "yy-mm-dd",
             onSelect: function(dateText, dateobj) {
                 queryParameters.setFromDate(dateText);
-                control.redraw();
+                update();
             }
         });
 
@@ -110,7 +94,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             dateFormat: "yy-mm-dd",
             onSelect: function(dateText, dateobj) {
                 queryParameters.setToDate(dateText);
-                control.redraw();
+                update();
             }
         });
 
@@ -129,7 +113,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             stop: function(event, ui) {
                 queryParameters.setMinMagnitude(ui.values[0]);
                 queryParameters.setMaxMagnitude(ui.values[1]);
-                control.redraw();
+                update();
             }
 
         });
@@ -149,7 +133,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             stop: function(event, ui) {
                 queryParameters.setMinDepth(ui.values[0]);
                 queryParameters.setMaxDepth(ui.values[1]);
-                control.redraw();
+                update();
             }
         });
 
@@ -174,7 +158,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
                 alert("Can not query beyond 20,000 events");
             } else {
                 queryParameters.setLimit(limit);
-                control.redraw();
+                update();
             }
         });
 
@@ -190,7 +174,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             queryParameters.setoriginlati(origin.split(",")[1]);
             queryParameters.setradius(radius);
             control.FancyLookAt(origin);
-            control.redraw();
+            update();
         });
 
         this.rightclickhandler = function(event) {
@@ -207,7 +191,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             queryParameters.setoriginlati(origin.split(",")[1]);
             queryParameters.setradius(radius);
             control.FancyLookAt(origin);
-            control.redraw();
+            update();
             // console.log(point);
         };
 
@@ -265,7 +249,7 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
 
         this.touringfunctions();
 
-        function initializeUI(queryParameters) {
+        function initializeUI() {
             var initialQuery = queryParameters.initialQuery;
             //  Pre-populate dropdowns with initial dates
             $("#fromdatepicker").datepicker("setDate", initialQuery.fromDate.split("T")[0]);
@@ -294,10 +278,10 @@ define(['./USGS', './Draw', './Control', './WorldPoint'], function(USGS, Draw, c
             drawingSelector[0].selectedIndex = 0;
             control.setDrawMode(drawingSelector.val());
             control.setColoringMode(coloringMode.val());
-            updateLegend("time");
+            populateLegend();
         }
 
-        initializeUI(queryParameters);
+        $(document).ready(initializeUI);
 
         $("#magSliderValue").html(this.magSlider.slider("values", 0).toString() + " to " +
             this.magSlider.slider("values", 1).toString() + " Richter");
