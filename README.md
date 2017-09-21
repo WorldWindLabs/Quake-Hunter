@@ -15,9 +15,9 @@ Sections:
 
 4. [Example Usage](#4-example-usage)
 
-5. [Future Work](#5-future-work) 
+5. [Future Work](#5-future-work)
 
-###Europa Challenge 2016 video:
+### Europa Challenge 2016 video:
 https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be
 
 <a href="https://www.youtube.com/watch?v=ZU023wu5RMo&feature=youtu.be">
@@ -30,14 +30,14 @@ This is an earthquake visualization app built in NASA WebWorldWind with support 
 
 2. How to Run *Quake Hunter*
 -----
-###Run it the easy way:
+### Run it the easy way:
 You can go to http://worldwind.arc.nasa.gov/quakehunter to use the web app.
-###Run it the hard way:
+### Run it the hard way:
 You can download or clone the repository in to local storage and run the `index.html` in a webserver (WebStorm provides a built in webserver).
 
 3. How To Use
 -----
-###Querying Earthquakes:
+### Querying Earthquakes:
   * Tour the events using the bottom two arrow buttons. Change how you tour the earthquakes, either by magnitude or time by selecting the color mode in the controls menu.
   * Use the 'from' and 'to' calendar fill-ins to change the date range of the earthquakes visualized (this can be done all the way back to 1975).
   * The magnitude slider allows you to filter how large the earthquakes being visualized are.
@@ -48,13 +48,13 @@ You can download or clone the repository in to local storage and run the `index.
   * Browse through the statistics of your query in the right hand side information and graphs panel. Magnitude and depth histograms, as well an earthquake activity time series graphs are all automatically generated from your query.
   * You can download these graphs by clicking the camera icon in the upper right hand corner of the graph plot area.
 
-###Visualization of subsurface features:
+### Visualization of subsurface features:
 Try a geographically constrained query along a subduction zone or fault line (These are represented by the brown lines).
   * Set a specific sector of the planet to query earthquakes within.
   * Visualize a longer period of earthquakes (>20 years) and within the magnitude range M3-10.
   * Use the canvas controls (in the bottom left-hand corner) to change the angle of viewing. This should provide a great visualization of how the tectonic plates interact with one another, whether in a subduction zone, transform fault, rift zone, or a hotspot.
 
-###Performance Tips:
+### Performance Tips:
 * If the earthquakes are not loading immediately after you enter search parameters, it may be loading.
 Look in the "Globe Options" to see if the "earthquakes" layer is loading. If the search involves in
 excess of 5000 earthquakes, the load may take a while.
