@@ -3,7 +3,7 @@
  */
 
 define(['./Rectangle',
-    './worldwindlib',
+    './worldwind.min',
     './WorldPoint'],
     function(Rectangle,
              WorldWind,

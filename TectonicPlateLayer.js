@@ -2,7 +2,7 @@
  * Created by gagaus on 8/3/16.
  */
 
-define(['./worldwindlib'],
+define(['./worldwind.min'],
     function (WorldWind) {
 
         "use strict";
